@@ -65,11 +65,11 @@ function Channel({ icon, label, value, href, copyValue, cursorLabel }: ChannelPr
 type LetsTalkButtonProps = {
   /** Compact pill style for dense surfaces like the nav bar. */
   compact?: boolean
-  /** Horizontal anchor for the popover. Defaults to "center". */
-  align?: "center" | "right"
+  /** Horizontal anchor for the popover. Defaults to "left". */
+  align?: "left" | "center" | "right"
 }
 
-export function LetsTalkButton({ compact = false, align = "center" }: LetsTalkButtonProps = {}) {
+export function LetsTalkButton({ compact = false, align = "left" }: LetsTalkButtonProps = {}) {
   const [open, setOpen] = useState(false)
   const wrapRef = useRef<HTMLDivElement | null>(null)
 
@@ -94,9 +94,15 @@ export function LetsTalkButton({ compact = false, align = "center" }: LetsTalkBu
   const popoverPosition =
     align === "right"
       ? "right-0 top-[calc(100%+0.75rem)]"
-      : "left-1/2 top-[calc(100%+0.75rem)] -translate-x-1/2"
+      : align === "left"
+        ? "left-0 top-[calc(100%+0.75rem)]"
+        : "left-1/2 top-[calc(100%+0.75rem)] -translate-x-1/2"
   const arrowPosition =
-    align === "right" ? "right-5 -top-1.5" : "left-1/2 -top-1.5 -translate-x-1/2"
+    align === "right"
+      ? "right-5 -top-1.5"
+      : align === "left"
+        ? "left-5 -top-1.5"
+        : "left-1/2 -top-1.5 -translate-x-1/2"
 
   return (
     <div ref={wrapRef} className="relative inline-block">
