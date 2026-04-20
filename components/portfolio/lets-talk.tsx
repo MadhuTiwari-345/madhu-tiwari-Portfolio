@@ -140,7 +140,7 @@ export function LetsTalkButton({ compact = false, align = "left" }: LetsTalkButt
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.98 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className={`absolute z-50 w-[min(92vw,22rem)] overflow-hidden rounded-2xl border border-border bg-[var(--card)]/95 p-4 text-left shadow-2xl backdrop-blur-xl ${popoverPosition}`}
+            className={`absolute z-50 w-[min(92vw,22rem)] overflow-hidden rounded-2xl border border-border bg-[var(--card)]/95 p-5 text-left shadow-2xl backdrop-blur-xl ${popoverPosition}`}
             style={{
               background:
                 "linear-gradient(150deg, color-mix(in oklch, var(--primary) 14%, var(--card)) 0%, var(--card) 65%)",
@@ -152,23 +152,26 @@ export function LetsTalkButton({ compact = false, align = "left" }: LetsTalkButt
               className={`absolute h-3 w-3 rotate-45 border-l border-t border-border bg-[var(--card)] ${arrowPosition}`}
             />
 
-            <div className="flex items-center justify-between">
-              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                direct channels
+            {/* header */}
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
+                <h3 className="text-balance text-base font-semibold tracking-tight">
+                  Let&apos;s build something.
+                </h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Tap a channel to reach me directly.
+                </p>
               </div>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close contact details"
-                className="flex h-6 w-6 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-[var(--background-elevated)] hover:text-foreground"
+                data-cursor-label="close"
+                className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-border text-muted-foreground transition-colors hover:border-[var(--primary)] hover:text-foreground"
               >
                 <X className="h-3.5 w-3.5" />
               </button>
             </div>
-
-            <h3 className="mt-1 text-balance text-lg font-semibold tracking-tight">
-              Reach out directly.
-            </h3>
 
             <div className="mt-4 flex flex-col gap-2">
               <Channel
@@ -189,10 +192,14 @@ export function LetsTalkButton({ compact = false, align = "left" }: LetsTalkButt
               />
             </div>
 
-            <div className="mt-4 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+            {/* footer */}
+            <div className="mt-4 flex items-center justify-between border-t border-border/60 pt-3 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
               <span>new delhi, india</span>
-              <span className="flex items-center gap-1.5">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--primary)]" />
+              <span className="flex items-center gap-1.5 text-[var(--primary)]">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inset-0 animate-ping rounded-full bg-[var(--primary)] opacity-60" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--primary)]" />
+                </span>
                 available
               </span>
             </div>
