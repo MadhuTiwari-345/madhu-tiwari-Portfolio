@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic"
 import { motion } from "framer-motion"
-import { Github, Linkedin, Mail } from "lucide-react"
+import { Github, Linkedin, Mail, Phone } from "lucide-react"
 import { SectionHeader } from "./about-bento"
 import { ScanningButton } from "./scanning-button"
 
@@ -97,6 +97,24 @@ export function TerrainSection() {
                     email
                   </div>
                   <div className="text-sm font-medium">mt1499961@gmail.com</div>
+                </div>
+              </div>
+              <span className="font-mono text-xs text-muted-foreground transition-transform group-hover:translate-x-0.5">
+                →
+              </span>
+            </a>
+            <a
+              href="tel:+917011547973"
+              data-cursor-label="phone"
+              className="group flex items-center justify-between rounded-xl border border-border bg-[var(--background-elevated)] px-4 py-3 transition-colors hover:border-[var(--primary)]"
+            >
+              <div className="flex items-center gap-3">
+                <Phone className="h-4 w-4 text-[var(--primary)]" />
+                <div>
+                  <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                    phone
+                  </div>
+                  <div className="text-sm font-medium">+91 70115 47973</div>
                 </div>
               </div>
               <span className="font-mono text-xs text-muted-foreground transition-transform group-hover:translate-x-0.5">
