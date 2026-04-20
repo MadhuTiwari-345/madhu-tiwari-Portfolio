@@ -1,35 +1,122 @@
-# madhu-tiwari-Portfolio
+<!-- HEADER -->
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
+<h1 align="center">✨ Madhu Tiwari ✨</h1>
+<h3 align="center">🚀 AI & Full-Stack Developer | Crafting Scalable Digital Experiences</h3>
 
-## Built with v0
+<p align="center">
+  <a href="https://v0-madhu-tiwari.vercel.app/">
+    <img src="https://img.shields.io/badge/🌐 Live Portfolio-Explore Now-8A2BE2?style=for-the-badge&logo=vercel&logoColor=white"/>
+  </a>
+</p>
 
-This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.
+---
 
-[Continue working on v0 →](https://v0.app/chat/projects/prj_EGKqrzb9qQQW6EbmKFwWCyqIAGjY)
+<!-- ANIMATED INTRO -->
 
-## Getting Started
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Orbitron&size=26&duration=3000&color=8A2BE2&center=true&vCenter=true&width=700&lines=Hi+I'm+Madhu+Tiwari;AI+%26+Full+Stack+Developer;Open+Source+Contributor+🚀;Building+Future-Ready+Projects"/>
+</p>
 
-First, run the development server:
+---
+
+## 🧊 About Me
+
+<div align="center">
+
+✨ Passionate about building **AI-powered and scalable web apps**
+🎓 B.Tech CSE (AI & ML)
+🌍 Open Source Contributor (GSSoC, SWOC, ECWOC)
+⚡ Focused on **performance + clean UI + real-world impact**
+
+</div>
+
+---
+
+## 🛠️ Tech Stack
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=js,java,python,react,nextjs,nodejs,spring,html,css,tailwind,mongodb,postgres,git,github,firebase" />
+</p>
+
+---
+
+## 🎴 Featured Projects
+
+### 🔐 PhisBuster
+
+<p align="center">
+  <img src="https://via.placeholder.com/700x350.png?text=PhisBuster+Project" width="80%" style="border-radius:15px;"/>
+</p>
+
+> AI-powered phishing detection platform using threat intelligence APIs.
+> ✔ URL analysis • ✔ Security insights • ✔ Gamified learning
+
+---
+
+### 🌾 FarmChain
+
+<p align="center">
+  <img src="https://via.placeholder.com/700x350.png?text=FarmChain+Project" width="80%" style="border-radius:15px;"/>
+</p>
+
+> Decentralized agricultural supply chain system using blockchain.
+> ✔ Transparency • ✔ Smart contracts • ✔ Traceability
+
+---
+
+### ⚖️ Legal AI
+
+<p align="center">
+  <img src="https://via.placeholder.com/700x350.png?text=Legal+AI+Project" width="80%" style="border-radius:15px;"/>
+</p>
+
+> AI-powered legal assistant for document analysis & summarization.
+> ✔ NLP • ✔ Document insights • ✔ Automation
+
+---
+
+## 📊 GitHub Insights
+
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=MadhuTiwari-345&show_icons=true&theme=tokyonight" height="160"/>
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=MadhuTiwari-345&theme=tokyonight" height="160"/>
+</p>
+
+---
+
+## ⚙️ Run Locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open 👉 https://v0-madhu-tiwari.vercel.app/
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-## Learn More
+## 📬 Connect With Me
 
-To learn more, take a look at the following resources:
+<p align="center">
+  <a href="https://www.linkedin.com/in/madhu-tiwari-833ab1326/">
+    <img src="https://img.shields.io/badge/LinkedIn-Madhu%20Tiwari-0A66C2?style=for-the-badge&logo=linkedin"/>
+  </a>
+  <a href="mailto:mtiwari241905@gmail.com">
+    <img src="https://img.shields.io/badge/Email-Contact-EA4335?style=for-the-badge&logo=gmail"/>
+  </a>
+  <a href="https://github.com/MadhuTiwari-345">
+    <img src="https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github"/>
+  </a>
+</p>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [v0 Documentation](https://v0.app/docs) - learn about v0 and how to use it.
+---
 
-<a href="https://v0.app/chat/api/kiro/clone/MadhuTiwari-345/madhu-tiwari-Portfolio" alt="Open in Kiro"><img src="https://pdgvvgmkdvyeydso.public.blob.vercel-storage.com/open%20in%20kiro.svg?sanitize=true" /></a>
+## ⭐ Support
+
+If you like my work, consider giving a ⭐ to this repository!
+
+---
+
+<p align="center">
+  💎 Designed & Built with ❤️ by <b>Madhu Tiwari</b>
+</p>
