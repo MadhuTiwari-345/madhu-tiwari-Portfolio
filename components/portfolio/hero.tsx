@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic"
 import { motion } from "framer-motion"
 import { ScanningButton } from "./scanning-button"
+import { LetsTalkButton } from "./lets-talk"
 import { ArrowDown, Github, Linkedin, MapPin, Sparkles } from "lucide-react"
 
 const ParticleHero = dynamic(() => import("./particle-hero").then((m) => m.ParticleHero), {
@@ -82,10 +83,11 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="mt-8 flex flex-wrap items-center justify-center gap-3"
         >
+          <LetsTalkButton />
           <ScanningButton
             asLink
             href="#projects"
-            variant="primary"
+            variant="outline"
             icon={<Sparkles className="h-4 w-4" />}
             data-cursor-label="see work"
           >
@@ -96,7 +98,7 @@ export function Hero() {
             href="https://github.com/MadhuTiwari-345"
             target="_blank"
             rel="noreferrer"
-            variant="outline"
+            variant="ghost"
             icon={<Github className="h-4 w-4" />}
             data-cursor-label="github"
           >
