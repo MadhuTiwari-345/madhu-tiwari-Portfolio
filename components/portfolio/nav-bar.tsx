@@ -2,8 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { ThemeSwitcher } from "./theme-switcher"
-import { ScanningButton } from "./scanning-button"
-import { Mail } from "lucide-react"
+import { Mail, Phone } from "lucide-react"
 
 const links = [
   { href: "#about", label: "About" },
@@ -70,17 +69,26 @@ export function NavBar() {
 
         <div className="flex items-center gap-2">
           <ThemeSwitcher />
-          <ScanningButton
-            asLink
+          <a
             href="mailto:mt1499961@gmail.com"
-            variant="primary"
-            icon={<Mail className="h-3.5 w-3.5" />}
-            data-cursor-label="say hi"
-            aria-label="Email Madhu"
+            data-cursor-label="email"
+            aria-label="Email Madhu at mt1499961@gmail.com"
+            className="glass-pill flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium transition-colors hover:text-[var(--primary)]"
           >
-            <span className="hidden sm:inline">Let&apos;s talk</span>
-            <span className="sm:hidden">Hi</span>
-          </ScanningButton>
+            <Mail className="h-3.5 w-3.5 text-[var(--primary)]" />
+            <span className="hidden md:inline">mt1499961@gmail.com</span>
+            <span className="md:hidden">Email</span>
+          </a>
+          <a
+            href="tel:+917011547973"
+            data-cursor-label="call"
+            aria-label="Call Madhu at +91 7011547973"
+            className="glass-pill hidden items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium transition-colors hover:text-[var(--primary)] sm:flex"
+          >
+            <Phone className="h-3.5 w-3.5 text-[var(--primary)]" />
+            <span className="hidden md:inline">+91 70115 47973</span>
+            <span className="md:hidden">Call</span>
+          </a>
         </div>
       </div>
     </header>
