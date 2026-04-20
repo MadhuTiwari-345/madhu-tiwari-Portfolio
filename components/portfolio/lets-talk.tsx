@@ -62,7 +62,14 @@ function Channel({ icon, label, value, href, copyValue, cursorLabel }: ChannelPr
   )
 }
 
-export function LetsTalkButton() {
+type LetsTalkButtonProps = {
+  /** Compact pill style for dense surfaces like the nav bar. */
+  compact?: boolean
+  /** Horizontal anchor for the popover. Defaults to "center". */
+  align?: "center" | "right"
+}
+
+export function LetsTalkButton({ compact = false, align = "center" }: LetsTalkButtonProps = {}) {
   const [open, setOpen] = useState(false)
   const wrapRef = useRef<HTMLDivElement | null>(null)
 
@@ -84,18 +91,39 @@ export function LetsTalkButton() {
     }
   }, [open])
 
+  const popoverPosition =
+    align === "right"
+      ? "right-0 top-[calc(100%+0.75rem)]"
+      : "left-1/2 top-[calc(100%+0.75rem)] -translate-x-1/2"
+  const arrowPosition =
+    align === "right" ? "right-5 -top-1.5" : "left-1/2 -top-1.5 -translate-x-1/2"
+
   return (
     <div ref={wrapRef} className="relative inline-block">
-      <ScanningButton
-        onClick={() => setOpen((v) => !v)}
-        variant="primary"
-        icon={<MessageCircle className="h-4 w-4" />}
-        data-cursor-label="lets talk"
-        aria-expanded={open}
-        aria-haspopup="dialog"
-      >
-        Let&apos;s talk
-      </ScanningButton>
+      {compact ? (
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          data-cursor-label="lets talk"
+          aria-expanded={open}
+          aria-haspopup="dialog"
+          className="glass-pill flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium transition-colors hover:text-[var(--primary)]"
+        >
+          <MessageCircle className="h-3.5 w-3.5 text-[var(--primary)]" />
+          <span>Let&apos;s talk</span>
+        </button>
+      ) : (
+        <ScanningButton
+          onClick={() => setOpen((v) => !v)}
+          variant="primary"
+          icon={<MessageCircle className="h-4 w-4" />}
+          data-cursor-label="lets talk"
+          aria-expanded={open}
+          aria-haspopup="dialog"
+        >
+          Let&apos;s talk
+        </ScanningButton>
+      )}
 
       <AnimatePresence>
         {open && (
@@ -106,7 +134,7 @@ export function LetsTalkButton() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.98 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute left-1/2 top-[calc(100%+0.75rem)] z-50 w-[min(92vw,22rem)] -translate-x-1/2 overflow-hidden rounded-2xl border border-border bg-[var(--card)]/95 p-4 text-left shadow-2xl backdrop-blur-xl"
+            className={`absolute z-50 w-[min(92vw,22rem)] overflow-hidden rounded-2xl border border-border bg-[var(--card)]/95 p-4 text-left shadow-2xl backdrop-blur-xl ${popoverPosition}`}
             style={{
               background:
                 "linear-gradient(150deg, color-mix(in oklch, var(--primary) 14%, var(--card)) 0%, var(--card) 65%)",
@@ -115,7 +143,7 @@ export function LetsTalkButton() {
             {/* arrow */}
             <span
               aria-hidden
-              className="absolute -top-1.5 left-1/2 h-3 w-3 -translate-x-1/2 rotate-45 border-l border-t border-border bg-[var(--card)]"
+              className={`absolute h-3 w-3 rotate-45 border-l border-t border-border bg-[var(--card)] ${arrowPosition}`}
             />
 
             <div className="flex items-center justify-between">
