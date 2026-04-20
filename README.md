@@ -44,9 +44,6 @@
 
 ### 🔐 PhisBuster
 
-<p align="center">
-  <img src="https://via.placeholder.com/700x350.png?text=PhisBuster+Project" width="80%" style="border-radius:15px;"/>
-</p>
 
 > AI-powered phishing detection platform using threat intelligence APIs.
 > ✔ URL analysis • ✔ Security insights • ✔ Gamified learning
@@ -55,9 +52,6 @@
 
 ### 🌾 FarmChain
 
-<p align="center">
-  <img src="https://via.placeholder.com/700x350.png?text=FarmChain+Project" width="80%" style="border-radius:15px;"/>
-</p>
 
 > Decentralized agricultural supply chain system using blockchain.
 > ✔ Transparency • ✔ Smart contracts • ✔ Traceability
@@ -66,9 +60,6 @@
 
 ### ⚖️ Legal AI
 
-<p align="center">
-  <img src="https://via.placeholder.com/700x350.png?text=Legal+AI+Project" width="80%" style="border-radius:15px;"/>
-</p>
 
 > AI-powered legal assistant for document analysis & summarization.
 > ✔ NLP • ✔ Document insights • ✔ Automation
