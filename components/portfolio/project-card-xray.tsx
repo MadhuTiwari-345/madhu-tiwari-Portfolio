@@ -31,6 +31,8 @@ export type Project = {
     edges: ArchEdge[]
   }
   previewLabel?: string
+  /** optional screenshot rendered in the preview face of the card */
+  image?: string
 }
 
 const nodeStyles: Record<ArchNode["type"], { label: string; glow: string }> = {
@@ -134,6 +136,54 @@ function ArchitectureView({ arch }: { arch: Project["architecture"] }) {
 
 function MockPreview({ project }: { project: Project }) {
   const [a, b] = project.gradient
+
+  // If a real screenshot exists, render it with a subtle chrome + scanning shimmer overlay.
+  if (project.image) {
+    return (
+      <div className="relative h-full w-full overflow-hidden rounded-[inherit] bg-[var(--background-elevated)]">
+        {/* screenshot */}
+        <img
+          src={project.image || "/placeholder.svg"}
+          alt={`${project.title} interface preview`}
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+        />
+
+        {/* gradient vignette so text/badges stay readable */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 70%, rgba(0,0,0,0.55) 100%)",
+          }}
+        />
+
+        {/* top-left window chrome + label */}
+        <div className="absolute top-3 left-3 flex items-center gap-1.5">
+          <span className="h-2 w-2 rounded-full bg-white/50" />
+          <span className="h-2 w-2 rounded-full bg-white/50" />
+          <span className="h-2 w-2 rounded-full bg-white/50" />
+          <span className="ml-2 font-mono text-[10px] tracking-widest text-white/85 uppercase">
+            {project.previewLabel ?? project.title.toLowerCase()}
+          </span>
+        </div>
+
+        {/* scanning shimmer */}
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 h-24"
+          style={{
+            background:
+              "linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.14) 50%, transparent 100%)",
+          }}
+          animate={{ y: ["-30%", "120%"] }}
+          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
+    )
+  }
+
   return (
     <div
       className="relative h-full w-full overflow-hidden rounded-[inherit]"

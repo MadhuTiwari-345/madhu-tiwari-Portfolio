@@ -12,6 +12,7 @@ export const projects: Project[] = [
     year: "2025",
     gradient: ["#ff7a59", "#ffb347"],
     previewLabel: "phisbuster / scan",
+    image: "/projects/phisbuster.jpg",
     span: "lg:col-span-2",
     architecture: {
       nodes: [
@@ -42,6 +43,7 @@ export const projects: Project[] = [
     year: "2025",
     gradient: ["#ff8a5c", "#c8a8ff"],
     previewLabel: "kisan.os / home",
+    image: "/projects/kisan-os.jpg",
     architecture: {
       nodes: [
         { id: "farmer", label: "Farmer App", type: "client", x: 14, y: 50 },
