@@ -69,7 +69,6 @@
 ## 📊 GitHub Insights
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=MadhuTiwari-345&show_icons=true&theme=tokyonight" height="160"/>
   <img src="https://github-readme-streak-stats.herokuapp.com/?user=MadhuTiwari-345&theme=tokyonight" height="160"/>
 </p>
 
