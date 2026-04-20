@@ -73,6 +73,7 @@ export const projects: Project[] = [
     year: "2025",
     gradient: ["#f2a65a", "#ff6b5b"],
     previewLabel: "farmchain / trace",
+    image: "/projects/farmchain.jpg",
     architecture: {
       nodes: [
         { id: "dash", label: "Next.js Dashboard", type: "client", x: 16, y: 50 },
@@ -100,6 +101,7 @@ export const projects: Project[] = [
     year: "2025",
     gradient: ["#ff5e9a", "#ff8a5c"],
     previewLabel: "femtoguard / live",
+    image: "/projects/femtoguard.jpg",
     span: "lg:col-span-2",
     architecture: {
       nodes: [
@@ -129,6 +131,7 @@ export const projects: Project[] = [
     year: "2025",
     gradient: ["#c8a8ff", "#ff6b5b"],
     previewLabel: "legal.ai / brief",
+    image: "/projects/legal-ai.jpg",
     architecture: {
       nodes: [
         { id: "client", label: "React Client", type: "client", x: 14, y: 50 },
