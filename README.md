@@ -25,7 +25,7 @@
 
 ✨ Passionate about building **AI-powered and scalable web apps**
 🎓 B.Tech CSE (AI & ML)
-🌍 Open Source Contributor (GSSoC, SWOC, ECWOC)
+🌍 Open Source Contributor (GSSoC'25, SWOC'26, ECWOC'26, OSCG'26)
 ⚡ Focused on **performance + clean UI + real-world impact**
 
 </div>
