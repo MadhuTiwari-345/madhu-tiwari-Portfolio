@@ -46,7 +46,9 @@
 
 
 > AI-powered phishing detection platform using threat intelligence APIs.
-> ✔ URL analysis • ✔ Security insights • ✔ Gamified learning
+> • ✔ URL analysis
+> • ✔ Security insights
+> • ✔ Gamified learning
 
 ---
 
@@ -54,7 +56,9 @@
 
 
 > Decentralized agricultural supply chain system using blockchain.
-> ✔ Transparency • ✔ Smart contracts • ✔ Traceability
+> • ✔ Transparency
+> • ✔ Smart contracts
+> • ✔ Traceability
 
 ---
 
@@ -62,7 +66,9 @@
 
 
 > AI-powered legal assistant for document analysis & summarization.
-> ✔ NLP • ✔ Document insights • ✔ Automation
+> • ✔ NLP
+> • ✔ Document insights
+> • ✔ Automation
 
 ---
 
