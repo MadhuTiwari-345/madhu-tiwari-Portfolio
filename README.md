@@ -1,3 +1,8 @@
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b140883d-3067-4f40-85f0-6dbe0d823d17" />
+</p>
+
 <!-- HEADER -->
 
 <h1 align="center">✨ Madhu Tiwari ✨</h1>
@@ -46,8 +51,11 @@
 
 
 > AI-powered phishing detection platform using threat intelligence APIs.
+
 > • ✔ URL analysis
+
 > • ✔ Security insights
+
 > • ✔ Gamified learning
 
 ---
@@ -56,8 +64,11 @@
 
 
 > Decentralized agricultural supply chain system using blockchain.
+
 > • ✔ Transparency
+
 > • ✔ Smart contracts
+
 > • ✔ Traceability
 
 ---
@@ -66,8 +77,11 @@
 
 
 > AI-powered legal assistant for document analysis & summarization.
+
 > • ✔ NLP
+
 > • ✔ Document insights
+
 > • ✔ Automation
 
 ---
