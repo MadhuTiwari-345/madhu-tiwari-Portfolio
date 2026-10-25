@@ -187,7 +187,7 @@ export const projects: Project[] = [
     year: "2026",
     gradient: ["#ff5c9b", "#6f244e"],
     previewLabel: "stormcycle / health",
-    image: "https://image.thum.io/get/width/1200/crop/800/https://stormcycle.vercel.app/",
+    image: "/projects/stormcycle.svg",
     architecture: {
       nodes: [
         { id: "user", label: "Cycle Tracker", type: "client", x: 14, y: 50 },
@@ -215,7 +215,7 @@ export const projects: Project[] = [
     year: "2026",
     gradient: ["#59e8d5", "#2ea8ff"],
     previewLabel: "microclimate / forecast",
-    image: "https://image.thum.io/get/width/1200/crop/800/https://microclimate-ten.vercel.app/",
+    image: "/projects/microclimate.svg",
     architecture: {
       nodes: [
         { id: "user", label: "Weather Dashboard", type: "client", x: 13, y: 50 },
