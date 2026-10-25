@@ -2,7 +2,7 @@ import type { Project } from "./project-card-xray"
 
 export const projects: Project[] = [
   {
-    title: "PhisBuster",
+    title: "PhishBuster",
     tagline: "AI Phishing Detection + Training",
     description:
       "Analyzes suspicious URLs with threat intelligence APIs (WHOIS, Shodan, VirusTotal) and pairs it with a gamified phishing training simulator so users actually learn what clicked.",
@@ -12,7 +12,7 @@ export const projects: Project[] = [
     year: "2025",
     gradient: ["#ff7a59", "#ffb347"],
     previewLabel: "phisbuster / scan",
-    image: "/projects/phisbuster.jpg",
+    image: "/projects/phisbuster.svg",
     span: "lg:col-span-2",
     architecture: {
       nodes: [
@@ -43,7 +43,7 @@ export const projects: Project[] = [
     year: "2025",
     gradient: ["#ff8a5c", "#c8a8ff"],
     previewLabel: "kisan.os / home",
-    image: "https://image.thum.io/get/width/1200/crop/800/https://kisanosprojectcheck.vercel.app/",
+    image: "/projects/kisan-os.svg",
     architecture: {
       nodes: [
         { id: "farmer", label: "Farmer App", type: "client", x: 14, y: 50 },
@@ -73,7 +73,7 @@ export const projects: Project[] = [
     year: "2025",
     gradient: ["#f2a65a", "#ff6b5b"],
     previewLabel: "farmchain / trace",
-    image: "https://image.thum.io/get/width/1200/crop/800/https://farm-chain-blue.vercel.app/",
+    image: "/projects/farmchain.svg",
     architecture: {
       nodes: [
         { id: "dash", label: "Next.js Dashboard", type: "client", x: 16, y: 50 },
@@ -101,7 +101,7 @@ export const projects: Project[] = [
     year: "2025",
     gradient: ["#ff5e9a", "#ff8a5c"],
     previewLabel: "femtoguard / live",
-    image: "https://image.thum.io/get/width/1200/crop/800/https://femtoguard.vercel.app/",
+    image: "/projects/femtoguard.svg",
     span: "lg:col-span-2",
     architecture: {
       nodes: [
