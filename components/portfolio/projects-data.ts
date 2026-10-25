@@ -128,6 +128,7 @@ export const projects: Project[] = [
       "Full-stack LegalTech SaaS for contract drafting, clause-level risk scoring, RAG-powered case-law research, deadline and matter management, and client brief generation across Indian, UK, and US jurisdictions.",
     tags: ["TypeScript", "React 19", "Node.js", "PostgreSQL", "Drizzle ORM", "Clerk", "OpenAI", "Anthropic"],
     repo: "https://github.com/MadhuTiwari-345/Lex-Intelligence",
+    live: "https://lex-intelligence-beta.vercel.app/",
     year: "2026",
     gradient: ["#c8a8ff", "#ff6b5b"],
     previewLabel: "lex.ai / legal intelligence",
