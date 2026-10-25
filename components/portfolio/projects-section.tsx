@@ -17,7 +17,7 @@ export function ProjectsSection() {
         toggle. Flip it to see the actual system diagram behind the interface.
       </p>
 
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-2">
         {projects.map((p, i) => (
           <ProjectCardXRay key={p.title} project={p} index={i} />
         ))}
