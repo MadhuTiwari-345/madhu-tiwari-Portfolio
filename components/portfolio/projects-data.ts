@@ -132,6 +132,7 @@ export const projects: Project[] = [
     year: "2026",
     gradient: ["#c8a8ff", "#ff6b5b"],
     previewLabel: "lex.ai / legal intelligence",
+    image: "https://image.thum.io/get/width/1200/crop/800/https://lex-intelligence-beta.vercel.app/",
     architecture: {
       nodes: [
         { id: "client", label: "React Client", type: "client", x: 14, y: 50 },
@@ -158,6 +159,7 @@ export const projects: Project[] = [
     year: "2026",
     gradient: ["#8b7bff", "#45c6d9"],
     previewLabel: "hireplane / jobs",
+    image: "https://image.thum.io/get/width/1200/crop/800/https://hireplane.vercel.app/",
     architecture: {
       nodes: [
         { id: "candidate", label: "Job Seeker", type: "client", x: 14, y: 30 },
