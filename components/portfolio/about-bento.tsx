@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { BookOpen, Code2, Coffee, Cpu, Sparkles, Trophy } from "lucide-react"
+import { BookOpen, Code2, Cpu, GitPullRequest, Sparkles, Trophy } from "lucide-react"
 
 const stats = [
   { icon: Code2, label: "Projects shipped", value: "12+" },
@@ -109,7 +109,7 @@ export function AboutBento() {
           </div>
         </motion.div>
 
-        {/* Coffee card */}
+        {/* Open-source impact card */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -122,29 +122,25 @@ export function AboutBento() {
           }}
         >
           <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-            <Coffee className="h-3 w-3" /> fuel.log
+            <GitPullRequest className="h-3 w-3" /> open-source.impact
           </div>
-          <div>
+          <div className="mt-4">
             <div className="text-3xl font-bold">
-              <span className="text-[var(--primary)]">247</span>
-              <span className="text-sm text-muted-foreground"> cups</span>
+              <span className="text-[var(--primary)]">5+</span>
+              <span className="text-sm text-muted-foreground"> programs</span>
             </div>
-            <div className="mt-1 text-xs text-muted-foreground">
-              Since I started treating coffee as a build dependency.
+            <div className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Contributing across 89 public repositories with 20+ collaborators.
             </div>
           </div>
-          <div className="mt-3 flex gap-1">
-            {Array.from({ length: 14 }).map((_, i) => (
-              <div
-                key={i}
-                className="h-6 flex-1 rounded-sm"
-                style={{
-                  background:
-                    i < 11
-                      ? "color-mix(in oklch, var(--primary) 70%, transparent)"
-                      : "color-mix(in oklch, var(--primary) 18%, transparent)",
-                }}
-              />
+          <div className="mt-4 flex flex-wrap gap-1.5">
+            {["GSSoC '25", "SWOC '26", "ECWOC '26", "OSCG '26", "Aperture 3.0"].map((program) => (
+              <span
+                key={program}
+                className="rounded-full border border-border bg-[var(--background-elevated)] px-2 py-1 font-mono text-[9px] text-muted-foreground"
+              >
+                {program}
+              </span>
             ))}
           </div>
         </motion.div>
