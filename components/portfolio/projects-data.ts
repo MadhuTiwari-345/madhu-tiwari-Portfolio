@@ -148,4 +148,30 @@ export const projects: Project[] = [
       ],
     },
   },
+  {
+    title: "HirePlane",
+    tagline: "Job Discovery & Recruitment Platform",
+    description:
+      "A hiring platform designed to connect job seekers with opportunities and help employers manage recruitment. Explore the live experience and its job-search workflows.",
+    tags: ["Web App", "Job Search", "Recruitment", "Career Platform"],
+    live: "https://hireplane.vercel.app/",
+    year: "2026",
+    gradient: ["#8b7bff", "#45c6d9"],
+    previewLabel: "hireplane / jobs",
+    architecture: {
+      nodes: [
+        { id: "candidate", label: "Job Seeker", type: "client", x: 14, y: 30 },
+        { id: "employer", label: "Employer", type: "client", x: 14, y: 72 },
+        { id: "app", label: "HirePlane App", type: "server", x: 43, y: 50 },
+        { id: "jobs", label: "Job Listings", type: "db", x: 72, y: 28 },
+        { id: "hiring", label: "Hiring Flow", type: "external", x: 83, y: 70 },
+      ],
+      edges: [
+        { from: "candidate", to: "app" },
+        { from: "employer", to: "app" },
+        { from: "app", to: "jobs" },
+        { from: "app", to: "hiring" },
+      ],
+    },
+  },
 ]
