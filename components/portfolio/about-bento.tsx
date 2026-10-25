@@ -40,7 +40,7 @@ export function AboutBento() {
             <div className="mt-4 space-y-3 text-pretty text-sm leading-relaxed text-muted-foreground sm:text-base">
               <p>
                 I study Computer &amp; Data Science (AI &amp; ML) at Maharishi University of
-                Information Technology, Noida. Current SGPA 7.82, which I keep nudging up between
+                Information Technology, Noida. Current CGPA 7.88 through Semester IV, which I keep nudging up between
                 open source pull requests and hackathon nights.
               </p>
               <p>
@@ -92,10 +92,9 @@ export function AboutBento() {
               style={{ background: "var(--primary)" }}
             />
             <div>
-              <div className="text-sm font-semibold">Contributing to SWOC 2026 &amp; ECWOC</div>
+              <div className="text-sm font-semibold">Contributing across open-source programs</div>
               <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
-                Reviewing PRs, improving docs, and shipping small but meaningful features to
-                community driven repos.
+                Contributing to GSSoC, SWOC, ECWOC, OSCG, and Aperture. Reviewing PRs, improving docs, and shipping meaningful features to community-driven repositories.
               </p>
             </div>
           </div>
@@ -104,8 +103,7 @@ export function AboutBento() {
             <div>
               <div className="text-sm font-semibold">Studying agents &amp; retrieval</div>
               <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
-                Finished the Google × Kaggle AI Agent Intensive. Now building small agents that are
-                actually useful, not just demos.
+                Completed the Google × Kaggle AI Agent Intensive and the portfolio website. Now building practical agents and full-stack products beyond demos.
               </p>
             </div>
           </div>
