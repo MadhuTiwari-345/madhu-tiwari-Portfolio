@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { ThemeProvider } from "@/components/portfolio/theme-provider"
-import { MagneticCursor } from "@/components/portfolio/magnetic-cursor"
 import "./globals.css"
 
 const spaceGrotesk = Space_Grotesk({
@@ -53,7 +52,6 @@ export default function RootLayout({
     >
       <body className="font-sans antialiased bg-background text-foreground">
         <ThemeProvider>
-          <MagneticCursor />
           {children}
         </ThemeProvider>
         {process.env.NODE_ENV === "production" && <Analytics />}
