@@ -1,18 +1,11 @@
 "use client"
 
-import { Canvas, useFrame, useThree } from "@react-three/fiber"
+import { Canvas, useFrame } from "@react-three/fiber"
 import { useMemo, useRef, useEffect, useState } from "react"
 import * as THREE from "three"
 
-function getCssVar(name: string, fallback: string) {
-  if (typeof window === "undefined") return fallback
-  const v = getComputedStyle(document.documentElement).getPropertyValue(name).trim()
-  return v || fallback
-}
-
 type GitHubEvent = { created_at: string; type: string }
 
-// Use real public GitHub events when available; empty days remain visible as low bars.
 function buildContributionGrid(events: GitHubEvent[], weeks = 53, days = 7) {
   const counts = new Map<string, number>()
   for (const event of events) {
@@ -26,9 +19,8 @@ function buildContributionGrid(events: GitHubEvent[], weeks = 53, days = 7) {
   const start = new Date(today)
   start.setUTCDate(today.getUTCDate() - (weeks * days - 1))
   start.setUTCDate(start.getUTCDate() - start.getUTCDay())
-  const data: number[][] = []
-  let max = 1
   const raw: number[][] = []
+  let max = 1
   for (let w = 0; w < weeks; w++) {
     const row: number[] = []
     for (let d = 0; d < days; d++) {
@@ -40,30 +32,95 @@ function buildContributionGrid(events: GitHubEvent[], weeks = 53, days = 7) {
     }
     raw.push(row)
   }
-  for (const row of raw) data.push(row.map((value) => value === 0 ? 0.025 : 0.18 + 0.82 * (value / max)))
-  return data
+  return raw.map(row => row.map(value => value === 0 ? 0 : 0.18 + 0.82 * value / max))
 }
 
-/* previous deterministic fallback removed: the terrain now reflects real public events */
-
-function Terrain() {
-  const meshRef = useRef<THREE.InstancedMesh>(null)
-  const [primary, setPrimary] = useState("#ff6b5b")
-  const [accent, setAccent] = useState("#ffb347")
-  const [events, setEvents] = useState<GitHubEvent[]>([])
-  const { mouse } = useThree()
-
-  useEffect(() => {
-    const update = () => {
-      setPrimary(getCssVar("--primary", "#ff6b5b"))
-      setAccent(getCssVar("--accent", "#ffb347"))
+function GitHubCity({ grid }: { grid: number[][] }) {
+  const group = useRef<THREE.Group>(null)
+  const { rows, cols, buildings } = useMemo(() => {
+    const rows = grid[0]?.length ?? 7
+    const cols = grid.length
+    const buildings: { x: number; z: number; h: number; activity: number; seed: number }[] = []
+    for (let x = 0; x < cols; x++) {
+      for (let z = 0; z < rows; z++) {
+        const activity = grid[x][z]
+        // The city grid represents GitHub's 53-week by 7-day activity pattern.
+        buildings.push({
+          x: x - (cols - 1) / 2,
+          z: z - (rows - 1) / 2,
+          h: activity === 0 ? 0.12 : 0.3 + activity * 1.9,
+          activity,
+          seed: (x * 17 + z * 31) % 11,
+        })
+      }
     }
-    update()
-    const obs = new MutationObserver(update)
-    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] })
-    return () => obs.disconnect()
-  }, [])
+    return { rows, cols, buildings }
+  }, [grid])
 
+  const buildingMaterial = useMemo(() => new THREE.MeshStandardMaterial({
+    color: "#ff8a65",
+    roughness: 0.72,
+    metalness: 0.08,
+  }), [])
+  const windowMaterial = useMemo(() => new THREE.MeshBasicMaterial({ color: "#ffe7ad" }), [])
+  const baseMaterial = useMemo(() => new THREE.MeshStandardMaterial({
+    color: "#211832", roughness: 0.85, metalness: 0.12
+  }), [])
+
+  useEffect(() => () => {
+    buildingMaterial.dispose()
+    windowMaterial.dispose()
+    baseMaterial.dispose()
+  }, [buildingMaterial, windowMaterial, baseMaterial])
+
+  useFrame((state) => {
+    if (!group.current) return
+    const t = state.clock.getElapsedTime()
+    group.current.rotation.y = Math.sin(t * 0.12) * 0.035
+    group.current.position.y = Math.sin(t * 0.7) * 0.035
+  })
+
+  return (
+    <group ref={group} position={[0, -0.65, 0]}>
+      <mesh position={[0, -0.13, 0]} receiveShadow>
+        <boxGeometry args={[cols * 0.42 + 0.65, 0.18, rows * 0.78 + 0.8]} />
+        <primitive object={baseMaterial} attach="material" />
+      </mesh>
+      {buildings.map((b, i) => {
+        const warm = b.activity > 0
+        const color = warm ? (b.seed % 3 === 0 ? "#ffb36b" : "#e87555") : "#493451"
+        return (
+          <group key={i} position={[b.x * 0.42, 0, b.z * 0.78]}>
+            <mesh position={[0, b.h / 2, 0]} castShadow receiveShadow>
+              <boxGeometry args={[0.32, b.h, 0.58]} />
+              <meshStandardMaterial color={color} roughness={0.68} metalness={0.05} />
+            </mesh>
+            {warm && b.h > 0.55 && (
+              <mesh position={[0, b.h * 0.56, 0.296]}>
+                <boxGeometry args={[0.09, 0.06, 0.012]} />
+                <primitive object={windowMaterial} attach="material" />
+              </mesh>
+            )}
+          </group>
+        )
+      })}
+      {/* A few taller landmark towers give the skyline a recognizable city silhouette. */}
+      {[8, 24, 39, 47].map((column, i) => {
+        const b = buildings[column * rows + ((i * 2 + 1) % rows)]
+        if (!b || b.activity === 0) return null
+        return (
+          <mesh key={column} position={[b.x * 0.42, b.h + 0.38 + i * 0.08, b.z * 0.78]} castShadow>
+            <boxGeometry args={[0.2, 0.8 + i * 0.16, 0.25]} />
+            <meshStandardMaterial color={i % 2 ? "#ff9b70" : "#f3b36a"} roughness={0.55} />
+          </mesh>
+        )
+      })}
+    </group>
+  )
+}
+
+export function CommitTerrain() {
+  const [events, setEvents] = useState<GitHubEvent[]>([])
   useEffect(() => {
     let active = true
     const load = async () => {
@@ -71,11 +128,11 @@ function Terrain() {
         const response = await fetch("https://api.github.com/users/MadhuTiwari-345/events?per_page=100", {
           headers: { Accept: "application/vnd.github+json" },
         })
-        if (!response.ok) throw new Error(`GitHub API returned ${response.status}`)
+        if (!response.ok) throw new Error("GitHub activity unavailable")
         const result = await response.json()
         if (active && Array.isArray(result)) setEvents(result.filter((event) => event?.created_at && event?.type))
       } catch {
-        // Keep the canvas alive if GitHub rate-limits or the network is unavailable.
+        // Keep the city rendering even when GitHub temporarily rate-limits requests.
       }
     }
     void load()
@@ -84,88 +141,17 @@ function Terrain() {
   }, [])
 
   const grid = useMemo(() => buildContributionGrid(events), [events])
-  const weeks = grid.length
-  const days = grid[0].length
-  const total = weeks * days
 
-  useEffect(() => {
-    const mesh = meshRef.current
-    if (!mesh) return
-    const color = new THREE.Color()
-    let idx = 0
-    const low = new THREE.Color("#35234c")
-    const mid = new THREE.Color(primary)
-    const high = new THREE.Color(accent)
-    for (let w = 0; w < weeks; w++) {
-      for (let d = 0; d < days; d++) {
-        const value = grid[w][d]
-        color.copy(value < 0.15 ? low : mid).lerp(high, Math.min(1, Math.max(0, (value - 0.15) / 0.85)) * 0.7)
-        mesh.setColorAt(idx++, color)
-      }
-    }
-    if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true
-  }, [grid, primary, accent, weeks, days])
-
-  useFrame((state) => {
-    const mesh = meshRef.current
-    if (!mesh) return
-    const t = state.clock.getElapsedTime()
-    const dummy = new THREE.Object3D()
-    const cellW = 0.25
-    const cellD = 0.52
-    const originX = -(weeks * cellW) / 2
-    const originZ = -(days * cellD) / 2
-
-    let idx = 0
-    for (let w = 0; w < weeks; w++) {
-      for (let d = 0; d < days; d++) {
-        const v = grid[w][d]
-        const wave = Math.sin(t * 0.65 + w * 0.19 + d * 0.42) * 0.035
-        const mouseBoost =
-          Math.max(
-            0,
-            1 -
-              Math.hypot(
-                w / weeks - (mouse.x * 0.5 + 0.5),
-                d / days - (1 - (mouse.y * 0.5 + 0.5)),
-              ) *
-                4,
-          ) * 0.24
-        const h = Math.max(0.12, 0.16 + v * 2.5 + wave + mouseBoost)
-        dummy.position.set(originX + w * cellW, h / 2, originZ + d * cellD)
-        dummy.scale.set(cellW * 0.88, h, cellD * 0.88)
-        dummy.updateMatrix()
-        mesh.setMatrixAt(idx, dummy.matrix)
-        idx++
-      }
-    }
-    mesh.instanceMatrix.needsUpdate = true
-    mesh.rotation.y = Math.sin(t * 0.12) * 0.08
-  })
-
-  return (
-    <instancedMesh ref={meshRef} args={[undefined, undefined, total]}>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial
-        color={primary}
-        emissive={accent}
-        emissiveIntensity={0.25}
-        roughness={0.35}
-        metalness={0.2}
-      />
-    </instancedMesh>
-  )
-}
-
-export function CommitTerrain() {
   return (
     <div className="absolute inset-0">
-      <Canvas camera={{ position: [0, 7, 11], fov: 38 }} dpr={[1, 1.8]}>
-        <color attach="background" args={["#00000000"]} />
-        <ambientLight intensity={0.35} />
-        <directionalLight position={[4, 8, 5]} intensity={1.6} color="#fff1e7" />
-        <directionalLight position={[-5, 3, -4]} intensity={0.8} color="#ff6b9a" />
-        <Terrain />
+      <Canvas camera={{ position: [0, 9, 16], fov: 39 }} dpr={[1, 1.5]} shadows>
+        <color attach="background" args={["#171022"]} />
+        <fog attach="fog" args={["#171022", 11, 25]} />
+        <ambientLight intensity={1.05} />
+        <directionalLight position={[5, 11, 7]} intensity={2.1} color="#ffe7cf" castShadow />
+        <pointLight position={[-7, 4, -3]} intensity={45} distance={20} color="#c58bff" />
+        <pointLight position={[7, 3, 5]} intensity={35} distance={18} color="#ff8a65" />
+        <GitHubCity grid={grid} />
       </Canvas>
     </div>
   )
