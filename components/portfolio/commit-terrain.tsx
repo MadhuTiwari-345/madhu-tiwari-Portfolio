@@ -10,33 +10,47 @@ function getCssVar(name: string, fallback: string) {
   return v || fallback
 }
 
-// Stable pseudo-random terrain data representing contribution activity across a year.
-function buildContributionGrid(weeks = 53, days = 7, seed = 42) {
-  const data: number[][] = []
-  let s = seed
-  const rand = () => {
-    s = (s * 1664525 + 1013904223) % 4294967296
-    return s / 4294967296
+type GitHubEvent = { created_at: string; type: string }
+
+// Use real public GitHub events when available; empty days remain visible as low bars.
+function buildContributionGrid(events: GitHubEvent[], weeks = 53, days = 7) {
+  const counts = new Map<string, number>()
+  for (const event of events) {
+    const date = new Date(event.created_at)
+    if (Number.isNaN(date.getTime())) continue
+    const key = date.toISOString().slice(0, 10)
+    counts.set(key, (counts.get(key) ?? 0) + 1)
   }
+  const today = new Date()
+  today.setUTCHours(0, 0, 0, 0)
+  const start = new Date(today)
+  start.setUTCDate(today.getUTCDate() - (weeks * days - 1))
+  start.setUTCDate(start.getUTCDate() - start.getUTCDay())
+  const data: number[][] = []
+  let max = 1
+  const raw: number[][] = []
   for (let w = 0; w < weeks; w++) {
     const row: number[] = []
     for (let d = 0; d < days; d++) {
-      // Combine a global trend with randomness to make it feel organic.
-      const trend = 0.4 + 0.6 * Math.sin((w / weeks) * Math.PI * 1.4)
-      const weekendDip = d === 0 || d === 6 ? 0.55 : 1
-      const spike = rand() < 0.07 ? 1.6 : 1
-      const v = Math.max(0, Math.min(1, trend * weekendDip * rand() * spike))
-      row.push(v)
+      const date = new Date(start)
+      date.setUTCDate(start.getUTCDate() + w * 7 + d)
+      const value = counts.get(date.toISOString().slice(0, 10)) ?? 0
+      row.push(value)
+      max = Math.max(max, value)
     }
-    data.push(row)
+    raw.push(row)
   }
+  for (const row of raw) data.push(row.map((value) => value === 0 ? 0.025 : 0.18 + 0.82 * (value / max)))
   return data
 }
+
+/* previous deterministic fallback removed: the terrain now reflects real public events */
 
 function Terrain() {
   const meshRef = useRef<THREE.InstancedMesh>(null)
   const [primary, setPrimary] = useState("#ff6b5b")
   const [accent, setAccent] = useState("#ffb347")
+  const [events, setEvents] = useState<GitHubEvent[]>([])
   const { mouse } = useThree()
 
   useEffect(() => {
@@ -50,7 +64,26 @@ function Terrain() {
     return () => obs.disconnect()
   }, [])
 
-  const grid = useMemo(() => buildContributionGrid(), [])
+  useEffect(() => {
+    let active = true
+    const load = async () => {
+      try {
+        const response = await fetch("https://api.github.com/users/MadhuTiwari-345/events?per_page=100", {
+          headers: { Accept: "application/vnd.github+json" },
+        })
+        if (!response.ok) throw new Error(`GitHub API returned ${response.status}`)
+        const result = await response.json()
+        if (active && Array.isArray(result)) setEvents(result.filter((event) => event?.created_at && event?.type))
+      } catch {
+        // Keep the canvas alive if GitHub rate-limits or the network is unavailable.
+      }
+    }
+    void load()
+    const interval = window.setInterval(load, 5 * 60 * 1000)
+    return () => { active = false; window.clearInterval(interval) }
+  }, [])
+
+  const grid = useMemo(() => buildContributionGrid(events), [events])
   const weeks = grid.length
   const days = grid[0].length
   const total = weeks * days
