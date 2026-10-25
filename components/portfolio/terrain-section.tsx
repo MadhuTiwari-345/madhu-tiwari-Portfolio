@@ -25,11 +25,11 @@ export function TerrainSection() {
           className="relative h-[420px] overflow-hidden rounded-2xl border border-border bg-card lg:col-span-3"
         >
           <div className="absolute top-4 left-4 z-10 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-            github.activity · procedural
+            github.activity · cityscape
           </div>
           <div className="absolute top-4 right-4 z-10 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--primary)]" />
-            live render
+            live github data
           </div>
           <CommitTerrain />
           <div
@@ -43,9 +43,9 @@ export function TerrainSection() {
           <div className="absolute right-4 bottom-4 left-4 flex flex-wrap items-end justify-between gap-3">
             <div>
               <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                landscape
+                contribution city
               </div>
-              <div className="text-lg font-semibold">Every bar is a day I shipped something.</div>
+              <div className="text-lg font-semibold">A city built from my GitHub activity.</div>
             </div>
             <ScanningButton
               asLink
