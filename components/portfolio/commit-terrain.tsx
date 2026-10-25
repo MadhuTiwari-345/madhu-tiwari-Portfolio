@@ -88,17 +88,31 @@ function Terrain() {
   const days = grid[0].length
   const total = weeks * days
 
-  // keep weeks/days referenced for downstream logic; no per-instance colors needed.
-  void primary
-  void accent
+  useEffect(() => {
+    const mesh = meshRef.current
+    if (!mesh) return
+    const color = new THREE.Color()
+    let idx = 0
+    const low = new THREE.Color("#35234c")
+    const mid = new THREE.Color(primary)
+    const high = new THREE.Color(accent)
+    for (let w = 0; w < weeks; w++) {
+      for (let d = 0; d < days; d++) {
+        const value = grid[w][d]
+        color.copy(value < 0.15 ? low : mid).lerp(high, Math.min(1, Math.max(0, (value - 0.15) / 0.85)) * 0.7)
+        mesh.setColorAt(idx++, color)
+      }
+    }
+    if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true
+  }, [grid, primary, accent, weeks, days])
 
   useFrame((state) => {
     const mesh = meshRef.current
     if (!mesh) return
     const t = state.clock.getElapsedTime()
     const dummy = new THREE.Object3D()
-    const cellW = 0.35
-    const cellD = 0.35
+    const cellW = 0.25
+    const cellD = 0.52
     const originX = -(weeks * cellW) / 2
     const originZ = -(days * cellD) / 2
 
@@ -106,7 +120,7 @@ function Terrain() {
     for (let w = 0; w < weeks; w++) {
       for (let d = 0; d < days; d++) {
         const v = grid[w][d]
-        const wave = Math.sin(t * 0.8 + w * 0.2 + d * 0.3) * 0.08
+        const wave = Math.sin(t * 0.65 + w * 0.19 + d * 0.42) * 0.035
         const mouseBoost =
           Math.max(
             0,
@@ -116,17 +130,17 @@ function Terrain() {
                 d / days - (1 - (mouse.y * 0.5 + 0.5)),
               ) *
                 4,
-          ) * 0.4
-        const h = Math.max(0.05, v * 2 + wave + mouseBoost)
+          ) * 0.24
+        const h = Math.max(0.12, 0.16 + v * 2.5 + wave + mouseBoost)
         dummy.position.set(originX + w * cellW, h / 2, originZ + d * cellD)
-        dummy.scale.set(cellW * 0.85, h, cellD * 0.85)
+        dummy.scale.set(cellW * 0.88, h, cellD * 0.88)
         dummy.updateMatrix()
         mesh.setMatrixAt(idx, dummy.matrix)
         idx++
       }
     }
     mesh.instanceMatrix.needsUpdate = true
-    mesh.rotation.y = Math.sin(t * 0.15) * 0.2
+    mesh.rotation.y = Math.sin(t * 0.12) * 0.08
   })
 
   return (
@@ -146,11 +160,11 @@ function Terrain() {
 export function CommitTerrain() {
   return (
     <div className="absolute inset-0">
-      <Canvas camera={{ position: [0, 6, 10], fov: 45 }} dpr={[1, 1.8]}>
+      <Canvas camera={{ position: [0, 7, 11], fov: 38 }} dpr={[1, 1.8]}>
         <color attach="background" args={["#00000000"]} />
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[5, 10, 5]} intensity={1.2} />
-        <directionalLight position={[-5, 4, -5]} intensity={0.5} color="#ffb347" />
+        <ambientLight intensity={0.35} />
+        <directionalLight position={[4, 8, 5]} intensity={1.6} color="#fff1e7" />
+        <directionalLight position={[-5, 3, -4]} intensity={0.8} color="#ff6b9a" />
         <Terrain />
       </Canvas>
     </div>
