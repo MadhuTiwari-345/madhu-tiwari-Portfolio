@@ -39,6 +39,32 @@ export function Hero() {
         <ParticleHero />
       </div>
 
+      {/* Floating skill cards — restored, positioned outside the centered headline */}
+      <motion.div
+        aria-hidden
+        className="hero-float-chip hero-chip-left hidden lg:flex"
+        initial={{ opacity: 0, x: -18, rotateY: 12 }}
+        animate={{ opacity: 1, x: 0, rotateY: 7 }}
+        transition={{ duration: 0.9, delay: 0.55 }}
+      >
+        <span className="hero-chip-top"><span className="hero-chip-dot" /> EXPERTISE / 01</span>
+        <span className="hero-chip-title">AI / ML</span>
+        <span className="hero-chip-sub">Learning systems</span>
+        <span className="hero-chip-line"><span /></span>
+      </motion.div>
+      <motion.div
+        aria-hidden
+        className="hero-float-chip hero-chip-right hidden lg:flex"
+        initial={{ opacity: 0, x: 18, rotateY: -12 }}
+        animate={{ opacity: 1, x: 0, rotateY: -7 }}
+        transition={{ duration: 0.9, delay: 0.75 }}
+      >
+        <span className="hero-chip-top"><span className="hero-chip-dot" /> BUILD / 02</span>
+        <span className="hero-chip-title">FULL STACK</span>
+        <span className="hero-chip-sub">From idea to ship</span>
+        <span className="hero-chip-line"><span /></span>
+      </motion.div>
+
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
