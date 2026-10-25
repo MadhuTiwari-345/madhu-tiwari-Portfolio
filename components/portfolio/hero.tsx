@@ -83,11 +83,11 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="hero-name-stage text-balance font-display text-5xl leading-[0.95] font-bold tracking-tight sm:text-7xl md:text-8xl"
+          className="text-balance font-display text-5xl leading-[0.95] font-bold tracking-tight sm:text-7xl md:text-8xl"
         >
-          <span className="hero-intro-line block text-muted-foreground/70">I am</span>
+          <span className="block text-muted-foreground/70">I am</span>
           <span
-            className="hero-name-line block bg-gradient-to-br bg-clip-text text-transparent"
+            className="block bg-gradient-to-br bg-clip-text text-transparent"
             style={{
               backgroundImage:
                 "linear-gradient(135deg, var(--foreground) 0%, var(--primary) 55%, var(--accent) 100%)",
