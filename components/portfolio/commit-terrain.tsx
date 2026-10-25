@@ -37,6 +37,8 @@ function buildContributionGrid(events: GitHubEvent[], weeks = 53, days = 7) {
 
 function GitHubCity({ grid }: { grid: number[][] }) {
   const group = useRef<THREE.Group>(null)
+  const buildingRefs = useRef<(THREE.Group | null)[]>([])
+  const [hovered, setHovered] = useState<number | null>(null)
   const { rows, cols, buildings } = useMemo(() => {
     // A compact, square-ish city reads like a miniature skyline instead of a stretched heatmap.
     const cols = 22
@@ -78,11 +80,27 @@ function GitHubCity({ grid }: { grid: number[][] }) {
     windowMaterial.dispose()
   }, [baseMaterial, windowMaterial])
 
-  useFrame((state) => {
-    if (!group.current) return
+  useFrame((state, delta) => {
     const t = state.clock.getElapsedTime()
-    group.current.rotation.y = Math.sin(t * 0.16) * 0.055
-    group.current.position.y = -0.48 + Math.sin(t * 0.7) * 0.035
+    if (group.current) {
+      group.current.rotation.y = Math.sin(t * 0.16) * 0.055 + state.pointer.x * 0.045
+      group.current.rotation.x = -state.pointer.y * 0.025
+      group.current.position.y = -0.48 + Math.sin(t * 0.7) * 0.035
+    }
+
+    // Smoothly pop the building under the cursor and gently push the camera closer.
+    buildingRefs.current.forEach((building, index) => {
+      if (!building) return
+      const target = hovered === index ? 1.32 : 1
+      const lift = hovered === index ? 0.18 : 0
+      building.scale.x = THREE.MathUtils.damp(building.scale.x, target, 12, delta)
+      building.scale.z = THREE.MathUtils.damp(building.scale.z, target, 12, delta)
+      building.position.y = THREE.MathUtils.damp(building.position.y, lift, 12, delta)
+    })
+    const camera = state.camera
+    const target = hovered === null ? new THREE.Vector3(9, 10, 12) : new THREE.Vector3(7.8, 8.8, 10.5)
+    camera.position.lerp(target, 1 - Math.exp(-delta * 2.8))
+    camera.lookAt(0, 0, 0)
   })
 
   return (
@@ -97,10 +115,23 @@ function GitHubCity({ grid }: { grid: number[][] }) {
         const w = b.tower ? 0.25 : 0.31
         const d = b.tower ? 0.25 : 0.31
         return (
-          <group key={i} position={[b.x * 0.43, 0, b.z * 0.43]}>
+          <group
+            key={i}
+            ref={(node) => { buildingRefs.current[i] = node }}
+            position={[b.x * 0.43, 0, b.z * 0.43]}
+            onPointerOver={(event) => {
+              event.stopPropagation()
+              setHovered(i)
+              document.body.style.cursor = "pointer"
+            }}
+            onPointerOut={() => {
+              setHovered((current) => current === i ? null : current)
+              document.body.style.cursor = "default"
+            }}
+          >
             <mesh position={[0, b.h / 2, 0]} castShadow receiveShadow>
               <boxGeometry args={[w, b.h, d]} />
-              <meshStandardMaterial color={color} roughness={0.48} metalness={0.2} emissive={color} emissiveIntensity={b.activity > 0 ? 0.22 : 0.08} />
+              <meshStandardMaterial color={color} roughness={0.48} metalness={0.2} emissive={color} emissiveIntensity={hovered === i ? 0.62 : b.activity > 0 ? 0.22 : 0.08} />
             </mesh>
             {b.h > 0.65 && (
               <>
