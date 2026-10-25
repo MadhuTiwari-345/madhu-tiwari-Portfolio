@@ -176,7 +176,6 @@ export const projects: Project[] = [
       ],
     },
   },
-,
   {
     title: "StormCycle",
     tagline: "AI-Powered Menstrual Health Platform",
