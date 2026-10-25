@@ -109,32 +109,6 @@ export function Hero() {
           stubborn amount of coffee.
         </motion.p>
 
-        {/* Compact skill cards for phones; desktop keeps the floating side cards */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.35 }}
-          className="mt-7 grid w-full max-w-sm grid-cols-2 gap-3 lg:hidden"
-          aria-label="Areas of expertise"
-        >
-          <div className="min-w-0 rounded-xl border border-[var(--border)] bg-[color-mix(in_oklch,var(--background)_76%,transparent)] px-3 py-3 text-left shadow-sm backdrop-blur-md">
-            <div className="mb-2 flex items-center gap-1.5 font-mono text-[8px] uppercase tracking-[0.12em] text-muted-foreground">
-              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--primary)]" />
-              Expertise / 01
-            </div>
-            <div className="text-sm font-semibold leading-tight">AI / ML</div>
-            <div className="mt-1 text-[11px] leading-snug text-muted-foreground">Learning systems</div>
-          </div>
-          <div className="min-w-0 rounded-xl border border-[var(--border)] bg-[color-mix(in_oklch,var(--background)_76%,transparent)] px-3 py-3 text-left shadow-sm backdrop-blur-md">
-            <div className="mb-2 flex items-center gap-1.5 font-mono text-[8px] uppercase tracking-[0.12em] text-muted-foreground">
-              <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--primary)]" />
-              Build / 02
-            </div>
-            <div className="text-sm font-semibold leading-tight">FULL STACK</div>
-            <div className="mt-1 text-[11px] leading-snug text-muted-foreground">From idea to ship</div>
-          </div>
-        </motion.div>
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
