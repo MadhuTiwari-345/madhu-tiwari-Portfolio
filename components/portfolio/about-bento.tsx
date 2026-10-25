@@ -101,9 +101,9 @@ export function AboutBento() {
           <div className="mt-4 flex items-start gap-3">
             <Sparkles className="mt-0.5 h-4 w-4 text-[var(--accent)]" />
             <div>
-              <div className="text-sm font-semibold">Studying agents &amp; retrieval</div>
+              <div className="text-sm font-semibold">Portfolio shipped · Building practical AI</div>
               <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
-                Completed the Google × Kaggle AI Agent Intensive and the portfolio website. Now building practical agents and full-stack products beyond demos.
+                Portfolio website completed. After the Google × Kaggle AI Agent Intensive, I’m focused on building useful AI agents, retrieval workflows, and full-stack products.
               </p>
             </div>
           </div>
