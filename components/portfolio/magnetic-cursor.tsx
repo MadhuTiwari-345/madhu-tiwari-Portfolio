@@ -6,10 +6,10 @@ import { motion, useMotionValue, useSpring } from "framer-motion"
 export function MagneticCursor() {
   const x = useMotionValue(-100)
   const y = useMotionValue(-100)
-  const ringX = useSpring(x, { stiffness: 220, damping: 22, mass: 0.4 })
-  const ringY = useSpring(y, { stiffness: 220, damping: 22, mass: 0.4 })
-  const dotX = useSpring(x, { stiffness: 500, damping: 30 })
-  const dotY = useSpring(y, { stiffness: 500, damping: 30 })
+  const ringX = useSpring(x, { stiffness: 720, damping: 42, mass: 0.16 })
+  const ringY = useSpring(y, { stiffness: 720, damping: 42, mass: 0.16 })
+  const dotX = useSpring(x, { stiffness: 1400, damping: 55, mass: 0.12 })
+  const dotY = useSpring(y, { stiffness: 1400, damping: 55, mass: 0.12 })
 
   const [hovering, setHovering] = useState(false)
   const [label, setLabel] = useState<string | null>(null)
@@ -76,7 +76,7 @@ export function MagneticCursor() {
             height: hovering ? 56 : 28,
             borderWidth: hovering ? 1 : 1.5,
           }}
-          transition={{ type: "spring", stiffness: 300, damping: 25 }}
+          transition={{ type: "spring", stiffness: 520, damping: 34, mass: 0.16 }}
           className="rounded-full border border-foreground"
         />
       </motion.div>
