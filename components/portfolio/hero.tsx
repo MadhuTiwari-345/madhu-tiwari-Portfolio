@@ -28,12 +28,41 @@ export function Hero() {
       {/* grid */}
       <div aria-hidden className="bg-grid pointer-events-none absolute inset-0 -z-10 opacity-60" />
 
-      {/* particle canvas */}
+      {/* Theme-reactive 3D atmosphere */}
+      <div aria-hidden className="hero-orbit-scene pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="hero-orbit hero-orbit-one" />
+        <div className="hero-orbit hero-orbit-two" />
+        <div className="hero-orbit-core" />
+      </div>
+      {/* Interactive particle canvas */}
       <div aria-hidden className="pointer-events-auto absolute inset-0 -z-10">
         <ParticleHero />
       </div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-6 text-center">
+      <motion.div
+        aria-hidden
+        className="hero-float-chip hero-chip-left hidden lg:flex"
+        initial={{ opacity: 0, x: -35, rotateY: 24 }}
+        animate={{ opacity: 1, x: 0, rotateY: 8 }}
+        transition={{ duration: 1, delay: 0.6 }}
+      >
+        <span className="hero-chip-dot" />
+        <span>AI / ML</span>
+        <span className="hero-chip-sub">learning systems</span>
+      </motion.div>
+      <motion.div
+        aria-hidden
+        className="hero-float-chip hero-chip-right hidden lg:flex"
+        initial={{ opacity: 0, x: 35, rotateY: -24 }}
+        animate={{ opacity: 1, x: 0, rotateY: -8 }}
+        transition={{ duration: 1, delay: 0.8 }}
+      >
+        <span className="hero-chip-dot" />
+        <span>FULL STACK</span>
+        <span className="hero-chip-sub">from idea to ship</span>
+      </motion.div>
+
+      <div className="hero-content-3d relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-6 text-center">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -50,8 +79,8 @@ export function Hero() {
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-balance font-display text-5xl leading-[0.95] font-bold tracking-tight sm:text-7xl md:text-8xl"
+          transition={{ duration: 0.95, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="hero-title-3d text-balance font-display text-5xl leading-[0.95] font-bold tracking-tight sm:text-7xl md:text-8xl"
         >
           <span className="block text-muted-foreground/70">I am</span>
           <span
