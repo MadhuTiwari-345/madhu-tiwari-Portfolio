@@ -73,7 +73,7 @@
 
 ---
 
-### ⚖️ Legal AI
+### ⚖️ LeX AI
 
 
 > AI-powered legal assistant for document analysis & summarization.
@@ -101,7 +101,7 @@ npm install
 npm run dev
 ```
 
-Open 👉 https://v0-madhu-tiwari.vercel.app/
+Open 👉 https://madhu-tiwari-portfolio.vercel.app/
 
 ---
 
