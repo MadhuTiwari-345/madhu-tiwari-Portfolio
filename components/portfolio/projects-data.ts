@@ -176,4 +176,65 @@ export const projects: Project[] = [
       ],
     },
   },
+,
+  {
+    title: "StormCycle",
+    tagline: "AI-Powered Menstrual Health Platform",
+    description:
+      "Personalized cycle tracking and health insights for irregular cycles, with cycle predictions, PCOD risk screening, an AI health assistant, and doctor-ready reports.",
+    tags: ["React", "TypeScript", "FastAPI", "Firebase", "LSTM", "AI"],
+    repo: "https://github.com/MadhuTiwari-345/StormCycle",
+    live: "https://stormcycle.vercel.app/",
+    year: "2026",
+    gradient: ["#ff5c9b", "#6f244e"],
+    previewLabel: "stormcycle / health",
+    image: "/projects/stormcycle.svg",
+    span: "lg:col-span-2",
+    architecture: {
+      nodes: [
+        { id: "user", label: "Cycle Tracker", type: "client", x: 14, y: 50 },
+        { id: "app", label: "React App", type: "client", x: 38, y: 28 },
+        { id: "api", label: "FastAPI", type: "server", x: 57, y: 52 },
+        { id: "ai", label: "LSTM + PCOD AI", type: "ai", x: 81, y: 28 },
+        { id: "db", label: "Firestore", type: "db", x: 81, y: 76 },
+      ],
+      edges: [
+        { from: "user", to: "app" },
+        { from: "app", to: "api" },
+        { from: "api", to: "ai" },
+        { from: "api", to: "db" },
+      ],
+    },
+  },
+  {
+    title: "MicroClimate",
+    tagline: "Hyper-Local Climate Intelligence",
+    description:
+      "AI-powered local weather intelligence combining real-time conditions, short-term forecasting, anomaly detection, risk scoring, and an interactive 3D Earth visualization.",
+    tags: ["React", "Vite", "FastAPI", "Three.js", "Forecasting", "Anomaly Detection"],
+    repo: "https://github.com/MadhuTiwari-345/MicroClimate",
+    live: "https://microclimate-ten.vercel.app/",
+    year: "2026",
+    gradient: ["#59e8d5", "#2ea8ff"],
+    previewLabel: "microclimate / forecast",
+    image: "/projects/microclimate.svg",
+    span: "lg:col-span-2",
+    architecture: {
+      nodes: [
+        { id: "user", label: "Weather Dashboard", type: "client", x: 13, y: 50 },
+        { id: "geo", label: "Geo Location", type: "client", x: 34, y: 24 },
+        { id: "api", label: "FastAPI", type: "server", x: 52, y: 50 },
+        { id: "forecast", label: "Forecast Model", type: "ai", x: 77, y: 24 },
+        { id: "anomaly", label: "Anomaly Engine", type: "ai", x: 77, y: 76 },
+        { id: "weather", label: "Weather APIs", type: "external", x: 91, y: 50 },
+      ],
+      edges: [
+        { from: "user", to: "geo" },
+        { from: "user", to: "api" },
+        { from: "api", to: "forecast" },
+        { from: "api", to: "anomaly" },
+        { from: "api", to: "weather" },
+      ],
+    },
+  }
 ]
