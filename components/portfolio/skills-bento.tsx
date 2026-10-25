@@ -68,7 +68,7 @@ export function SkillsBento() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, delay: gi * 0.08 }}
             className={`relative overflow-hidden rounded-2xl border border-border bg-card p-5 ${
-              group.span ?? ""
+              group.title === "Tools & Cloud" ? "md:col-span-2 lg:col-span-2" : group.span ?? ""
             }`}
           >
             <div className="flex items-center justify-between">
