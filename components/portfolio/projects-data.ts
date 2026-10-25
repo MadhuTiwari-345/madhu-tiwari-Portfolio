@@ -96,8 +96,8 @@ export const projects: Project[] = [
     description:
       "Shestorm project that flags scam patterns in voice and text in real time and coaches the user through a safe response. Built for scale on Cloud Run.",
     tags: ["Python", "FastAPI", "Gemini", "Cloud Run", "React"],
-    repo: "https://github.com/MadhuTiwari-345/GFGBQ-Team-shestorm",
-    live: "https://shestorm-ai-fraud-defender-73291669658.us-west1.run.app/",
+    repo: "https://github.com/MadhuTiwari-345/FemtoGuard",
+    live: "https://femtoguard.vercel.app/",
     year: "2025",
     gradient: ["#ff5e9a", "#ff8a5c"],
     previewLabel: "femtoguard / live",
