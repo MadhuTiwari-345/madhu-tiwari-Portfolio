@@ -49,13 +49,7 @@ export function ThemeSwitcher() {
                   background: `linear-gradient(135deg, ${t.swatch[0]} 0%, ${t.swatch[1]} 100%)`,
                 }}
               />
-              <span
-                className={`hidden font-mono uppercase tracking-[0.14em] sm:inline ${
-                  active ? "text-foreground" : "text-muted-foreground"
-                }`}
-              >
-                {t.label}
-              </span>
+
             </span>
           </button>
         )
