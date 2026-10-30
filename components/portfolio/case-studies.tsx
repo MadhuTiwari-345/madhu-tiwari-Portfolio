@@ -131,6 +131,12 @@ const verifiedDebugStories: Record<string, DebugStory[]> = {
     fix: "Prevented Gemini initialization from crashing the app at startup by deferring client creation until the AI feature is used.",
     verification: "The blank-screen startup crash was addressed. The AI feature itself still requires its API key to be configured; frontend deployment alone did not verify the full backend, Firebase and AI workflow.",
   }],
+  "Lex AI": [{
+    issue: "The deployed app rendered a blank page.",
+    cause: "The Clerk browser integration could not initialize because its publishable configuration was absent from the Vercel project environment.",
+    fix: "Add the correct Clerk publishable configuration to the Vercel environment and trigger a fresh deployment. Keep the Clerk secret key server-side.",
+    verification: "The missing configuration was identified during deployment troubleshooting; a successful post-fix production deployment was not recorded.",
+  }],
 };
 
 function jumpToCaseStudies() {
