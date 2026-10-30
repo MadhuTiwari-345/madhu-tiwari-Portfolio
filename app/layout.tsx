@@ -16,8 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 })
 
-const previewImage =
-  "https://raw.githubusercontent.com/MadhuTiwari-345/MadhuTiwari-345/main/girl-coder.png"
+const previewImage = "https://avatars.githubusercontent.com/u/194702672?v=4"
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://madhu-tiwari-portfolio.vercel.app"),
@@ -40,8 +39,8 @@ export const metadata: Metadata = {
   authors: [{ name: "Madhu Tiwari", url: "https://github.com/MadhuTiwari-345" }],
   creator: "Madhu Tiwari",
   icons: {
-    icon: [{ url: previewImage, type: "image/png" }],
-    apple: [{ url: previewImage, type: "image/png" }],
+    icon: [{ url: previewImage }],
+    apple: [{ url: previewImage }],
   },
   openGraph: {
     title: "Madhu Tiwari | Full Stack & AI Developer",
