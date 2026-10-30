@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og"
 export const size = { width: 512, height: 512 }
 export const contentType = "image/png"
 
-const profileImage = "https://raw.githubusercontent.com/MadhuTiwari-345/MadhuTiwari-345/main/girl-coder.png"
+const profileImage = "https://avatars.githubusercontent.com/u/194702672?v=4"
 
 export default function Icon() {
   return new ImageResponse(
