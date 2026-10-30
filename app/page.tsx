@@ -3,9 +3,11 @@ import { Hero } from "@/components/portfolio/hero"
 import { CommandDeck } from "@/components/portfolio/command-deck"
 import { AboutBento } from "@/components/portfolio/about-bento"
 import { ProjectsSection } from "@/components/portfolio/projects-section"
+import { EngineeringExplorer } from "@/components/portfolio/engineering-explorer"
 import { SkillsBento } from "@/components/portfolio/skills-bento"
 import { ExperienceTimeline } from "@/components/portfolio/experience-timeline"
 import { TerrainSection } from "@/components/portfolio/terrain-section"
+import { GitHubActivityPanel } from "@/components/portfolio/github-activity-panel"
 
 export default function Page() {
   return (
@@ -29,8 +31,10 @@ export default function Page() {
       <div className="relative">
         <AboutBento />
         <ProjectsSection />
+        <EngineeringExplorer />
         <SkillsBento />
         <ExperienceTimeline />
+        <GitHubActivityPanel />
         <TerrainSection />
       </div>
     </main>
