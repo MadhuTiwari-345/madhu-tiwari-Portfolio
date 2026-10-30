@@ -94,12 +94,12 @@ export function GitHubActivityPanel() {
     <section id="github-activity" className="relative mx-auto w-full max-w-7xl px-4 py-20 md:px-8">
       <SectionHeader index="06" label="source control / live feed" title="A closer look at the public build log." />
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-        <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">Recent public GitHub events and recently updated repositories, fetched directly from GitHub. This is an event-feed snapshot—not a replacement for GitHub's official contribution graph.</p>
+        <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">Recent public GitHub events and recently updated repositories, fetched directly from GitHub. This is an event-feed snapshot, not a replacement for GitHub's official contribution graph.</p>
         <button type="button" onClick={() => void refresh()} disabled={loading} className="inline-flex min-h-10 items-center gap-2 rounded-full border border-border bg-card px-4 text-xs transition-colors hover:border-[var(--primary)] disabled:opacity-50"><RefreshCw className={`h-3.5 w-3.5 ${loading ? "animate-spin" : ""}`}/> Refresh</button>
       </div>
 
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        {[{label:"Public events",value:events.length,icon:Activity},{label:"Push events",value:pushCount,icon:GitCommitHorizontal},{label:"Pull request events",value:prCount,icon:GitPullRequest},{label:"Stars · recent repos",value:totalStars,icon:Star}].map((item)=><div key={item.label} className="rounded-2xl border border-border bg-card p-4"><div className="flex items-center justify-between gap-2"><item.icon className="h-4 w-4 text-[var(--primary)]"/><span className="font-mono text-[8px] uppercase tracking-wider text-muted-foreground">API snapshot</span></div><div className="mt-3 text-2xl font-semibold tabular-nums">{loading && !events.length ? "—" : item.value}</div><div className="mt-1 text-[10px] text-muted-foreground">{item.label}</div></div>)}
+        {[{label:"Public events",value:events.length,icon:Activity},{label:"Push events",value:pushCount,icon:GitCommitHorizontal},{label:"Pull request events",value:prCount,icon:GitPullRequest},{label:"Stars · recent repos",value:totalStars,icon:Star}].map((item)=><div key={item.label} className="rounded-2xl border border-border bg-card p-4"><div className="flex items-center justify-between gap-2"><item.icon className="h-4 w-4 text-[var(--primary)]"/><span className="font-mono text-[8px] uppercase tracking-wider text-muted-foreground">API snapshot</span></div><div className="mt-3 text-2xl font-semibold tabular-nums">{loading && !events.length ? "..." : item.value}</div><div className="mt-1 text-[10px] text-muted-foreground">{item.label}</div></div>)}
       </div>
 
       <div className="mt-4 grid gap-4 lg:grid-cols-[1.1fr_.9fr]">
