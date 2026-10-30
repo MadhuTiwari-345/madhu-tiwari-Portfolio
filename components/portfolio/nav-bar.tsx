@@ -8,8 +8,10 @@ const links = [
   { href: "#console", label: "Console" },
   { href: "#about", label: "About" },
   { href: "#projects", label: "Work" },
+  { href: "#engineering", label: "Engineering" },
   { href: "#skills", label: "Stack" },
   { href: "#experience", label: "Journey" },
+  { href: "#github-activity", label: "GitHub" },
   { href: "#contact", label: "Contact" },
 ]
 
