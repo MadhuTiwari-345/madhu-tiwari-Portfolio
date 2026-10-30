@@ -39,6 +39,10 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Madhu Tiwari", url: "https://github.com/MadhuTiwari-345" }],
   creator: "Madhu Tiwari",
+  icons: {
+    icon: [{ url: previewImage, type: "image/png" }],
+    apple: [{ url: previewImage, type: "image/png" }],
+  },
   openGraph: {
     title: "Madhu Tiwari | Full Stack & AI Developer",
     description:
