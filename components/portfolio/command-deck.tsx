@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import { ArrowUpRight, Command, Github, Linkedin, Mail, Terminal } from "lucide-react"
 import { SectionHeader } from "./about-bento"
 import { MiniSystemMapPreview } from "./system-map"
+import { CaseStudyPreview } from "./case-studies"
 
 type CommandResult = {
   command: string
@@ -25,6 +26,7 @@ const commandMap: Record<string, CommandResult> = {
       "contact     — start a conversation",
       "github      — open my public code",
       "map         — navigate the portfolio system",
+      "case-study  — explore project build stories",
       "clear       — clear this terminal",
     ],
   },
@@ -87,6 +89,11 @@ const commandMap: Record<string, CommandResult> = {
       { label: "Connect on LinkedIn", href: "https://www.linkedin.com/in/madhu-tiwari-833ab1326/" },
     ],
   },
+  "case-study": {
+    command: "case-study",
+    lines: ["PROJECT CASE STUDIES", "Explore each build through its project brief, mapped architecture and listed technology stack."],
+    links: [{ label: "Open case study explorer", href: "#case-studies" }],
+  },
   map: {
     command: "map",
     lines: ["MADHU.OS / SYSTEM TOPOLOGY", "Eight connected destinations. Select a node to inspect and jump into that section."],
@@ -102,7 +109,7 @@ const commandMap: Record<string, CommandResult> = {
   },
 }
 
-const suggestions = ["projects", "stack", "journey", "map", "contact"]
+const suggestions = ["projects", "stack", "journey", "map", "case-study", "contact"]
 
 export function CommandDeck() {
   const [value, setValue] = useState("")
@@ -246,6 +253,7 @@ export function CommandDeck() {
                 </button>
               ))}
               <MiniSystemMapPreview />
+              <CaseStudyPreview />
             </div>
           </div>
 
