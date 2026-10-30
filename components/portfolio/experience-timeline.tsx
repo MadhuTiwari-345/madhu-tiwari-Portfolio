@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { SectionHeader } from "./about-bento"
-import { GraduationCap, Users, GitBranch, Award } from "lucide-react"
+import { GraduationCap, Users, GitBranch, Award, BriefcaseBusiness, CalendarDays, MapPin } from "lucide-react"
 
 type Entry = {
   kind: "exp" | "edu" | "honor"
@@ -19,7 +19,7 @@ const entries: Entry[] = [
     title: "Full-stack Developer",
     org: "ARVIQ Digital Solution · Self-employed · Remote",
     time: "Mar 2026 to Present",
-    tag: "ongoing",
+    tag: "Ongoing",
     bullets: [
       "Design and build full-stack web applications end-to-end, from front-end UI to backend APIs, for independent client projects.",
     ],
@@ -29,7 +29,7 @@ const entries: Entry[] = [
     title: "Growth Marketing Intern",
     org: "PHICSIT InfoTech Pvt. Ltd. · Part-time · Remote",
     time: "May 2026 to Jul 2026",
-    tag: "completed",
+    tag: "Completed",
     bullets: [
       "Contributed to growth marketing initiatives to strengthen brand awareness and user acquisition through social media and campaign support.",
       "Assisted with market research and cross-functional campaign execution alongside the marketing team.",
@@ -40,7 +40,7 @@ const entries: Entry[] = [
     title: "Data Analytics Job Simulation",
     org: "Deloitte Australia · Forage · Remote",
     time: "Apr 2026",
-    tag: "completed",
+    tag: "Completed",
     bullets: [
       "Completed a forensic technology simulation, building KPI dashboards in Tableau and financial models in Excel.",
       "Certificate of completion awarded.",
@@ -84,10 +84,10 @@ const entries: Entry[] = [
   },
 ]
 
-const iconForKind = (k: Entry["kind"]) => {
-  if (k === "edu") return GraduationCap
-  if (k === "honor") return Award
-  return Users
+const iconForKind = (kind: Entry["kind"]) => {
+  if (kind === "edu") return GraduationCap
+  if (kind === "honor") return Award
+  return BriefcaseBusiness
 }
 
 export function ExperienceTimeline() {
@@ -95,71 +95,63 @@ export function ExperienceTimeline() {
     <section id="experience" className="relative mx-auto w-full max-w-7xl px-4 py-24 md:px-8">
       <SectionHeader label="EXPERIENCE" title="The journey so far." />
 
-      <div className="relative">
-        {/* vertical line */}
-        <div
-          aria-hidden
-          className="absolute top-0 bottom-0 left-4 w-px md:left-1/2"
-          style={{
-            background:
-              "linear-gradient(180deg, transparent 0%, color-mix(in oklch, var(--primary) 60%, transparent) 20%, color-mix(in oklch, var(--primary) 40%, transparent) 80%, transparent 100%)",
-          }}
-        />
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        {entries.map((entry, index) => {
+          const Icon = iconForKind(entry.kind)
+          return (
+            <motion.article
+              key={entry.title + entry.org}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.45, delay: (index % 3) * 0.07 }}
+              whileHover={{ y: -5 }}
+              className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-border/80 bg-card/80 p-5 shadow-sm shadow-black/5 backdrop-blur-sm transition-colors hover:border-[var(--primary)]/50 hover:bg-card sm:p-6 ${entry.kind === "honor" ? "sm:col-span-2 xl:col-span-1" : ""}`}
+            >
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-20"
+                style={{ background: "var(--primary)" }}
+              />
+              <div className="relative flex items-start justify-between gap-3">
+                <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[var(--primary)]/25 bg-[var(--primary)]/10 text-[var(--primary)]">
+                  <Icon className="h-5 w-5" />
+                </span>
+                {entry.tag && (
+                  <span className="rounded-full border border-[var(--primary)]/30 bg-[var(--primary)]/8 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.12em] text-[var(--primary)]">
+                    {entry.tag}
+                  </span>
+                )}
+              </div>
 
-        <ul className="space-y-6 md:space-y-10">
-          {entries.map((e, i) => {
-            const Icon = iconForKind(e.kind)
-            const side = i % 2 === 0 ? "md:pr-10 md:text-right md:justify-self-end" : "md:pl-10 md:col-start-2"
-            return (
-              <motion.li
-                key={e.title + e.org}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
-                className="relative grid grid-cols-1 md:grid-cols-2"
-              >
-                {/* dot */}
-                <span
-                  aria-hidden
-                  className="absolute top-6 left-4 z-10 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-background md:left-1/2"
-                  style={{ background: "var(--primary)" }}
-                />
-                <div
-                  className={`ml-10 rounded-2xl border border-border bg-card p-5 md:ml-0 md:w-full ${side}`}
-                >
-                  <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground md:justify-end">
-                    <Icon className="h-3 w-3" />
-                    <span>{e.time}</span>
-                    {e.tag && (
-                      <span
-                        className="rounded-full border px-2 py-0.5"
-                        style={{
-                          borderColor: "color-mix(in oklch, var(--primary) 50%, transparent)",
-                          color: "var(--primary)",
-                        }}
-                      >
-                        {e.tag}
-                      </span>
+              <div className="relative mt-5 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
+                <CalendarDays className="h-3.5 w-3.5 shrink-0" />
+                <span>{entry.time}</span>
+              </div>
+
+              <h3 className="relative mt-2 text-balance text-lg font-semibold leading-snug tracking-tight sm:text-xl">
+                {entry.title}
+              </h3>
+              <p className="relative mt-2 flex items-start gap-1.5 text-sm leading-relaxed text-[var(--primary)]">
+                <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 opacity-70" />
+                <span>{entry.org}</span>
+              </p>
+
+              <ul className="relative mt-4 flex-1 space-y-2.5 border-t border-border/70 pt-4 text-sm leading-relaxed text-muted-foreground">
+                {entry.bullets.map((bullet) => (
+                  <li key={bullet} className="flex items-start gap-2">
+                    {entry.kind === "honor" ? (
+                      <Award className="mt-1 h-3.5 w-3.5 shrink-0 text-[var(--primary)]/75" />
+                    ) : (
+                      <GitBranch className="mt-1 h-3.5 w-3.5 shrink-0 text-[var(--primary)]/75" />
                     )}
-                  </div>
-                  <h3 className="mt-2 text-balance text-lg font-semibold tracking-tight">
-                    {e.title}
-                  </h3>
-                  <div className="text-sm text-[var(--primary)]">{e.org}</div>
-                  <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground leading-relaxed">
-                    {e.bullets.map((b) => (
-                      <li key={b} className="flex gap-2 md:[&]:justify-end">
-                        <GitBranch className="mt-1 h-3 w-3 shrink-0 opacity-60" />
-                        <span>{b}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.li>
-            )
-          })}
-        </ul>
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.article>
+          )
+        })}
       </div>
     </section>
   )
