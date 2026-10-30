@@ -93,8 +93,7 @@ export function GitHubActivityPanel() {
   return (
     <section id="github-activity" className="relative mx-auto w-full max-w-7xl px-4 py-20 md:px-8">
       <SectionHeader label="GITHUB" title="My code in motion." />
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
-        <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">Recent public GitHub events and recently updated repositories, fetched directly from GitHub. This is an event-feed snapshot, not a replacement for GitHub's official contribution graph.</p>
+      <div className="mb-6 flex justify-end">
         <button type="button" onClick={() => void refresh()} disabled={loading} className="inline-flex min-h-10 items-center gap-2 rounded-full border border-border bg-card px-4 text-xs transition-colors hover:border-[var(--primary)] disabled:opacity-50"><RefreshCw className={`h-3.5 w-3.5 ${loading ? "animate-spin" : ""}`}/> Refresh</button>
       </div>
 
@@ -121,7 +120,7 @@ export function GitHubActivityPanel() {
             {repos.map((repo)=> <a key={repo.id} href={repo.html_url} target="_blank" rel="noreferrer" className="block rounded-xl border border-border bg-background p-3 transition-colors hover:border-[var(--primary)]"><div className="flex items-start justify-between gap-2"><span className="min-w-0 truncate text-xs font-semibold">{repo.name}</span><ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground"/></div><p className="mt-1 line-clamp-2 min-h-8 text-[10px] leading-relaxed text-muted-foreground">{repo.description || "No repository description provided."}</p><div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[9px] text-muted-foreground"><span className="inline-flex items-center gap-1"><Star className="h-3 w-3"/> {repo.stargazers_count}</span><span className="inline-flex items-center gap-1"><GitFork className="h-3 w-3"/> {repo.forks_count}</span>{repo.language ? <span>{repo.language}</span> : null}<span className="inline-flex items-center gap-1"><Clock3 className="h-3 w-3"/> {relativeDate(repo.updated_at)}</span></div></a>)}
             {!loading && !error && repos.length===0 ? <p className="py-8 text-center text-xs text-muted-foreground">No public repositories were returned.</p> : null}
           </div>
-          <p className="mt-3 text-[9px] leading-relaxed text-muted-foreground">Repository totals above cover only the eight repositories shown, not your entire GitHub account. Public API availability and rate limits apply.</p>
+          <p className="mt-3 text-[9px] text-muted-foreground">Showing up to 8 recently updated public repositories.</p>
         </div>
       </div>
       {updatedAt ? <p className="mt-3 text-right font-mono text-[9px] text-muted-foreground">Last fetched {updatedAt.toLocaleTimeString()}</p> : null}
