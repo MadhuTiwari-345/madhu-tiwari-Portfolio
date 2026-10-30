@@ -346,7 +346,7 @@
 }
 
 
-/* Floating expertise cards — intentionally outside the centered hero text */
+/* Floating expertise cards, intentionally outside the centered hero text */
 .hero-float-chip {
   position: absolute;
   z-index: 5;
