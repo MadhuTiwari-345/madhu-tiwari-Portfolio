@@ -73,7 +73,7 @@ export function NavBar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Link href="/recruiter" className="hidden items-center gap-1.5 rounded-full border border-border px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-muted-foreground transition-colors hover:border-[var(--primary)] hover:text-foreground sm:inline-flex" aria-label="Open recruiter view"><BriefcaseBusiness className="h-3.5 w-3.5" /> Recruiter view</Link>
+          <Link href="/recruiter" className="inline-flex items-center gap-1.5 rounded-full border border-border px-2 py-2 font-mono text-[9px] uppercase tracking-wider text-muted-foreground transition-colors hover:border-[var(--primary)] hover:text-foreground sm:px-3 sm:text-[10px]" aria-label="Open recruiter view"><BriefcaseBusiness className="h-3.5 w-3.5" /><span className="hidden sm:inline">Recruiter view</span></Link>
           <ThemeSwitcher />
           <LetsTalkButton compact align="right" />
         </div>
