@@ -76,9 +76,9 @@ const entries: Entry[] = [
     time: "2025 to 2026",
     bullets: [
       "McKinsey & Company Forward Program (2025).",
-      "EliteHack 1.0 Hackathon — Finalist.",
-      "L'Oréal Brandstorm 2025 — Certificate of Recognition.",
-      "Deloitte Australia Data Analytics Simulation — Certificate of Completion (Apr 2026).",
+      "EliteHack 1.0 Hackathon, Finalist.",
+      "L'Oréal Brandstorm 2025, Certificate of Recognition.",
+      "Deloitte Australia Data Analytics Simulation, Certificate of Completion (Apr 2026).",
       "Active contributor: Aperture 3.0, OSCG '26, SWOC '26, ECWOC '26, and GSSoC '25.",
     ],
   },
