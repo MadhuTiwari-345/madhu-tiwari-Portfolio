@@ -21,7 +21,7 @@ const entries: Entry[] = [
     time: "Mar 2026 to Present",
     tag: "Ongoing",
     bullets: [
-      "Design and build full-stack web applications end-to-end, from front-end UI to backend APIs, for independent client projects.",
+      "Build full-stack client apps from UI to backend APIs.",
     ],
   },
   {
@@ -31,8 +31,8 @@ const entries: Entry[] = [
     time: "May 2026 to Jul 2026",
     tag: "Completed",
     bullets: [
-      "Contributed to growth marketing initiatives to strengthen brand awareness and user acquisition through social media and campaign support.",
-      "Assisted with market research and cross-functional campaign execution alongside the marketing team.",
+      "Supported social campaigns focused on brand awareness and user acquisition.",
+      "Contributed market research and campaign execution.",
     ],
   },
   {
@@ -42,8 +42,8 @@ const entries: Entry[] = [
     time: "Apr 2026",
     tag: "Completed",
     bullets: [
-      "Completed a forensic technology simulation, building KPI dashboards in Tableau and financial models in Excel.",
-      "Certificate of completion awarded.",
+      "Built Tableau KPI dashboards and Excel financial models in a forensic technology simulation.",
+      "",
     ],
   },
   {
@@ -53,9 +53,9 @@ const entries: Entry[] = [
     time: "2025 to Present · Remote",
     tag: "5+ programs",
     bullets: [
-      "Built React.js and Node.js features across 5+ programs; contributed to 89 public repositories and collaborated with 20+ contributors.",
-      "GitHub achievements: Pull Shark ×2, Pair Extraordinaire, and Quickdraw.",
-      "Developed REST APIs with Spring Boot and Firebase Auth; participated in code reviews using GitHub workflows.",
+      "Contributed across 5+ programs, 89 public repositories and 20+ collaborators.",
+      "GitHub: Pull Shark ×2, Pair Extraordinaire, Quickdraw.",
+      "Built REST APIs with Spring Boot and Firebase Auth; joined code reviews.",
     ],
   },
   {
@@ -65,8 +65,8 @@ const entries: Entry[] = [
     time: "Aug 2024 to Aug 2028",
     tag: "CGPA 7.88 · Semester IV",
     bullets: [
-      "Coursework: DSA, Operating Systems, Software Engineering, Database Systems.",
-      "AI, Probability, Linear Algebra, Multivariable & Vector Calculus.",
+      "Coursework: DSA, OS, Software Engineering, Databases, AI.",
+      "Probability, Linear Algebra, Multivariable & Vector Calculus.",
     ],
   },
   {
