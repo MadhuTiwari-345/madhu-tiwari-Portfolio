@@ -5,6 +5,7 @@ import { SystemMap } from "@/components/portfolio/system-map"
 import { AboutBento } from "@/components/portfolio/about-bento"
 import { ProjectsSection } from "@/components/portfolio/projects-section"
 import { EngineeringExplorer } from "@/components/portfolio/engineering-explorer"
+import { CaseStudies } from "@/components/portfolio/case-studies"
 import { SkillsBento } from "@/components/portfolio/skills-bento"
 import { ExperienceTimeline } from "@/components/portfolio/experience-timeline"
 import { TerrainSection } from "@/components/portfolio/terrain-section"
@@ -34,6 +35,7 @@ export default function Page() {
         <AboutBento />
         <ProjectsSection />
         <EngineeringExplorer />
+        <CaseStudies />
         <SkillsBento />
         <ExperienceTimeline />
         <GitHubActivityPanel />
