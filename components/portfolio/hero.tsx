@@ -109,7 +109,7 @@ export function Hero() {
           transition={{ duration: 0.75, delay: 0.34 }}
           className="mt-5 max-w-xl px-2 text-pretty text-sm leading-7 text-muted-foreground sm:px-0 sm:text-base sm:leading-8"
         >
-          I’m a Computer Science student who enjoys building products, experimenting with AI, and understanding how things work under the hood. I like taking ideas from the first line of code to experiences people can actually use.
+          Computer & Data Science student building full-stack products and practical AI systems.
         </motion.p>
 
         <motion.div
