@@ -7,7 +7,7 @@ import { SectionHeader } from "./about-bento"
 export function ProjectsSection() {
   return (
     <section id="projects" className="relative mx-auto w-full max-w-7xl px-4 py-24 md:px-8">
-      <SectionHeader label="data shards" title="Work that actually runs in production." />
+      <SectionHeader label="PROJECTS" title="Things I’ve built." />
 
       <p className="mb-8 max-w-2xl text-pretty text-sm leading-relaxed text-muted-foreground sm:text-base">
         Each card has an{" "}
