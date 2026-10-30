@@ -237,7 +237,7 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
       className={`group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-5 transition-colors ${
         project.span ?? ""
       }`}
-      style={{ backgroundImage: "radial-gradient(420px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), color-mix(in oklch, var(--primary) 13%, transparent), transparent 72%)" }}
+      style={{}}
       onMouseMove={(event) => {
         const rect = event.currentTarget.getBoundingClientRect()
         event.currentTarget.style.setProperty("--spotlight-x", `${event.clientX - rect.left}px`)
@@ -245,8 +245,9 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
       }}
       data-magnetic
     >
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ background: "radial-gradient(420px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), color-mix(in oklch, var(--primary) 14%, transparent), transparent 72%)" }} />
       {/* visual area with peel/flip */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl">
+      <div className="relative z-10 aspect-[16/10] w-full overflow-hidden rounded-xl">
         <AnimatePresence initial={false} mode="wait">
           {xray ? (
             <motion.div
@@ -292,7 +293,7 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
       </div>
 
       {/* content */}
-      <div className="mt-5 flex flex-1 flex-col">
+      <div className="relative z-10 mt-5 flex flex-1 flex-col">
         <div className="flex items-baseline justify-between gap-3">
           <h3 className="text-balance text-xl font-semibold tracking-tight">{project.title}</h3>
         </div>
