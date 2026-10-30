@@ -57,7 +57,7 @@ const skillGroups: {
 export function SkillsBento() {
   return (
     <section id="skills" className="relative mx-auto w-full max-w-7xl px-4 py-24 md:px-8">
-      <SectionHeader index="03" label="stack" title="The tools I reach for, ranked by muscle memory." />
+      <SectionHeader label="stack" title="The tools I reach for, ranked by muscle memory." />
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
         {skillGroups.map((group, gi) => (
