@@ -199,7 +199,7 @@ export function CaseStudies() {
                     <p className="text-xs leading-relaxed text-muted-foreground"><strong className="text-foreground">Root cause: </strong>{story.cause}</p>
                     <p className="text-xs leading-relaxed text-muted-foreground"><strong className="text-foreground">Fix: </strong>{story.fix}</p>
                     <p className="text-xs leading-relaxed text-muted-foreground"><strong className="text-foreground">Verification: </strong>{story.verification}</p>
-                  </div>)}</div> : <p className="mt-3 text-sm leading-relaxed text-muted-foreground">I do not yet have a verified, project-specific debugging incident from your development history for this build. This section is intentionally left without a made-up story. Add a real bug, its root cause and the fix once you share the details.</p>}
+                  </div>)}</div> : <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Development context: this project was built alongside B.Tech semester coursework, assignments and university attendance commitments, with additional time shared across open-source contribution programs and hackathon deadlines. These competing commitments shaped the available build time; they are workload constraints, not technical failures.</p>}
                 </div>
                 <div className="rounded-xl border border-border bg-background p-4">
                   <div className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground">engineering constraints to consider</div>
