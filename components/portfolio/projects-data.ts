@@ -234,4 +234,31 @@ export const projects: Project[] = [
       ],
     },
   }
+  ,{
+    title: "RISC-V Instruction Explorer",
+    tagline: "Interactive RISC-V ISA Analysis & Visualization",
+    description:
+      "A zero-setup browser tool that parses 245+ RISC-V instructions, cross-references ISA extensions, validates overlaps, runs 38 unit tests, and visualizes extension relationships through an interactive graph.",
+    tags: ["Python", "JavaScript", "HTML", "RISC-V ISA", "Data Visualization", "Unit Testing"],
+    repo: "https://github.com/MadhuTiwari-345/RISC-V-instruction-explorer",
+    live: "https://risc-v-instruction-explorer.vercel.app/",
+    year: "2026",
+    gradient: ["#00d4ff", "#c77dff"],
+    previewLabel: "risc-v / instruction explorer",
+    architecture: {
+      nodes: [
+        { id: "browser", label: "Browser UI", type: "client", x: 15, y: 50 },
+        { id: "parser", label: "Instruction Parser", type: "server", x: 42, y: 28 },
+        { id: "xref", label: "ISA Cross-Reference", type: "server", x: 68, y: 28 },
+        { id: "tests", label: "Unit Tests", type: "external", x: 42, y: 78 },
+        { id: "graph", label: "Extension Graph", type: "ai", x: 82, y: 58 },
+      ],
+      edges: [
+        { from: "browser", to: "parser" },
+        { from: "parser", to: "xref" },
+        { from: "parser", to: "tests" },
+        { from: "xref", to: "graph" },
+      ],
+    },
+  }
 ]
