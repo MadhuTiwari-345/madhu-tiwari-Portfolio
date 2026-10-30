@@ -70,13 +70,13 @@ export function SystemMap() {
             <span className="font-mono text-[7px] text-muted-foreground">CORE</span>
           </div>
 
-          {destinations.map((node,index) => {
+          {destinations.map((node) => {
             const Icon = node.icon
             const isActive = active === node.id
             return (
               <motion.button key={node.id} type="button" onClick={() => setActive(node.id)} aria-pressed={isActive} aria-label={`Inspect ${node.label} destination`} className={`absolute z-10 flex min-h-[54px] w-[29%] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center gap-1 rounded-xl border px-1.5 py-2 text-center shadow-lg backdrop-blur-md transition-colors sm:min-h-[66px] sm:w-[22%] sm:px-3 ${isActive ? "border-[var(--primary)] bg-[var(--primary)]/15 text-foreground shadow-[0_0_25px_color-mix(in_oklch,var(--primary)_18%,transparent)]" : "border-border bg-background/90 text-muted-foreground hover:border-[var(--primary)]/60 hover:text-foreground"} focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]`} style={{ left: node.x+"%", top: node.y+"%" }}>
                 <span className="flex items-center gap-1.5"><Icon className={`h-3.5 w-3.5 ${isActive ? "text-[var(--primary)]" : ""}`}/><span className="text-[10px] font-semibold sm:text-xs">{node.label}</span></span>
-                <span className="font-mono text-[7px] uppercase tracking-[.13em] opacity-55 sm:text-[8px]">{String(index+1).padStart(2,"0")} / {node.group}</span>
+                <span className="font-mono text-[7px] uppercase tracking-[.13em] opacity-55 sm:text-[8px]">{node.group}</span>
               </motion.button>
             )
           })}
