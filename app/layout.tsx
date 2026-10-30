@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "Madhu Tiwari — Full Stack & AI Developer",
+  title: "Madhu Tiwari | Full Stack & AI Developer",
   description:
     "Computer Science student building AI systems, decentralized apps, and full stack products. Based in New Delhi, India.",
   generator: "v0.app",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Madhu Tiwari", url: "https://github.com/MadhuTiwari-345" }],
   openGraph: {
-    title: "Madhu Tiwari — Full Stack & AI Developer",
+    title: "Madhu Tiwari | Full Stack & AI Developer",
     description: "Immersive portfolio of a CS student building at the edge of AI and full stack.",
     type: "website",
   },
