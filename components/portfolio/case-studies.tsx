@@ -67,7 +67,7 @@ const engineeringNotes: Record<string, { decisions: string[]; challenges: string
   },
   "HirePlane": {
     decisions: [
-      "Model the experience around two primary actors—job seekers and employers—rather than treating recruitment as a single generic workflow.",
+      "Model the experience around two primary actors, job seekers and employers, rather than treating recruitment as a single generic workflow.",
       "Keep job discovery and employer-side hiring actions connected through one product surface.",
     ],
     challenges: [
