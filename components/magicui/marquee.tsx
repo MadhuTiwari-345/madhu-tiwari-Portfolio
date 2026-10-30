@@ -1,7 +1,7 @@
 "use client"
 
 import type { ReactNode } from "react"
-import { useEffect } from "react"
+import { useCallback, useEffect } from "react"
 import { motion, useAnimationControls } from "framer-motion"
 
 type MarqueeProps = {
@@ -12,15 +12,15 @@ type MarqueeProps = {
 
 export function Marquee({ children, className = "", pauseOnHover = false }: MarqueeProps) {
   const controls = useAnimationControls()
-  const play = () => controls.start({
+  const play = useCallback(() => controls.start({
     x: "-50%",
     transition: { duration: 32, ease: "linear", repeat: Infinity },
-  })
+  }), [controls])
 
   useEffect(() => {
     void play()
     return () => controls.stop()
-  }, [controls])
+  }, [controls, play])
 
   return (
     <div className={`group flex w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)] ${className}`}>
