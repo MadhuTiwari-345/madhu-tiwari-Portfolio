@@ -4,10 +4,10 @@ import { useTheme, type ThemeName } from "./theme-provider"
 import { motion } from "framer-motion"
 
 const themes: { id: ThemeName; label: string; swatch: [string, string]; hint: string }[] = [
-  { id: "sunset", label: "Sunset", swatch: ["#ff6b5b", "#ffb347"], hint: "warm + coral" },
-  { id: "cyberpunk", label: "Cyber", swatch: ["#ff3ea5", "#3ee0ff"], hint: "neon magenta" },
-  { id: "cute", label: "Cute", swatch: ["#ff85a2", "#c8a8ff"], hint: "pink + lavender" },
-  { id: "ocean", label: "Ocean", swatch: ["#ff7a59", "#5ec9d6"], hint: "coral + teal" },
+  { id: "sunset", label: "Sunset", swatch: ["#171020", "#FF5C9A"], hint: "pink, coral and violet" },
+  { id: "midnight", label: "Midnight", swatch: ["#080D1B", "#42D9FF"], hint: "cyan, violet and lime" },
+  { id: "obsidian", label: "Obsidian", swatch: ["#111113", "#D65B83"], hint: "rose, blush and gold" },
+  { id: "matrix", label: "Matrix", swatch: ["#080D0A", "#55F59A"], hint: "neon mint and lime" },
 ]
 
 export function ThemeSwitcher() {
