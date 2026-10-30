@@ -14,7 +14,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden px-0 pt-24 pb-12 sm:pt-28 sm:pb-16"
+      className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden px-0 pt-20 pb-8 sm:pt-24 sm:pb-10"
     >
       {/* gradient backdrop */}
       <div
@@ -65,12 +65,12 @@ export function Hero() {
         <span className="hero-chip-line"><span /></span>
       </motion.div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-6 text-center">
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-5 text-center">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="glass-pill mb-6 flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full px-3 py-2 font-mono text-[9px] uppercase tracking-[0.16em] sm:gap-2 sm:px-4 sm:py-1.5 sm:text-[10px] sm:tracking-[0.3em]"
+          className="glass-pill mb-4 flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full px-3 py-2 font-mono text-[9px] uppercase tracking-[0.16em] sm:gap-2 sm:px-4 sm:py-1.5 sm:text-[10px] sm:tracking-[0.3em]"
         >
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--primary)]" />
           <MapPin className="h-3 w-3" />
@@ -83,7 +83,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-balance font-display text-[clamp(2.55rem,10vw,3.5rem)] leading-[0.98] font-bold tracking-tight sm:text-7xl md:text-8xl"
+          className="text-balance font-display text-[clamp(2.2rem,7vw,3.2rem)] leading-[0.98] font-bold tracking-tight sm:text-6xl md:text-7xl"
         >
           <span className="block text-muted-foreground/70">I am</span>
           <span
@@ -101,7 +101,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.75, delay: 0.22 }}
-          className="mt-5 max-w-3xl text-balance text-2xl font-semibold leading-tight tracking-tight sm:text-3xl md:text-4xl"
+          className="mt-4 max-w-2xl text-balance text-xl font-semibold leading-tight tracking-tight sm:text-2xl md:text-3xl"
         >
           I turn ideas into{" "}
           <span className="bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent">
@@ -113,7 +113,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.34 }}
-          className="mt-3 max-w-2xl px-2 text-pretty text-sm leading-7 text-muted-foreground sm:px-0 sm:text-base sm:leading-relaxed"
+          className="mt-2 max-w-xl px-2 text-pretty text-[13px] leading-6 text-muted-foreground sm:px-0 sm:text-sm sm:leading-6"
         >
           I’m Madhu, a Computer Science student who enjoys building products, experimenting with AI,
           and figuring out how things work under the hood. From backend systems to interactive web
@@ -125,7 +125,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.42 }}
-          className="mb-1 mt-5 flex flex-wrap items-center justify-center gap-2"
+          className="mb-0 mt-4 flex flex-wrap items-center justify-center gap-1.5"
         >
           {["AI & ML", "Full Stack", "Backend Engineering"].map((item, index) => (
             <motion.span
@@ -134,7 +134,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ delay: 0.52 + index * 0.1, duration: 0.4 }}
               whileHover={{ y: -3, scale: 1.04 }}
-              className="rounded-full border border-[var(--primary)]/25 bg-[var(--primary)]/[0.06] px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground shadow-[0_0_24px_color-mix(in_oklch,var(--primary)_8%,transparent)] sm:text-[10px]"
+              className="rounded-full border border-[var(--primary)]/25 bg-[var(--primary)]/[0.06] px-2.5 py-1 font-mono text-[8px] uppercase tracking-[0.1em] text-muted-foreground sm:text-[9px]"
             >
               {item}
             </motion.span>
@@ -145,7 +145,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, delay: 0.34 }}
-          className="mb-1 mt-5 flex flex-wrap items-center justify-center gap-2"
+          className="mb-0 mt-3 flex flex-wrap items-center justify-center gap-1.5"
         >
           {[
             "Ideas into working products",
@@ -158,7 +158,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ delay: 0.48 + index * 0.1, duration: 0.4 }}
               whileHover={{ y: -3, scale: 1.04 }}
-              className="rounded-full border border-[var(--primary)]/25 bg-[var(--primary)]/[0.06] px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground shadow-[0_0_24px_color-mix(in_oklch,var(--primary)_8%,transparent)] sm:text-[10px]"
+              className="rounded-full border border-border/70 bg-background/35 px-2.5 py-1 font-sans text-[10px] tracking-normal text-muted-foreground sm:text-[11px]"
             >
               {item}
             </motion.span>
@@ -169,7 +169,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="hero-actions mt-7 flex w-full flex-wrap items-center justify-center gap-2 sm:mt-8 sm:gap-3"
+          className="hero-actions mt-5 flex w-full flex-wrap items-center justify-center gap-2 sm:mt-6 sm:gap-3"
         >
           <LetsTalkButton />
           <ScanningButton
@@ -209,7 +209,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.6 }}
-          className="mt-10 flex flex-col items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground sm:mt-16"
+          className="mt-6 flex flex-col items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.24em] text-muted-foreground sm:mt-8"
         >
           <span>Scroll to enter the system</span>
           <ArrowDown className="h-3 w-3 animate-bounce" />
