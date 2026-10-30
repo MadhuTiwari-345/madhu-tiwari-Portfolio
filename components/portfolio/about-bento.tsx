@@ -13,7 +13,7 @@ const stats = [
 export function AboutBento() {
   return (
     <section id="about" className="relative mx-auto w-full max-w-7xl px-4 py-24 md:px-8">
-      <SectionHeader label="the architect" title="A CS student who ships." />
+      <SectionHeader label="ABOUT" title="The human behind the code." />
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:grid-rows-2">
         {/* Bio */}
