@@ -1,5 +1,6 @@
 import { NavBar } from "@/components/portfolio/nav-bar"
 import { Hero } from "@/components/portfolio/hero"
+import { CommandDeck } from "@/components/portfolio/command-deck"
 import { AboutBento } from "@/components/portfolio/about-bento"
 import { ProjectsSection } from "@/components/portfolio/projects-section"
 import { SkillsBento } from "@/components/portfolio/skills-bento"
@@ -23,6 +24,7 @@ export default function Page() {
       <NavBar />
 
       <Hero />
+      <CommandDeck />
 
       <div className="relative">
         <AboutBento />
