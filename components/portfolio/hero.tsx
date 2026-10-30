@@ -59,29 +59,29 @@ export function Hero() {
         <span className="hero-chip-line"><span /></span>
       </motion.div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-5 text-center">
+      <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-5 pt-2 text-center sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-8 flex max-w-full flex-wrap items-center justify-center gap-2.5 rounded-full border border-border/70 bg-background/65 px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/90 shadow-lg shadow-black/10 backdrop-blur-xl sm:mb-10 sm:text-[11px]"
+          className="mb-7 flex w-fit max-w-[calc(100vw-2rem)] flex-wrap items-center justify-center gap-x-2.5 gap-y-1.5 rounded-2xl border border-border/70 bg-background/80 px-4 py-3 font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-foreground shadow-lg shadow-black/10 backdrop-blur-xl sm:mb-9 sm:rounded-full sm:text-[11px]"
         >
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--primary)]" />
           <MapPin className="h-3 w-3" />
-          <span>New Delhi, India</span>
+          <span className="whitespace-nowrap">New Delhi, India</span>
           <span aria-hidden className="opacity-50">·</span>
-          <span>Open to roles</span>
+          <span className="whitespace-nowrap">Open to roles</span>
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-balance font-display text-[clamp(2.8rem,7vw,4.8rem)] leading-[1.04] font-bold tracking-[-0.045em]"
+          className="flex max-w-full flex-wrap items-baseline justify-center gap-x-3 text-balance font-display text-[clamp(2.55rem,7vw,4.8rem)] leading-[1.08] font-bold tracking-[-0.045em]"
         >
-          <span className="block text-muted-foreground/70">I am</span>
+          <span className="text-muted-foreground/80">I’m</span>
           <span
-            className="block bg-gradient-to-br bg-clip-text text-transparent"
+            className="bg-gradient-to-br bg-clip-text text-transparent"
             style={{
               backgroundImage:
                 "linear-gradient(135deg, var(--foreground) 0%, var(--primary) 55%, var(--accent) 100%)",
