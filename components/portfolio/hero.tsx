@@ -104,9 +104,7 @@ export function Hero() {
           className="mt-5 max-w-3xl text-balance text-2xl font-semibold leading-tight tracking-tight sm:text-3xl md:text-4xl"
         >
           I turn ideas into{" "}
-          <span
-            className="bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent"
-          >
+          <span className="bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent">
             things that actually work.
           </span>
         </motion.h2>
@@ -117,9 +115,31 @@ export function Hero() {
           transition={{ duration: 0.75, delay: 0.34 }}
           className="mt-3 max-w-2xl px-2 text-pretty text-sm leading-7 text-muted-foreground sm:px-0 sm:text-base sm:leading-relaxed"
         >
-          I build full-stack products, untangle backend flows, and explore practical AI. I care about
-          the details that turn a clever idea into something people can actually use.
-        </motion.p>otion.p>
+          I’m Madhu, a Computer Science student who enjoys building products, experimenting with AI,
+          and figuring out how things work under the hood. From backend systems to interactive web
+          experiences, I like taking an idea from the first line of code to something people can
+          actually use.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.42 }}
+          className="mb-1 mt-5 flex flex-wrap items-center justify-center gap-2"
+        >
+          {["AI & ML", "Full Stack", "Backend Engineering"].map((item, index) => (
+            <motion.span
+              key={item}
+              initial={{ opacity: 0, y: 8, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.52 + index * 0.1, duration: 0.4 }}
+              whileHover={{ y: -3, scale: 1.04 }}
+              className="rounded-full border border-[var(--primary)]/25 bg-[var(--primary)]/[0.06] px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground shadow-[0_0_24px_color-mix(in_oklch,var(--primary)_8%,transparent)] sm:text-[10px]"
+            >
+              {item}
+            </motion.span>
+          ))}
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 14 }}
