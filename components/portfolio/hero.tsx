@@ -4,7 +4,7 @@ import dynamic from "next/dynamic"
 import { motion } from "framer-motion"
 import { ScanningButton } from "./scanning-button"
 import { LetsTalkButton } from "./lets-talk"
-import { ArrowDown, Github, Linkedin, MapPin, Sparkles } from "lucide-react"
+import { Github, Linkedin, MapPin, Sparkles } from "lucide-react"
 
 const ParticleHero = dynamic(() => import("./particle-hero").then((m) => m.ParticleHero), {
   ssr: false,
@@ -162,16 +162,6 @@ export function Hero() {
           <a href="https://www.linkedin.com/in/madhu-tiwari-833ab1326/" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="rounded-full p-2 transition-colors hover:text-foreground">
             <Linkedin className="h-4 w-4" />
           </a>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.1, duration: 0.6 }}
-          className="mt-8 flex flex-col items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.22em] text-muted-foreground/70 sm:mt-10"
-        >
-          <span>Scroll to explore</span>
-          <ArrowDown className="h-3 w-3 animate-bounce" />
         </motion.div>
       </div>
 
