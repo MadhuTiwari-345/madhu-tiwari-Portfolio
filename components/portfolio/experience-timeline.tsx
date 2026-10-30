@@ -93,7 +93,7 @@ const iconForKind = (k: Entry["kind"]) => {
 export function ExperienceTimeline() {
   return (
     <section id="experience" className="relative mx-auto w-full max-w-7xl px-4 py-24 md:px-8">
-      <SectionHeader index="04" label="journey" title="How the systems got built." />
+      <SectionHeader index="05" label="journey" title="How the systems got built." />
 
       <div className="relative">
         {/* vertical line */}
