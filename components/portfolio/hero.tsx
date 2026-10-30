@@ -14,7 +14,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden pt-24 pb-12"
+      className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden px-0 pt-24 pb-12 sm:pt-28 sm:pb-16"
     >
       {/* gradient backdrop */}
       <div
@@ -70,7 +70,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="glass-pill mb-6 flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.3em]"
+          className="glass-pill mb-6 flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 rounded-full px-3 py-2 font-mono text-[9px] uppercase tracking-[0.16em] sm:gap-2 sm:px-4 sm:py-1.5 sm:text-[10px] sm:tracking-[0.3em]"
         >
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--primary)]" />
           <MapPin className="h-3 w-3" />
@@ -83,7 +83,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-balance font-display text-5xl leading-[0.95] font-bold tracking-tight sm:text-7xl md:text-8xl"
+          className="text-balance font-display text-[clamp(2.55rem,10vw,3.5rem)] leading-[0.98] font-bold tracking-tight sm:text-7xl md:text-8xl"
         >
           <span className="block text-muted-foreground/70">I am</span>
           <span
@@ -101,7 +101,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.25 }}
-          className="mt-6 max-w-2xl text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg"
+          className="mt-5 max-w-xl px-2 text-pretty text-sm leading-7 text-muted-foreground sm:mt-6 sm:px-0 sm:text-lg sm:leading-relaxed"
         >
           Computer Science student at MUIT Noida building at the edge of{" "}
           <span className="font-medium text-foreground">AI, full stack, and systems that scale</span>.
@@ -113,7 +113,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-8 flex flex-wrap items-center justify-center gap-3"
+          className="hero-actions mt-7 flex w-full flex-wrap items-center justify-center gap-2 sm:mt-8 sm:gap-3"
         >
           <LetsTalkButton />
           <ScanningButton
@@ -153,7 +153,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2, duration: 0.6 }}
-          className="mt-16 flex flex-col items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground"
+          className="mt-10 flex flex-col items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground sm:mt-16"
         >
           <span>Scroll to enter the system</span>
           <ArrowDown className="h-3 w-3 animate-bounce" />
