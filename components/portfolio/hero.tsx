@@ -42,7 +42,7 @@ export function Hero() {
       {/* Floating skill cards — restored, positioned outside the centered headline */}
       <motion.div
         aria-hidden
-        className="hero-float-chip hero-chip-left hidden lg:flex"
+        className="hero-float-chip hero-chip-left hidden 2xl:flex"
         initial={{ opacity: 0, x: -18, rotateY: 12 }}
         animate={{ opacity: 1, x: 0, rotateY: 7 }}
         transition={{ duration: 0.9, delay: 0.55 }}
@@ -54,7 +54,7 @@ export function Hero() {
       </motion.div>
       <motion.div
         aria-hidden
-        className="hero-float-chip hero-chip-right hidden lg:flex"
+        className="hero-float-chip hero-chip-right hidden 2xl:flex"
         initial={{ opacity: 0, x: 18, rotateY: -12 }}
         animate={{ opacity: 1, x: 0, rotateY: -7 }}
         transition={{ duration: 0.9, delay: 0.75 }}
