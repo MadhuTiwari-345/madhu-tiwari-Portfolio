@@ -17,6 +17,7 @@ export type ArchEdge = { from: string; to: string; label?: string }
 
 export type Project = {
   title: string
+  category: string
   tagline: string
   description: string
   tags: string[]
@@ -294,8 +295,9 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
 
       {/* content */}
       <div className="relative z-10 mt-5 flex flex-1 flex-col">
-        <div className="flex items-baseline justify-between gap-3">
+        <div className="flex items-start justify-between gap-3">
           <h3 className="text-balance text-xl font-semibold tracking-tight">{project.title}</h3>
+          <span className="shrink-0 rounded-full border border-[var(--primary)]/25 bg-[var(--primary)]/8 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-[var(--primary)]">{project.category}</span>
         </div>
         <p className="mt-1 text-sm font-medium text-[var(--primary)]">{project.tagline}</p>
         <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
