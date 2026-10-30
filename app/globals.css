@@ -210,6 +210,18 @@
   html {
     background: var(--background);
     color: var(--foreground);
+    scroll-behavior: smooth;
+    scroll-padding-top: 9rem;
+  }
+
+  /* Keep anchored sections clear of the fixed two-row navigation. */
+  section[id] {
+    scroll-margin-top: 9rem;
+  }
+
+  @media (max-width: 640px) {
+    html { scroll-padding-top: 8rem; }
+    section[id] { scroll-margin-top: 8rem; }
   }
   body {
     background: var(--background);
