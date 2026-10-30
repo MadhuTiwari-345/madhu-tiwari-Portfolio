@@ -1,7 +1,6 @@
 "use client"
 
 import { useCallback, useEffect, useMemo, useState } from "react"
-import { motion } from "framer-motion"
 import { Activity, ArrowUpRight, GitCommitHorizontal, GitFork, GitPullRequest, RefreshCw, Star, Clock3, Github, AlertCircle } from "lucide-react"
 import { SectionHeader } from "./about-bento"
 
