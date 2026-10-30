@@ -69,7 +69,7 @@ export function EngineeringExplorer() {
 
   return (
     <section id="engineering" className="relative mx-auto w-full max-w-7xl px-4 py-20 md:px-8">
-      <SectionHeader index="03" label="engineering lab" title="Open the hood. Explore how the pieces connect." />
+      <SectionHeader index="04" label="engineering lab" title="Open the hood. Explore how the pieces connect." />
       <p className="mb-7 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">Choose a build, inspect its architecture, and trace the relationships represented in its system map. These diagrams are project-level design views—not live runtime telemetry.</p>
 
       <div className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,.8fr)]">
