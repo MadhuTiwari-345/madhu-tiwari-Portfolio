@@ -13,7 +13,7 @@ const CommitTerrain = dynamic(() => import("./commit-terrain").then((m) => m.Com
 export function TerrainSection() {
   return (
     <section id="contact" className="relative mx-auto w-full max-w-7xl px-4 pt-24 pb-16 md:px-8">
-      <SectionHeader index="07" label="commit terrain" title="The shape of a year of building." />
+      <SectionHeader label="commit terrain" title="The shape of a year of building." />
 
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-5">
         {/* Terrain */}
