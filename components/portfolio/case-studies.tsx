@@ -110,6 +110,29 @@ const engineeringNotes: Record<string, { decisions: string[]; challenges: string
   },
 };
 
+
+type DebugStory = { issue: string; cause: string; fix: string; verification: string };
+
+const verifiedDebugStories: Record<string, DebugStory[]> = {
+  "MicroClimate": [{
+    issue: "The deployed Vercel app opened to a blank page.",
+    cause: "services/geminiService.ts created the Gemini client immediately from process.env.API_KEY. In the browser deployment, that key was not available at module initialization, so startup threw before the interface could render.",
+    fix: "Changed Gemini client creation to be lazy, so the service is initialized only when the feature is invoked instead of crashing the app during startup.",
+    verification: "The fix was committed as 8bee0af; the subsequent Vercel deployment reached READY.",
+  }],
+  "StormCycle": [{
+    issue: "The first Vercel deployment failed during npm install.",
+    cause: "The dependency tree had a React 19 peer-dependency conflict, and react-is was missing.",
+    fix: "Resolved the dependency conflict and added the missing react-is dependency so installation could complete.",
+    verification: "The deployment progressed past the install failure. A separate browser startup issue still needed to be fixed.",
+  }, {
+    issue: "After deployment, the app rendered a blank screen in the browser.",
+    cause: "Gemini initialization threw: An API Key must be set when running in a browser. The client was being initialized before a browser-available key was configured.",
+    fix: "Prevented Gemini initialization from crashing the app at startup by deferring client creation until the AI feature is used.",
+    verification: "The blank-screen startup crash was addressed. The AI feature itself still requires its API key to be configured; frontend deployment alone did not verify the full backend, Firebase and AI workflow.",
+  }],
+};
+
 function jumpToCaseStudies() {
   document.getElementById("case-studies")?.scrollIntoView({ behavior: "smooth", block: "start" })
 }
@@ -133,7 +156,7 @@ export function CaseStudies() {
     <section id="case-studies" className="relative mx-auto w-full max-w-7xl scroll-mt-24 px-4 py-20 md:px-8">
       <SectionHeader index="03" label="build stories / case studies" title="The thinking behind the things I build." />
       <p className="mb-7 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-        Explore each project through its product goal, documented architecture, technology choices and engineering trade-offs. Decisions are tied to the published system design; challenges are framed as engineering constraints to reason about, not invented claims of incidents or measured outcomes.
+        Explore each project through its product goal, documented architecture, technology choices and engineering trade-offs. Verified debugging stories are included where your development history records the actual issue, root cause, fix and verification. Projects without a documented incident are clearly marked rather than given invented war stories.
       </p>
 
       <div className="grid gap-4 lg:grid-cols-[minmax(0,.8fr)_minmax(0,1.2fr)]">
@@ -167,7 +190,22 @@ export function CaseStudies() {
             <div className="mt-4 min-h-[190px]">
               {tab === "overview" ? <div className="rounded-xl border border-border bg-background p-4"><div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-widest text-muted-foreground"><Layers3 className="h-3.5 w-3.5 text-[var(--primary)]"/> product brief</div><h4 className="mt-3 text-sm font-semibold">What this build is</h4><p className="mt-2 text-sm leading-relaxed text-muted-foreground">{project.description}</p><p className="mt-4 text-xs text-muted-foreground">This summary reflects the project description currently published in the portfolio.</p></div> : null}
               {tab === "decisions" ? <div className="rounded-xl border border-border bg-background p-4"><div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-widest text-muted-foreground"><Code2 className="h-3.5 w-3.5 text-[var(--primary)]"/> engineering decisions</div><p className="mt-2 text-xs leading-relaxed text-muted-foreground">Design rationale grounded in the project description, listed stack and mapped architecture.</p><ul className="mt-3 space-y-3">{(engineeringNotes[project.title]?.decisions ?? []).map((item,index)=><li key={index} className="flex gap-3 text-sm leading-relaxed"><span className="font-mono text-[10px] text-[var(--primary)]">D{index+1}</span><span>{item}</span></li>)}</ul></div> : null}
-              {tab === "challenges" ? <div className="rounded-xl border border-border bg-background p-4"><div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-widest text-muted-foreground"><Layers3 className="h-3.5 w-3.5 text-[var(--primary)]"/> challenges & trade-offs</div><p className="mt-2 text-xs leading-relaxed text-muted-foreground">Engineering constraints and failure modes implied by this system's documented components—not claims of measured incidents.</p><ul className="mt-3 space-y-3">{(engineeringNotes[project.title]?.challenges ?? []).map((item,index)=><li key={index} className="flex gap-3 text-sm leading-relaxed"><span className="font-mono text-[10px] text-[var(--primary)]">C{index+1}</span><span>{item}</span></li>)}</ul></div> : null}
+              {tab === "challenges" ? <div className="space-y-4">
+                <div className="rounded-xl border border-border bg-background p-4">
+                  <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-widest text-muted-foreground"><Layers3 className="h-3.5 w-3.5 text-[var(--primary)]"/> verified debugging log</div>
+                  {verifiedDebugStories[project.title]?.length ? <div className="mt-3 space-y-4">{verifiedDebugStories[project.title].map((story,index)=><div key={index} className="space-y-2 border-l-2 border-[var(--primary)]/40 pl-3">
+                    <div className="font-mono text-[9px] uppercase tracking-widest text-[var(--primary)]">incident {String(index+1).padStart(2,"0")}</div>
+                    <p className="text-sm font-semibold">{story.issue}</p>
+                    <p className="text-xs leading-relaxed text-muted-foreground"><strong className="text-foreground">Root cause: </strong>{story.cause}</p>
+                    <p className="text-xs leading-relaxed text-muted-foreground"><strong className="text-foreground">Fix: </strong>{story.fix}</p>
+                    <p className="text-xs leading-relaxed text-muted-foreground"><strong className="text-foreground">Verification: </strong>{story.verification}</p>
+                  </div>)}</div> : <p className="mt-3 text-sm leading-relaxed text-muted-foreground">I do not yet have a verified, project-specific debugging incident from your development history for this build. This section is intentionally left without a made-up story. Add a real bug, its root cause and the fix once you share the details.</p>}
+                </div>
+                <div className="rounded-xl border border-border bg-background p-4">
+                  <div className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground">engineering constraints to consider</div>
+                  <ul className="mt-3 space-y-3">{(engineeringNotes[project.title]?.challenges ?? []).map((item,index)=><li key={index} className="flex gap-3 text-xs leading-relaxed text-muted-foreground"><span className="font-mono text-[10px] text-[var(--primary)]">C{index+1}</span><span>{item}</span></li>)}</ul>
+                </div>
+              </div> : null}
               {tab === "architecture" ? <div className="rounded-xl border border-border bg-background p-4"><div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-widest text-muted-foreground"><Network className="h-3.5 w-3.5 text-[var(--primary)]"/> mapped system flow</div><ol className="mt-3 space-y-2">{project.architecture.edges.map((edge,index)=><li key={index} className="flex min-w-0 items-center gap-2 rounded-lg border border-border px-3 py-2 text-xs"><span className="font-mono text-[9px] text-[var(--primary)]">{String(index+1).padStart(2,"0")}</span><span className="min-w-0 flex-1 truncate">{nodeNames[edge.from] ?? edge.from}</span><ArrowRight className="h-3 w-3 shrink-0 text-muted-foreground"/><span className="min-w-0 flex-1 truncate text-right">{nodeNames[edge.to] ?? edge.to}</span></li>)}</ol><p className="mt-3 text-[10px] text-muted-foreground">Architecture connections as represented in the portfolio map; not a live runtime trace.</p></div> : null}
               {tab === "stack" ? <div className="rounded-xl border border-border bg-background p-4"><div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-widest text-muted-foreground"><Code2 className="h-3.5 w-3.5 text-[var(--primary)]"/> listed technologies</div><div className="mt-3 flex flex-wrap gap-2">{project.tags.map(tag=><span key={tag} className="rounded-full border border-border px-3 py-2 font-mono text-[10px] text-muted-foreground">{tag}</span>)}</div></div> : null}
             </div>
