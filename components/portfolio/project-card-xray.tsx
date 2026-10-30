@@ -332,7 +332,7 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
               data-cursor-label="live demo"
               aria-label={`Open ${project.title} live deployment`}
             >
-              Deploy
+              Live
             </ScanningButton>
           )}
         </div>
