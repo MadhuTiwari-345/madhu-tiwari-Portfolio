@@ -25,7 +25,7 @@ const experience = [
   {
     role: "Open-Source Contributor",
     organization: "GSSoC '25 · SWOC '26 · ECWoC '26 · OSCG '26 · Apertre 3.0",
-    period: "2025 — Present",
+    period: "2025 to Present",
     detail: "Contribute to community-driven software projects, collaborate through GitHub workflows, and work across frontend and backend codebases.",
   },
 ]
@@ -161,15 +161,15 @@ export function RecruiterView() {
               <section>
                 <SectionTitle>Education</SectionTitle>
                 <div className="mt-4">
-                  <h3 className="font-semibold">B.Tech — Computer &amp; Data Science (AI &amp; ML)</h3>
+                  <h3 className="font-semibold">B.Tech in Computer &amp; Data Science (AI &amp; ML)</h3>
                   <p className="mt-1 text-sm text-muted-foreground print:text-black">Maharishi University of Information Technology, Noida</p>
-                  <p className="mt-2 font-mono text-[10px] text-muted-foreground print:text-black">Aug 2024 — Aug 2028 · CGPA 7.88 through Semester IV</p>
+                  <p className="mt-2 font-mono text-[10px] text-muted-foreground print:text-black">Aug 2024 to Aug 2028 · CGPA 7.88 through Semester IV</p>
                 </div>
               </section>
               <section>
                 <SectionTitle>Selected recognition</SectionTitle>
                 <ul className="mt-4 list-disc space-y-2 pl-4 text-sm leading-6 text-muted-foreground print:text-black">
-                  <li>EliteHack 1.0 — Hackathon Finalist</li>
+                  <li>EliteHack 1.0: Hackathon Finalist</li>
                   <li>McKinsey &amp; Company Forward Program (2025)</li>
                   <li>Open-source contributor across five community programs</li>
                   <li>Deloitte Australia Data Analytics Job Simulation (Forage)</li>
