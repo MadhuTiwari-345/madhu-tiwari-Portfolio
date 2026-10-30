@@ -237,6 +237,12 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
       className={`group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-5 transition-colors ${
         project.span ?? ""
       }`}
+      style={{ backgroundImage: "radial-gradient(420px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), color-mix(in oklch, var(--primary) 13%, transparent), transparent 72%)" }}
+      onMouseMove={(event) => {
+        const rect = event.currentTarget.getBoundingClientRect()
+        event.currentTarget.style.setProperty("--spotlight-x", `${event.clientX - rect.left}px`)
+        event.currentTarget.style.setProperty("--spotlight-y", `${event.clientY - rect.top}px`)
+      }}
       data-magnetic
     >
       {/* visual area with peel/flip */}
@@ -291,7 +297,7 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
           <h3 className="text-balance text-xl font-semibold tracking-tight">{project.title}</h3>
         </div>
         <p className="mt-1 text-sm font-medium text-[var(--primary)]">{project.tagline}</p>
-        <p className="mt-2 text-pretty text-sm leading-relaxed text-muted-foreground">
+        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
           {project.description}
         </p>
 
