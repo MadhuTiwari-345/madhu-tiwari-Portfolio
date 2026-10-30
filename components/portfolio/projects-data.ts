@@ -233,7 +233,7 @@ export const projects: Project[] = [
         { from: "api", to: "weather" },
       ],
     },
-  }
+  },
   {
     title: "RISC-V Instruction Set Explorer",
     tagline: "Zero-Setup ISA Analysis, Validation & Graph Visualization",
