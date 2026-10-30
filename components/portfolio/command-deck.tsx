@@ -5,6 +5,7 @@ import type { FormEvent } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { ArrowUpRight, Command, Github, Linkedin, Mail, Terminal } from "lucide-react"
 import { SectionHeader } from "./about-bento"
+import { MiniSystemMapPreview } from "./system-map"
 
 type CommandResult = {
   command: string
@@ -23,6 +24,7 @@ const commandMap: Record<string, CommandResult> = {
       "journey     — experience and open source",
       "contact     — start a conversation",
       "github      — open my public code",
+      "map         — navigate the portfolio system",
       "clear       — clear this terminal",
     ],
   },
@@ -85,6 +87,11 @@ const commandMap: Record<string, CommandResult> = {
       { label: "Connect on LinkedIn", href: "https://www.linkedin.com/in/madhu-tiwari-833ab1326/" },
     ],
   },
+  map: {
+    command: "map",
+    lines: ["MADHU.OS / SYSTEM TOPOLOGY", "Eight connected destinations. Select a node to inspect and jump into that section."],
+    links: [{ label: "Open interactive system map", href: "#system-map" }],
+  },
   github: {
     command: "github",
     lines: [
@@ -95,7 +102,7 @@ const commandMap: Record<string, CommandResult> = {
   },
 }
 
-const suggestions = ["projects", "stack", "journey", "contact"]
+const suggestions = ["projects", "stack", "journey", "map", "contact"]
 
 export function CommandDeck() {
   const [value, setValue] = useState("")
@@ -238,6 +245,7 @@ export function CommandDeck() {
                   <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </button>
               ))}
+              <MiniSystemMapPreview />
             </div>
           </div>
 
