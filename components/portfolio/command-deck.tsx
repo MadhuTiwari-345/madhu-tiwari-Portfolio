@@ -145,7 +145,7 @@ export function CommandDeck() {
 
   return (
     <section id="console" className="relative mx-auto w-full max-w-7xl px-4 py-20 md:px-8">
-      <SectionHeader index="00" label="interactive interface" title="A little command line, a lot about how I build." />
+      <SectionHeader label="interactive interface" title="A little command line, a lot about how I build." />
 
       <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
         <motion.div
