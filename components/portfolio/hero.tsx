@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic"
 import { motion } from "framer-motion"
 import { ScanningButton } from "./scanning-button"
+import { BlurReveal } from "./blur-reveal"
 import { LetsTalkButton } from "./lets-talk"
 import { Github, Linkedin, MapPin, Sparkles } from "lucide-react"
 
@@ -97,9 +98,8 @@ export function Hero() {
           transition={{ duration: 0.75, delay: 0.22 }}
           className="mt-7 max-w-2xl text-balance text-xl font-semibold leading-tight tracking-tight sm:mt-8 sm:text-2xl md:text-3xl"
         >
-          I turn ideas into{" "}
           <span className="bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent">
-            things that actually work.
+            <BlurReveal />
           </span>
         </motion.h2>
 
