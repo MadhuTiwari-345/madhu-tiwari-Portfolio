@@ -427,3 +427,8 @@
 @media (prefers-reduced-motion: reduce) {
   .hero-float-chip { animation: none; }
 }
+
+
+@media (max-width: 1279px) { .hero-float-chip { display: none !important; } }
+@media (max-width: 640px) { .hero-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: min(100%, 360px); margin-inline: auto; } .hero-actions > a { width: 100%; min-width: 0; padding-inline: .75rem; white-space: nowrap; } }
+@media (max-width: 380px) { .hero-actions { grid-template-columns: minmax(0, 1fr); width: min(100%, 280px); } }
