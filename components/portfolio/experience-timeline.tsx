@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { SectionHeader } from "./about-bento"
-import { GraduationCap, Users, GitBranch, Award, BriefcaseBusiness, CalendarDays, MapPin } from "lucide-react"
+import { GraduationCap, GitBranch, Award, BriefcaseBusiness, CalendarDays, MapPin } from "lucide-react"
 
 type Entry = {
   kind: "exp" | "edu" | "honor"
@@ -43,7 +43,6 @@ const entries: Entry[] = [
     tag: "Completed",
     bullets: [
       "Built Tableau KPI dashboards and Excel financial models in a forensic technology simulation.",
-      "",
     ],
   },
   {
