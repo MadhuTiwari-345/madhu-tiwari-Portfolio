@@ -1,6 +1,7 @@
 "use client"
 
-import { FormEvent, useMemo, useState } from "react"
+import { useMemo, useState } from "react"
+import type { FormEvent } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import { ArrowUpRight, Command, Github, Linkedin, Mail, Terminal } from "lucide-react"
 import { SectionHeader } from "./about-bento"
@@ -38,12 +39,15 @@ const commandMap: Record<string, CommandResult> = {
     command: "projects",
     lines: [
       "SELECTED BUILDS // open the Work section for details",
-      "01  HirePlane       — hiring workflow platform",
-      "02  LexAI           — legal intelligence product",
-      "03  FemtoGuard      — AI-assisted fraud defense",
-      "04  StormCycle      — cycle wellness companion",
-      "05  MicroClimate    — climate-focused project",
-      "06  Kisan-OS        — agriculture technology concept",
+      "01  PhishBuster     — phishing detection + training",
+      "02  Kisan OS        — farmer-first information dashboard",
+      "03  FarmChain       — decentralized agri supply chain",
+      "04  FemtoGuard      — AI-assisted fraud defense",
+      "05  Lex AI          — legal intelligence platform",
+      "06  HirePlane       — job discovery + recruitment",
+      "07  StormCycle      — cycle tracking + health insights",
+      "08  MicroClimate    — hyper-local climate intelligence",
+      "09  RISC-V Explorer — instruction-set analysis workbench",
     ],
     links: [{ label: "Explore project cards", href: "#projects" }],
   },
