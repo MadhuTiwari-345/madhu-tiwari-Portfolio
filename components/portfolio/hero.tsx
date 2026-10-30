@@ -47,7 +47,7 @@ export function Hero() {
         animate={{ opacity: 1, x: 0, rotateY: 7 }}
         transition={{ duration: 0.9, delay: 0.55 }}
       >
-        <span className="hero-chip-top"><span className="hero-chip-dot" /> EXPERTISE / 01</span>
+        <span className="hero-chip-top"><span className="hero-chip-dot" /> CAPABILITY</span>
         <span className="hero-chip-title">AI / ML</span>
         <span className="hero-chip-sub">Learning systems</span>
         <span className="hero-chip-line"><span /></span>
@@ -59,7 +59,7 @@ export function Hero() {
         animate={{ opacity: 1, x: 0, rotateY: -7 }}
         transition={{ duration: 0.9, delay: 0.75 }}
       >
-        <span className="hero-chip-top"><span className="hero-chip-dot" /> BUILD / 02</span>
+        <span className="hero-chip-top"><span className="hero-chip-dot" /> IN PRACTICE</span>
         <span className="hero-chip-title">FULL STACK</span>
         <span className="hero-chip-sub">From idea to ship</span>
         <span className="hero-chip-line"><span /></span>
@@ -97,17 +97,29 @@ export function Hero() {
           </span>
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.25 }}
-          className="mt-5 max-w-xl px-2 text-pretty text-sm leading-7 text-muted-foreground sm:mt-6 sm:px-0 sm:text-lg sm:leading-relaxed"
+        <motion.h2
+          initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.75, delay: 0.22 }}
+          className="mt-5 max-w-3xl text-balance text-2xl font-semibold leading-tight tracking-tight sm:text-3xl md:text-4xl"
         >
-          I like taking a half-formed idea, pulling it apart, and making the pieces work together.
-          Lately that means building full-stack products, untangling backend flows, and finding
-          useful places for AI. The goal is simple: make the thing work, make it make sense, then
-          make it better.
-        </motion.p>
+          I turn ideas into{" "}
+          <span
+            className="bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent"
+          >
+            things that actually work.
+          </span>
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.75, delay: 0.34 }}
+          className="mt-3 max-w-2xl px-2 text-pretty text-sm leading-7 text-muted-foreground sm:px-0 sm:text-base sm:leading-relaxed"
+        >
+          I build full-stack products, untangle backend flows, and explore practical AI. I care about
+          the details that turn a clever idea into something people can actually use.
+        </motion.p>otion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 14 }}
