@@ -16,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 })
 
-export const metadata: Metadata = {
+export const metadata: Metadata = {\n  metadataBase: new URL("https://madhu-tiwari-portfolio.vercel.app"),\n  alternates: { canonical: "/" },
   title: "Madhu Tiwari | Full Stack & AI Developer",
   description:
     "Computer Science student building AI systems, decentralized apps, and full stack products. Based in New Delhi, India.",
