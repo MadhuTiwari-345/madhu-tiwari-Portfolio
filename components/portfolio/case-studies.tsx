@@ -161,7 +161,7 @@ export function CaseStudies() {
             <div className="mt-5 grid grid-cols-3 gap-2">
               {[{ label:"Mapped nodes", value:project.architecture.nodes.length },{ label:"Connections", value:project.architecture.edges.length },{ label:"Stack items", value:project.tags.length }].map((stat)=><div key={stat.label} className="rounded-xl border border-border bg-background p-3"><div className="text-xl font-semibold tabular-nums">{stat.value}</div><div className="mt-1 font-mono text-[8px] uppercase tracking-wider text-muted-foreground">{stat.label}</div></div>)}
             </div>
-            <div className="mt-5 grid grid-cols-3 rounded-xl border border-border bg-background p-1">
+            <div className="mt-5 grid grid-cols-5 rounded-xl border border-border bg-background p-1">
               {(["overview","decisions","challenges","architecture","stack"] as const).map((item)=><button key={item} type="button" onClick={()=>setTab(item)} aria-pressed={tab===item} className={`min-h-9 rounded-lg font-mono text-[9px] uppercase tracking-widest transition-colors ${tab===item ? "bg-[var(--primary)]/15 text-foreground" : "text-muted-foreground hover:text-foreground"}`}>{item}</button>)}
             </div>
             <div className="mt-4 min-h-[190px]">
