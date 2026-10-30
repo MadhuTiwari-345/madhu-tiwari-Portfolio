@@ -69,11 +69,11 @@ const commandMap: Record<string, CommandResult> = {
   journey: {
     command: "journey",
     lines: [
-      "BUILD LOG // 2025—NOW",
+      "BUILD LOG // 2025 to now",
       "Open-source contributor across GSSoC, SWOC, ECWoC, OSCG and Apertre.",
-      "Full-stack developer at ARVIQ Digital Solution (Mar 2026—present).",
-      "Growth Marketing Intern at PHICSIT InfoTech (May—Jul 2026).",
-      "B.Tech Computer & Data Science (AI & ML), MUIT Noida (2024—2028).",
+      "Full-stack developer at ARVIQ Digital Solution (Mar 2026 to present).",
+      "Growth Marketing Intern at PHICSIT InfoTech (May to Jul 2026).",
+      "B.Tech Computer & Data Science (AI & ML), MUIT Noida (2024 to 2028).",
     ],
     links: [{ label: "View full journey", href: "#experience" }],
   },
@@ -238,7 +238,7 @@ export function CommandDeck() {
             </div>
             <h3 className="relative mt-3 text-2xl font-semibold tracking-tight">Explore the system.</h3>
             <p className="relative mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              A tiny, local portfolio assistant. No pretend AI answers—just direct routes to real work, tools and experience.
+              A tiny, local portfolio assistant. No pretend AI answers, just direct routes to real work, tools and experience.
             </p>
             <div className="relative mt-5 grid grid-cols-2 gap-2">
               {suggestions.map((command) => (
