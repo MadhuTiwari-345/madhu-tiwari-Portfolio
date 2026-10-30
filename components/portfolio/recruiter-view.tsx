@@ -7,13 +7,13 @@ const experience = [
   {
     role: "Full-stack Developer",
     organization: "ARVIQ Digital Solution · Self-employed · Remote",
-    period: "Mar 2026 — Present",
+    period: "Mar 2026 to Present",
     detail: "Build full-stack applications end-to-end, from user interfaces to backend APIs, for independent client projects.",
   },
   {
     role: "Growth Marketing Intern",
     organization: "PHICSIT InfoTech Pvt. Ltd. · Part-time · Remote",
-    period: "May 2026 — Jul 2026",
+    period: "May 2026 to Jul 2026",
     detail: "Supported brand awareness and user acquisition through social campaigns, market research and cross-functional execution.",
   },
   {
