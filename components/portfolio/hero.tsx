@@ -103,11 +103,35 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.25 }}
           className="mt-5 max-w-xl px-2 text-pretty text-sm leading-7 text-muted-foreground sm:mt-6 sm:px-0 sm:text-lg sm:leading-relaxed"
         >
-          Computer Science student at MUIT Noida building at the edge of{" "}
-          <span className="font-medium text-foreground">AI, full stack, and systems that scale</span>.
-          I like turning fuzzy ideas into shipped products, usually with Next.js, Spring Boot, and a
-          stubborn amount of coffee.
+          I like taking a half-formed idea, pulling it apart, and making the pieces work together.
+          Lately that means building full-stack products, untangling backend flows, and finding
+          useful places for AI. The goal is simple: make the thing work, make it make sense, then
+          make it better.
         </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.34 }}
+          className="mb-1 mt-5 flex flex-wrap items-center justify-center gap-2"
+        >
+          {[
+            "Ideas into working products",
+            "Backend to interface",
+            "AI with a real purpose",
+          ].map((item, index) => (
+            <motion.span
+              key={item}
+              initial={{ opacity: 0, y: 8, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ delay: 0.48 + index * 0.1, duration: 0.4 }}
+              whileHover={{ y: -3, scale: 1.04 }}
+              className="rounded-full border border-[var(--primary)]/25 bg-[var(--primary)]/[0.06] px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground shadow-[0_0_24px_color-mix(in_oklch,var(--primary)_8%,transparent)] sm:text-[10px]"
+            >
+              {item}
+            </motion.span>
+          ))}
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
