@@ -13,7 +13,7 @@ const stats = [
 export function AboutBento() {
   return (
     <section id="about" className="relative mx-auto w-full max-w-7xl px-4 py-24 md:px-8">
-      <SectionHeader index="01" label="the architect" title="A CS student who ships." />
+      <SectionHeader label="the architect" title="A CS student who ships." />
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:grid-rows-2">
         {/* Bio */}
@@ -150,11 +150,9 @@ export function AboutBento() {
 }
 
 export function SectionHeader({
-  index,
   label,
   title,
 }: {
-  index: string
   label: string
   title: string
 }) {
@@ -162,7 +160,7 @@ export function SectionHeader({
     <div className="mb-10 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
       <div>
         <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-          <span className="rounded-full border border-border px-2 py-0.5">{index}</span>
+          <span className="h-1.5 w-1.5 rounded-full bg-[var(--primary)] shadow-[0_0_12px_var(--primary)]" />
           <span>/ {label}</span>
         </div>
         <h2 className="mt-3 text-balance font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
