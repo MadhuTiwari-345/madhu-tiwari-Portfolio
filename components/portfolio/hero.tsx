@@ -14,7 +14,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden px-0 pt-28 pb-12 sm:pt-32 sm:pb-14"
+      className="relative flex min-h-[100svh] w-full items-center justify-center overflow-hidden px-0 pt-40 pb-14 sm:pt-40 sm:pb-16"
     >
       <div
         aria-hidden
@@ -36,7 +36,7 @@ export function Hero() {
 
       <motion.div
         aria-hidden
-        className="hero-float-chip hero-chip-left hidden 2xl:flex"
+        className="hero-float-chip hero-chip-left hidden xl:flex"
         initial={{ opacity: 0, x: -18, rotateY: 12 }}
         animate={{ opacity: 1, x: 0, rotateY: 7 }}
         transition={{ duration: 0.9, delay: 0.55 }}
@@ -48,7 +48,7 @@ export function Hero() {
       </motion.div>
       <motion.div
         aria-hidden
-        className="hero-float-chip hero-chip-right hidden 2xl:flex"
+        className="hero-float-chip hero-chip-right hidden xl:flex"
         initial={{ opacity: 0, x: 18, rotateY: -12 }}
         animate={{ opacity: 1, x: 0, rotateY: -7 }}
         transition={{ duration: 0.9, delay: 0.75 }}
@@ -59,17 +59,17 @@ export function Hero() {
         <span className="hero-chip-line"><span /></span>
       </motion.div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center px-5 text-center">
+      <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-5 text-center">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-7 flex max-w-full flex-wrap items-center justify-center gap-2 rounded-full border border-border/70 bg-background/45 px-4 py-2 font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground backdrop-blur-md sm:mb-9 sm:text-[10px]"
+          className="mb-8 flex max-w-full flex-wrap items-center justify-center gap-2.5 rounded-full border border-border/70 bg-background/65 px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/90 shadow-lg shadow-black/10 backdrop-blur-xl sm:mb-10 sm:text-[11px]"
         >
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--primary)]" />
           <MapPin className="h-3 w-3" />
           <span>New Delhi, India</span>
-          <span className="opacity-40">/</span>
+          <span aria-hidden className="opacity-50">·</span>
           <span>Open to roles</span>
         </motion.div>
 
@@ -77,7 +77,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-balance font-display text-[clamp(2.8rem,7vw,4.8rem)] leading-[1.02] font-bold tracking-[-0.045em]"
+          className="text-balance font-display text-[clamp(2.8rem,7vw,4.8rem)] leading-[1.04] font-bold tracking-[-0.045em]"
         >
           <span className="block text-muted-foreground/70">I am</span>
           <span
@@ -95,7 +95,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 18, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{ duration: 0.75, delay: 0.22 }}
-          className="mt-6 max-w-2xl text-balance text-xl font-semibold leading-tight tracking-tight sm:mt-7 sm:text-2xl md:text-3xl"
+          className="mt-7 max-w-2xl text-balance text-xl font-semibold leading-tight tracking-tight sm:mt-8 sm:text-2xl md:text-3xl"
         >
           I turn ideas into{" "}
           <span className="bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] bg-clip-text text-transparent">
