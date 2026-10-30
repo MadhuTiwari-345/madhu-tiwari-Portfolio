@@ -49,8 +49,6 @@ export const metadata: Metadata = {
     images: [
       {
         url: previewImage,
-        width: 1200,
-        height: 630,
         alt: "Madhu Tiwari, Computer Science student and developer",
       },
     ],
@@ -86,6 +84,31 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="font-sans antialiased bg-background text-foreground">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Madhu Tiwari",
+              url: "https://madhu-tiwari-portfolio.vercel.app",
+              image: previewImage,
+              jobTitle: "Full Stack & AI Developer",
+              description:
+                "Computer Science student in New Delhi building full-stack products, backend systems, and practical AI applications.",
+              sameAs: [
+                "https://github.com/MadhuTiwari-345",
+                "https://www.linkedin.com/in/madhu-tiwari-833ab1326/",
+              ],
+              knowsAbout: [
+                "Full-stack development",
+                "Backend engineering",
+                "Artificial intelligence",
+                "Machine learning",
+              ],
+            }).replace(/</g, "\\u003c"),
+          }}
+        />
         <ThemeProvider>{children}</ThemeProvider>
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
