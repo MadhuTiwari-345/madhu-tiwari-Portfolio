@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 
-export type ThemeName = "sunset" | "midnight" | "obsidian" | "matrix"
+export type ThemeName = "sunset" | "cyberpunk" | "cute" | "ocean"
 
 type ThemeContextValue = {
   theme: ThemeName
@@ -11,28 +11,16 @@ type ThemeContextValue = {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null)
 
-const themes: ThemeName[] = ["sunset", "midnight", "obsidian", "matrix"]
-const legacyThemes: Record<string, ThemeName> = {
-  cyberpunk: "midnight",
-  cute: "obsidian",
-  ocean: "matrix",
-}
-
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<ThemeName>("sunset")
 
   useEffect(() => {
-    const stored = window.localStorage.getItem("portfolio-theme")
-    const nextTheme = stored && themes.includes(stored as ThemeName)
-      ? (stored as ThemeName)
-      : stored ? legacyThemes[stored] : undefined
-
-    if (nextTheme) {
-      setThemeState(nextTheme)
-      document.documentElement.setAttribute("data-theme", nextTheme)
-      window.localStorage.setItem("portfolio-theme", nextTheme)
-    } else {
-      document.documentElement.setAttribute("data-theme", "sunset")
+    const stored = (typeof window !== "undefined" ? window.localStorage.getItem("portfolio-theme") : null) as
+      | ThemeName
+      | null
+    if (stored && ["sunset", "cyberpunk", "cute", "ocean"].includes(stored)) {
+      setThemeState(stored)
+      document.documentElement.setAttribute("data-theme", stored)
     }
   }, [])
 
