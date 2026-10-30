@@ -47,7 +47,7 @@ export function SystemMap() {
 
   return (
     <section id="system-map" className="relative mx-auto w-full max-w-7xl scroll-mt-24 px-4 py-20 md:px-8">
-      <SectionHeader index="01" label="MADHU.OS / SYSTEM MAP" title="One portfolio. Eight connected destinations." />
+      <SectionHeader label="MADHU.OS / SYSTEM MAP" title="One portfolio. Eight connected destinations." />
       <p className="mb-7 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
         Navigate the portfolio as a connected system. Select a node to inspect its destination, then jump straight into that part of the experience.
       </p>
