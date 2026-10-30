@@ -3,6 +3,7 @@ import type { Project } from "./project-card-xray"
 export const projects: Project[] = [
   {
     title: "PhishBuster",
+    category: "AI & Security",
     tagline: "AI Phishing Detection + Training",
     description:
       "Scans suspicious URLs with threat intelligence APIs and reinforces security awareness through a phishing simulator.",
@@ -34,6 +35,7 @@ export const projects: Project[] = [
   },
   {
     title: "Kisan OS",
+    category: "Full Stack",
     tagline: "Operating Layer for Farmers",
     description:
       "A farmer-first dashboard for weather, crop advice, mandi prices, and government schemes with regional-language support.",
@@ -64,6 +66,7 @@ export const projects: Project[] = [
   },
   {
     title: "FarmChain",
+    category: "Web3",
     tagline: "Decentralized Agri Supply Chain",
     description:
       "Tracks agricultural products from farm to buyer using smart contracts, IPFS, and traceability dashboards.",
@@ -92,6 +95,7 @@ export const projects: Project[] = [
   },
   {
     title: "FemtoGuard",
+    category: "AI & Security",
     tagline: "AI Fraud Defender for Women",
     description:
       "Detects scam patterns in voice and text, then guides users toward safer responses.",
@@ -123,6 +127,7 @@ export const projects: Project[] = [
   },
   {
     title: "Lex AI",
+    category: "AI & SaaS",
     tagline: "AI Legal Intelligence Platform",
     description:
       "LegalTech SaaS for contract drafting, clause risk analysis, case-law research, and matter management.",
@@ -151,6 +156,7 @@ export const projects: Project[] = [
   },
   {
     title: "HirePlane",
+    category: "Full Stack",
     tagline: "Job Discovery & Recruitment Platform",
     description:
       "Connects job seekers with opportunities and gives employers a streamlined recruitment workflow.",
@@ -178,6 +184,7 @@ export const projects: Project[] = [
   },
   {
     title: "StormCycle",
+    category: "AI & Health",
     tagline: "AI-Powered Menstrual Health Platform",
     description:
       "Cycle tracking with predictions, PCOD risk screening, an AI assistant, and doctor-ready reports.",
@@ -206,6 +213,7 @@ export const projects: Project[] = [
   },
   {
     title: "MicroClimate",
+    category: "AI & Data",
     tagline: "Hyper-Local Climate Intelligence",
     description:
       "Hyper-local forecasts, anomaly detection, risk scores, and an interactive 3D Earth.",
@@ -236,6 +244,7 @@ export const projects: Project[] = [
   },
   {
     title: "RISC-V Instruction Set Explorer",
+    category: "Developer Tools",
     tagline: "Zero-Setup ISA Analysis, Validation & Graph Visualization",
     description:
       "Offline RISC-V workbench for 245+ instructions, ISA cross-references, overlap detection, graph exploration, and 38 browser tests.",
