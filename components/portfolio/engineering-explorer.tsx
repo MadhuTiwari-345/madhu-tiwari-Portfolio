@@ -1,8 +1,8 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
-import { ArrowUpRight, Boxes, Code2, Database, ExternalLink, GitBranch, Github, Network, Server, Sparkles, Workflow, Zap } from "lucide-react"
+import { ArrowUpRight, Boxes, Code2, Database, ExternalLink, GitBranch, Github, Network, Server, Sparkles, Workflow } from "lucide-react"
 import { projects } from "./projects-data"
 import type { ArchNode, Project } from "./project-card-xray"
 import { SectionHeader } from "./about-bento"
