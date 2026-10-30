@@ -5,7 +5,7 @@ export const projects: Project[] = [
     title: "PhishBuster",
     tagline: "AI Phishing Detection + Training",
     description:
-      "Analyzes suspicious URLs with threat intelligence APIs (WHOIS, Shodan, VirusTotal) and pairs it with a gamified phishing training simulator so users actually learn what clicked.",
+      "Scans suspicious URLs with threat intelligence APIs and reinforces security awareness through a phishing simulator.",
     tags: ["Next.js", "Node.js", "Python", "VirusTotal", "Shodan", "MongoDB"],
     repo: "https://github.com/javadominic/BuildathonxLorn",
     live: "https://buildathonxlorn.vercel.app/",
@@ -36,7 +36,7 @@ export const projects: Project[] = [
     title: "Kisan OS",
     tagline: "Operating Layer for Farmers",
     description:
-      "A farmer first dashboard that unifies weather, crop advisory, marketplace prices, and government schemes behind a single interface, with regional language support baked in.",
+      "A farmer-first dashboard for weather, crop advice, mandi prices, and government schemes with regional-language support.",
     tags: ["React", "Node.js", "Tailwind", "Firebase", "REST"],
     repo: "https://github.com/MadhuTiwari-345/Kisan-OS",
     live: "https://kisanosprojectcheck.vercel.app/",
@@ -66,7 +66,7 @@ export const projects: Project[] = [
     title: "FarmChain",
     tagline: "Decentralized Agri Supply Chain",
     description:
-      "Smart contracts plus IPFS give farmers, distributors, and buyers a single source of truth for product movement. Dashboards expose traceability end to end.",
+      "Tracks agricultural products from farm to buyer using smart contracts, IPFS, and traceability dashboards.",
     tags: ["Solidity", "IPFS", "Next.js", "Hardhat", "Ethers"],
     live: "https://farm-chain-blue.vercel.app/",
     repo: "https://github.com/MadhuTiwari-345",
@@ -94,7 +94,7 @@ export const projects: Project[] = [
     title: "FemtoGuard",
     tagline: "AI Fraud Defender for Women",
     description:
-      "Shestorm project that flags scam patterns in voice and text in real time and coaches the user through a safe response. Built for scale on Cloud Run.",
+      "Detects scam patterns in voice and text, then guides users toward safer responses.",
     tags: ["Python", "FastAPI", "Gemini", "Cloud Run", "React"],
     repo: "https://github.com/MadhuTiwari-345/FemtoGuard",
     live: "https://femtoguard.vercel.app/",
@@ -125,7 +125,7 @@ export const projects: Project[] = [
     title: "Lex AI",
     tagline: "AI Legal Intelligence Platform",
     description:
-      "Full-stack LegalTech SaaS for contract drafting, clause-level risk scoring, RAG-powered case-law research, deadline and matter management, and client brief generation across Indian, UK, and US jurisdictions.",
+      "LegalTech SaaS for contract drafting, clause risk analysis, case-law research, and matter management.",
     tags: ["TypeScript", "React 19", "Node.js", "PostgreSQL", "Drizzle ORM", "Clerk", "OpenAI", "Anthropic"],
     repo: "https://github.com/MadhuTiwari-345/Lex-Intelligence",
     live: "https://lex-intelligence-beta.vercel.app/",
@@ -153,7 +153,7 @@ export const projects: Project[] = [
     title: "HirePlane",
     tagline: "Job Discovery & Recruitment Platform",
     description:
-      "A hiring platform designed to connect job seekers with opportunities and help employers manage recruitment. Explore the live experience and its job-search workflows.",
+      "Connects job seekers with opportunities and gives employers a streamlined recruitment workflow.",
     tags: ["Web App", "Job Search", "Recruitment", "Career Platform"],
     live: "https://hireplane.vercel.app/",
     year: "2026",
@@ -180,7 +180,7 @@ export const projects: Project[] = [
     title: "StormCycle",
     tagline: "AI-Powered Menstrual Health Platform",
     description:
-      "Personalized cycle tracking and health insights for irregular cycles, with cycle predictions, PCOD risk screening, an AI health assistant, and doctor-ready reports.",
+      "Cycle tracking with predictions, PCOD risk screening, an AI assistant, and doctor-ready reports.",
     tags: ["React", "TypeScript", "FastAPI", "Firebase", "LSTM", "AI"],
     repo: "https://github.com/MadhuTiwari-345/StormCycle",
     live: "https://stormcycle.vercel.app/",
@@ -208,7 +208,7 @@ export const projects: Project[] = [
     title: "MicroClimate",
     tagline: "Hyper-Local Climate Intelligence",
     description:
-      "AI-powered local weather intelligence combining real-time conditions, short-term forecasting, anomaly detection, risk scoring, and an interactive 3D Earth visualization.",
+      "Hyper-local forecasts, anomaly detection, risk scores, and an interactive 3D Earth.",
     tags: ["React", "Vite", "FastAPI", "Three.js", "Forecasting", "Anomaly Detection"],
     repo: "https://github.com/MadhuTiwari-345/MicroClimate",
     live: "https://microclimate-ten.vercel.app/",
@@ -238,7 +238,7 @@ export const projects: Project[] = [
     title: "RISC-V Instruction Set Explorer",
     tagline: "Zero-Setup ISA Analysis, Validation & Graph Visualization",
     description:
-      "An offline-first RISC-V analysis workbench with a three-tier pipeline: parse 245+ instructions, normalize and cross-reference ISA extensions, detect multi-extension overlaps, and explore shared instruction relationships in an interactive graph. Includes a Python CLI and 38 browser-run unit tests.",
+      "Offline RISC-V workbench for 245+ instructions, ISA cross-references, overlap detection, graph exploration, and 38 browser tests.",
     tags: ["Python", "JavaScript", "HTML", "RISC-V ISA", "Data Visualization", "Unit Testing"],
     repo: "https://github.com/MadhuTiwari-345/RISC-V-instruction-explorer",
     live: "https://risc-v-instruction-explorer.vercel.app/",
