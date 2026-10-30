@@ -5,6 +5,7 @@ import { ThemeSwitcher } from "./theme-switcher"
 import { LetsTalkButton } from "./lets-talk"
 
 const links = [
+  { href: "#console", label: "Console" },
   { href: "#about", label: "About" },
   { href: "#projects", label: "Work" },
   { href: "#skills", label: "Stack" },
