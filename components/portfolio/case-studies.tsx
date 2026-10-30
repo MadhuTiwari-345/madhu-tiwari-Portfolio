@@ -165,7 +165,7 @@ const projectBuildNotes: Record<string, { heading: string; notes: string[]; cont
       "Contract calls need clear pending, confirmed and failed states so users are not left guessing whether a supply-chain update was recorded.",
       "IPFS stores supporting content while the chain stores verifiable references; deciding what belongs on-chain versus off-chain is a central architecture trade-off."
     ],
-    context: "The work involves learning and coordinating the Web3 toolchain—Solidity, Hardhat, Ethers, wallet interaction and decentralized storage—rather than treating it like a conventional CRUD app."
+    context: "The work involves learning and coordinating the Web3 toolchain, including Solidity, Hardhat, Ethers, wallet interaction and decentralized storage, rather than treating it like a conventional CRUD app."
   },
   "FemtoGuard": {
     heading: "Speech pipeline & response-time constraints",
@@ -217,7 +217,7 @@ export function CaseStudies() {
 
   return (
     <section id="case-studies" className="relative mx-auto w-full max-w-7xl scroll-mt-24 px-4 py-20 md:px-8">
-      <SectionHeader index="03" label="build stories / case studies" title="The thinking behind the things I build." />
+      <SectionHeader label="build stories / case studies" title="The thinking behind the things I build." />
       <p className="mb-7 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
         Explore each project through its product goal, documented architecture, technology choices and project-specific build constraints. Verified deployment incidents are separated from design and delivery challenges; no unverified bug is presented as a historical fact.
       </p>
