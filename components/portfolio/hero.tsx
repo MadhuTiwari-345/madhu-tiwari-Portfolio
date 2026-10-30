@@ -39,7 +39,7 @@ export function Hero() {
         <ParticleHero />
       </div>
 
-      {/* Floating skill cards — restored, positioned outside the centered headline */}
+      {/* Floating skill cards, restored and positioned outside the centered headline */}
       <motion.div
         aria-hidden
         className="hero-float-chip hero-chip-left hidden 2xl:flex"
