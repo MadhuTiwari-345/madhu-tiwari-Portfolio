@@ -139,6 +139,63 @@ const verifiedDebugStories: Record<string, DebugStory[]> = {
   }],
 };
 
+const projectBuildNotes: Record<string, { heading: string; notes: string[]; context: string }> = {
+  "PhishBuster": {
+    heading: "Hackathon build constraints",
+    notes: [
+      "The build had to connect URL intake, multiple threat-intelligence lookups and a learning simulator without turning the scan flow into a slow sequence of unrelated screens.",
+      "WHOIS, Shodan and VirusTotal return different kinds of evidence. The key design task is to combine those signals carefully and avoid treating one provider's response as the whole verdict.",
+      "The project was developed in a hackathon / open-source team setting, so keeping the Next.js interface, Node API and Python risk-classification responsibilities clearly separated mattered for parallel work."
+    ],
+    context: "A time-boxed collaborative build: prioritize a demonstrable end-to-end scan and training journey before polishing secondary features."
+  },
+  "Kisan OS": {
+    heading: "Data integration & product scope",
+    notes: [
+      "Weather, mandi prices, crop guidance and government schemes are separate information domains; bringing them into one dashboard requires consistent labels, location context and source freshness.",
+      "The farmer-first interface needs to stay understandable even when an external data source is unavailable or returns incomplete information.",
+      "Regional-language support and low-friction navigation are core product requirements, not optional finishing touches."
+    ],
+    context: "The project scope spans several real-world agricultural workflows, making prioritization and keeping the first useful farmer journey coherent the main build challenge."
+  },
+  "FarmChain": {
+    heading: "Web3 integration considerations",
+    notes: [
+      "The dashboard, wallet, smart contract and IPFS storage form one user journey, but each has a different success state; a wallet connection is not the same as a confirmed transaction.",
+      "Contract calls need clear pending, confirmed and failed states so users are not left guessing whether a supply-chain update was recorded.",
+      "IPFS stores supporting content while the chain stores verifiable references; deciding what belongs on-chain versus off-chain is a central architecture trade-off."
+    ],
+    context: "The work involves learning and coordinating the Web3 toolchain—Solidity, Hardhat, Ethers, wallet interaction and decentralized storage—rather than treating it like a conventional CRUD app."
+  },
+  "FemtoGuard": {
+    heading: "Speech pipeline & response-time constraints",
+    notes: [
+      "The voice flow is a chain of dependent stages: capture audio, transcribe speech, interpret scam signals and return a safety response. A delay or failure in an early stage affects everything after it.",
+      "Speech-to-text output can be imperfect. The risk analysis must not treat a noisy or incomplete transcript as unquestionable evidence.",
+      "The React client, FastAPI service, speech recognition and Gemini analysis need clear boundaries so model calls and API failures can be handled without freezing the user experience."
+    ],
+    context: "The project combines several AI services in a safety-focused workflow, so integration and graceful handling of uncertain results are more important than adding model features for their own sake."
+  },
+  "HirePlane": {
+    heading: "Two-sided product workflow",
+    notes: [
+      "Job seekers and employers need different screens, actions and permissions; the main product challenge is keeping both journeys clear without mixing their responsibilities.",
+      "A job listing moves through discovery and application, while an employer's workflow centers on posting and reviewing candidates. Those states need to remain understandable from each side.",
+      "The published project description and live experience emphasize job discovery and recruitment workflows; avoid claiming advanced hiring automation unless it is implemented and demonstrable."
+    ],
+    context: "The build is primarily a product-flow and scope exercise: make the candidate and employer journeys legible before expanding into more complex recruitment features."
+  },
+  "RISC-V Instruction Set Explorer": {
+    heading: "Data correctness & test coverage",
+    notes: [
+      "The parser, normalization layer and extension cross-reference must agree on instruction identity; inconsistent names can create false overlaps or hide valid relationships.",
+      "An instruction may belong to multiple ISA extensions, so the graph must represent shared membership without duplicating the instruction itself.",
+      "The project documents 245+ instructions and 38 browser-run unit tests; keeping those tests aligned with parsing and overlap behavior is central to confidence in the explorer."
+    ],
+    context: "This project is more data-validation-heavy than a typical UI build: the useful result depends on correctness of the underlying ISA relationships, not just a working graph."
+  }
+};
+
 function jumpToCaseStudies() {
   document.getElementById("case-studies")?.scrollIntoView({ behavior: "smooth", block: "start" })
 }
@@ -162,7 +219,7 @@ export function CaseStudies() {
     <section id="case-studies" className="relative mx-auto w-full max-w-7xl scroll-mt-24 px-4 py-20 md:px-8">
       <SectionHeader index="03" label="build stories / case studies" title="The thinking behind the things I build." />
       <p className="mb-7 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-        Explore each project through its product goal, documented architecture, technology choices and engineering trade-offs. Verified debugging stories are included where your development history records the actual issue, root cause, fix and verification. Projects without a documented incident are clearly marked rather than given invented war stories.
+        Explore each project through its product goal, documented architecture, technology choices and project-specific build constraints. Verified deployment incidents are separated from design and delivery challenges; no unverified bug is presented as a historical fact.
       </p>
 
       <div className="grid gap-4 lg:grid-cols-[minmax(0,.8fr)_minmax(0,1.2fr)]">
@@ -205,7 +262,7 @@ export function CaseStudies() {
                     <p className="text-xs leading-relaxed text-muted-foreground"><strong className="text-foreground">Root cause: </strong>{story.cause}</p>
                     <p className="text-xs leading-relaxed text-muted-foreground"><strong className="text-foreground">Fix: </strong>{story.fix}</p>
                     <p className="text-xs leading-relaxed text-muted-foreground"><strong className="text-foreground">Verification: </strong>{story.verification}</p>
-                  </div>)}</div> : <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Development context: this project was built alongside B.Tech semester coursework, assignments and university attendance commitments, with additional time shared across open-source contribution programs and hackathon deadlines. These competing commitments shaped the available build time; they are workload constraints, not technical failures.</p>}
+                  </div>)}</div> : <div className="mt-3 space-y-3">{projectBuildNotes[project.title] ? <><div className="font-mono text-[9px] uppercase tracking-widest text-[var(--primary)]">{projectBuildNotes[project.title].heading}</div><ul className="space-y-3">{projectBuildNotes[project.title].notes.map((note,index)=><li key={index} className="flex gap-3 text-sm leading-relaxed text-muted-foreground"><span className="font-mono text-[10px] text-[var(--primary)]">0{index+1}</span><span>{note}</span></li>)}</ul><p className="border-t border-border pt-3 text-xs leading-relaxed text-muted-foreground"><strong className="text-foreground">Development context: </strong>{projectBuildNotes[project.title].context}</p></> : <p className="text-sm text-muted-foreground">Project-specific build notes are being documented.</p>}</div>}
                 </div>
                 <div className="rounded-xl border border-border bg-background p-4">
                   <div className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground">engineering constraints to consider</div>
