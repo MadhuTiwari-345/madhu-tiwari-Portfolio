@@ -1,139 +1,168 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
 /* ============================================
-   Theme 1: Sunset Cyberpunk
-   Deep plum with vivid pink, coral and violet
+   Default Theme: "Sunset Architect"
+   Deep plum background, warm coral + amber accents
    ============================================ */
 :root,
 [data-theme='sunset'] {
-  --background: oklch(0.17 0.035 300);
-  --background-elevated: oklch(0.22 0.045 310);
-  --foreground: oklch(0.97 0.015 330);
-  --muted-foreground: oklch(0.72 0.035 320);
-  --card: oklch(0.21 0.045 305);
-  --card-foreground: oklch(0.97 0.015 330);
-  --popover: oklch(0.22 0.045 310);
-  --popover-foreground: oklch(0.97 0.015 330);
-  --primary: oklch(0.72 0.22 350);
-  --primary-foreground: oklch(0.16 0.035 300);
-  --secondary: oklch(0.78 0.16 45);
-  --secondary-foreground: oklch(0.16 0.035 300);
-  --accent: oklch(0.7 0.18 295);
-  --accent-foreground: oklch(0.97 0.015 330);
-  --muted: oklch(0.28 0.045 305);
+  --background: oklch(0.18 0.04 295);
+  --background-elevated: oklch(0.22 0.05 290);
+  --foreground: oklch(0.96 0.02 80);
+  --muted-foreground: oklch(0.72 0.04 60);
+
+  --card: oklch(0.22 0.06 295);
+  --card-foreground: oklch(0.96 0.02 80);
+  --popover: oklch(0.22 0.06 295);
+  --popover-foreground: oklch(0.96 0.02 80);
+
+  --primary: oklch(0.72 0.19 35);
+  --primary-foreground: oklch(0.15 0.04 295);
+  --secondary: oklch(0.82 0.16 75);
+  --secondary-foreground: oklch(0.15 0.04 295);
+  --accent: oklch(0.74 0.22 10);
+  --accent-foreground: oklch(0.96 0.02 80);
+
+  --muted: oklch(0.28 0.05 295);
   --destructive: oklch(0.6 0.24 25);
-  --destructive-foreground: oklch(0.97 0.015 330);
-  --border: oklch(0.34 0.055 320 / 0.65);
-  --input: oklch(0.28 0.045 305);
-  --ring: oklch(0.72 0.22 350);
-  --grid-color: oklch(0.72 0.22 350 / 0.08);
-  --glow: oklch(0.72 0.22 350);
-  --chart-1: oklch(0.72 0.22 350);
-  --chart-2: oklch(0.78 0.16 45);
-  --chart-3: oklch(0.7 0.18 295);
-  --chart-4: oklch(0.75 0.14 25);
-  --chart-5: oklch(0.68 0.15 270);
+  --destructive-foreground: oklch(0.96 0.02 80);
+
+  --border: oklch(0.32 0.06 295 / 0.6);
+  --input: oklch(0.28 0.05 295);
+  --ring: oklch(0.72 0.19 35);
+
+  --grid-color: oklch(0.72 0.19 35 / 0.08);
+  --glow: oklch(0.74 0.22 10);
+
+  --chart-1: oklch(0.72 0.19 35);
+  --chart-2: oklch(0.82 0.16 75);
+  --chart-3: oklch(0.74 0.22 10);
+  --chart-4: oklch(0.65 0.14 320);
+  --chart-5: oklch(0.7 0.12 260);
   --radius: 0.75rem;
 }
 
 /* ============================================
-   Theme 2: Midnight Electric
-   Midnight navy with cyan, violet and acid lime
+   Theme: "Cyberpunk"
+   Deep midnight, magenta + cyan neon
    ============================================ */
-[data-theme='midnight'] {
-  --background: oklch(0.13 0.035 255);
-  --background-elevated: oklch(0.18 0.045 255);
+[data-theme='cyberpunk'] {
+  --background: oklch(0.16 0.04 280);
+  --background-elevated: oklch(0.2 0.05 280);
   --foreground: oklch(0.96 0.02 220);
-  --muted-foreground: oklch(0.7 0.055 235);
-  --card: oklch(0.18 0.05 255);
+  --muted-foreground: oklch(0.7 0.06 250);
+
+  --card: oklch(0.2 0.05 280);
   --card-foreground: oklch(0.96 0.02 220);
-  --popover: oklch(0.18 0.045 255);
+  --popover: oklch(0.2 0.05 280);
   --popover-foreground: oklch(0.96 0.02 220);
-  --primary: oklch(0.82 0.15 205);
-  --primary-foreground: oklch(0.13 0.035 255);
-  --secondary: oklch(0.68 0.2 285);
-  --secondary-foreground: oklch(0.98 0.01 220);
-  --accent: oklch(0.88 0.19 130);
-  --accent-foreground: oklch(0.13 0.035 255);
-  --muted: oklch(0.25 0.045 255);
-  --destructive: oklch(0.62 0.22 25);
+
+  --primary: oklch(0.74 0.26 330);
+  --primary-foreground: oklch(0.15 0.04 280);
+  --secondary: oklch(0.78 0.17 200);
+  --secondary-foreground: oklch(0.15 0.04 280);
+  --accent: oklch(0.72 0.22 300);
+  --accent-foreground: oklch(0.96 0.02 220);
+
+  --muted: oklch(0.26 0.05 280);
+  --destructive: oklch(0.6 0.24 25);
   --destructive-foreground: oklch(0.96 0.02 220);
-  --border: oklch(0.34 0.07 250 / 0.65);
-  --input: oklch(0.25 0.045 255);
-  --ring: oklch(0.82 0.15 205);
-  --grid-color: oklch(0.82 0.15 205 / 0.1);
-  --glow: oklch(0.82 0.15 205);
-  --chart-1: oklch(0.82 0.15 205);
-  --chart-2: oklch(0.68 0.2 285);
-  --chart-3: oklch(0.88 0.19 130);
-  --chart-4: oklch(0.72 0.16 245);
-  --chart-5: oklch(0.76 0.17 320);
+
+  --border: oklch(0.32 0.08 280 / 0.6);
+  --input: oklch(0.26 0.05 280);
+  --ring: oklch(0.74 0.26 330);
+
+  --grid-color: oklch(0.78 0.17 200 / 0.1);
+  --glow: oklch(0.74 0.26 330);
+
+  --chart-1: oklch(0.74 0.26 330);
+  --chart-2: oklch(0.78 0.17 200);
+  --chart-3: oklch(0.72 0.22 300);
+  --chart-4: oklch(0.8 0.14 230);
+  --chart-5: oklch(0.7 0.18 350);
 }
 
 /* ============================================
-   Theme 3: Obsidian Rose
-   Charcoal, rose, dusty pink and champagne gold
+   Theme: "Cute"
+   Soft pink background, peach + lavender accents
    ============================================ */
-[data-theme='obsidian'] {
-  --background: oklch(0.13 0.008 20);
-  --background-elevated: oklch(0.19 0.012 15);
-  --foreground: oklch(0.95 0.012 20);
-  --muted-foreground: oklch(0.69 0.025 10);
-  --card: oklch(0.18 0.012 15);
-  --card-foreground: oklch(0.95 0.012 20);
-  --popover: oklch(0.19 0.012 15);
-  --popover-foreground: oklch(0.95 0.012 20);
-  --primary: oklch(0.65 0.16 5);
-  --primary-foreground: oklch(0.98 0.01 20);
-  --secondary: oklch(0.78 0.07 5);
-  --secondary-foreground: oklch(0.15 0.01 15);
-  --accent: oklch(0.78 0.12 80);
-  --accent-foreground: oklch(0.15 0.01 15);
-  --muted: oklch(0.25 0.012 15);
-  --destructive: oklch(0.6 0.2 25);
-  --destructive-foreground: oklch(0.98 0.01 20);
-  --border: oklch(0.34 0.025 10 / 0.65);
-  --input: oklch(0.25 0.012 15);
-  --ring: oklch(0.65 0.16 5);
-  --grid-color: oklch(0.65 0.16 5 / 0.07);
-  --glow: oklch(0.65 0.16 5);
-  --chart-1: oklch(0.65 0.16 5);
-  --chart-2: oklch(0.78 0.07 5);
-  --chart-3: oklch(0.78 0.12 80);
-  --chart-4: oklch(0.65 0.08 330);
-  --chart-5: oklch(0.68 0.04 40);
+[data-theme='cute'] {
+  --background: oklch(0.96 0.02 25);
+  --background-elevated: oklch(0.99 0.015 30);
+  --foreground: oklch(0.32 0.08 355);
+  --muted-foreground: oklch(0.5 0.08 340);
+
+  --card: oklch(0.99 0.015 30);
+  --card-foreground: oklch(0.32 0.08 355);
+  --popover: oklch(0.99 0.015 30);
+  --popover-foreground: oklch(0.32 0.08 355);
+
+  --primary: oklch(0.72 0.17 5);
+  --primary-foreground: oklch(0.99 0.01 30);
+  --secondary: oklch(0.8 0.1 50);
+  --secondary-foreground: oklch(0.32 0.08 355);
+  --accent: oklch(0.78 0.12 310);
+  --accent-foreground: oklch(0.32 0.08 355);
+
+  --muted: oklch(0.92 0.03 20);
+  --destructive: oklch(0.65 0.24 25);
+  --destructive-foreground: oklch(0.99 0.01 30);
+
+  --border: oklch(0.85 0.05 20);
+  --input: oklch(0.92 0.03 20);
+  --ring: oklch(0.72 0.17 5);
+
+  --grid-color: oklch(0.72 0.17 5 / 0.1);
+  --glow: oklch(0.78 0.12 310);
+
+  --chart-1: oklch(0.72 0.17 5);
+  --chart-2: oklch(0.8 0.1 50);
+  --chart-3: oklch(0.78 0.12 310);
+  --chart-4: oklch(0.82 0.1 200);
+  --chart-5: oklch(0.75 0.15 340);
 }
 
 /* ============================================
-   Theme 4: Neon Matrix
-   Near-black green with neon mint and acid lime
+   Theme: "Ocean"
+   Deep navy, coral + teal accents
    ============================================ */
-[data-theme='matrix'] {
-  --background: oklch(0.12 0.025 155);
-  --background-elevated: oklch(0.17 0.035 155);
-  --foreground: oklch(0.95 0.025 150);
-  --muted-foreground: oklch(0.68 0.045 155);
-  --card: oklch(0.17 0.035 155);
-  --card-foreground: oklch(0.95 0.025 150);
-  --popover: oklch(0.17 0.035 155);
-  --popover-foreground: oklch(0.95 0.025 150);
-  --primary: oklch(0.86 0.2 155);
-  --primary-foreground: oklch(0.12 0.025 155);
-  --secondary: oklch(0.91 0.22 130);
-  --secondary-foreground: oklch(0.12 0.025 155);
-  --accent: oklch(0.68 0.035 245);
-  --accent-foreground: oklch(0.96 0.02 150);
-  --muted: oklch(0.24 0.035 155);
-  --destructive: oklch(0.62 0.2 25);
-  --destructive-foreground: oklch(0.96 0.02 150);
-  --border: oklch(0.32 0.055 155 / 0.65);
-  --input: oklch(0.24 0.035 155);
-  --ring: oklch(0.86 0.2 155);
-  --grid-color: oklch(0.86 0.2 155 / 0.09);
-  --glow: oklch(0.86 0.2 155);
-  --chart-1: oklch(0.86 0.2 155);
-  --chart-2: oklch(0.91 0.22 130);
-  --chart-3: oklch(0.68 0.035 245);
-  --chart-4: oklch(0.75 0.14 165);
-  --chart-5: oklch(0.72 0.13 110);
+[data-theme='ocean'] {
+  --background: oklch(0.19 0.04 240);
+  --background-elevated: oklch(0.23 0.05 240);
+  --foreground: oklch(0.96 0.02 80);
+  --muted-foreground: oklch(0.72 0.05 230);
+
+  --card: oklch(0.23 0.05 240);
+  --card-foreground: oklch(0.96 0.02 80);
+  --popover: oklch(0.23 0.05 240);
+  --popover-foreground: oklch(0.96 0.02 80);
+
+  --primary: oklch(0.74 0.18 25);
+  --primary-foreground: oklch(0.15 0.04 240);
+  --secondary: oklch(0.78 0.13 200);
+  --secondary-foreground: oklch(0.15 0.04 240);
+  --accent: oklch(0.8 0.14 80);
+  --accent-foreground: oklch(0.15 0.04 240);
+
+  --muted: oklch(0.29 0.05 240);
+  --destructive: oklch(0.6 0.24 25);
+  --destructive-foreground: oklch(0.96 0.02 80);
+
+  --border: oklch(0.34 0.06 240 / 0.6);
+  --input: oklch(0.29 0.05 240);
+  --ring: oklch(0.74 0.18 25);
+
+  --grid-color: oklch(0.78 0.13 200 / 0.1);
+  --glow: oklch(0.74 0.18 25);
+
+  --chart-1: oklch(0.74 0.18 25);
+  --chart-2: oklch(0.78 0.13 200);
+  --chart-3: oklch(0.8 0.14 80);
+  --chart-4: oklch(0.7 0.14 280);
+  --chart-5: oklch(0.68 0.16 15);
 }
 
 @theme inline {
