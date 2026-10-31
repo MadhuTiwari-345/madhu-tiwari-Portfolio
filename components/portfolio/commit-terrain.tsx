@@ -72,7 +72,7 @@ function GitHubCity({ grid }: { grid: number[][] }) {
     color: "#211633", roughness: 0.82, metalness: 0.18
   }), [])
   const windowMaterial = useMemo(() => new THREE.MeshBasicMaterial({
-    color: "#c084fc", toneMapped: false
+    color: "#ffc8ff", toneMapped: false
   }), [])
 
   useEffect(() => () => {
@@ -110,7 +110,7 @@ function GitHubCity({ grid }: { grid: number[][] }) {
         <primitive object={baseMaterial} attach="material" />
       </mesh>
       {buildings.map((b, i) => {
-        const palette = ["#7040b8", "#8052c5", "#9656bd", "#6335a6", "#b05abf", "#8064c2"]
+        const palette = ["#8b5cf6", "#a78bfa", "#c084fc", "#7c3aed", "#e879f9", "#b4a0ff"]
         const color = palette[b.seed % palette.length]
         const w = b.tower ? 0.25 : 0.31
         const d = b.tower ? 0.25 : 0.31
@@ -131,7 +131,7 @@ function GitHubCity({ grid }: { grid: number[][] }) {
           >
             <mesh position={[0, b.h / 2, 0]} castShadow receiveShadow>
               <boxGeometry args={[w, b.h, d]} />
-              <meshStandardMaterial color={color} roughness={0.48} metalness={0.2} emissive={color} emissiveIntensity={hovered === i ? 0.38 : b.activity > 0 ? 0.12 : 0.035} />
+              <meshStandardMaterial color={color} roughness={0.48} metalness={0.2} emissive={color} emissiveIntensity={hovered === i ? 0.62 : b.activity > 0 ? 0.22 : 0.08} />
             </mesh>
             {b.h > 0.65 && (
               <>
@@ -142,7 +142,7 @@ function GitHubCity({ grid }: { grid: number[][] }) {
                 {b.h > 1.25 && (
                   <mesh position={[0, b.h + 0.08, 0]} castShadow>
                     <boxGeometry args={[0.045, 0.16, 0.045]} />
-                    <meshBasicMaterial color="#b879e8" />
+                    <meshBasicMaterial color="#f5d0fe" />
                   </mesh>
                 )}
               </>
@@ -182,10 +182,10 @@ export function CommitTerrain() {
       <Canvas camera={{ position: [9, 10, 12], fov: 34 }} dpr={[1, 1.5]} shadows>
         <color attach="background" args={["#110d20"]} />
         <fog attach="fog" args={["#110d20", 13, 24]} />
-        <ambientLight intensity={0.42} />
-        <directionalLight position={[5, 10, 6]} intensity={0.95} color="#c4a3e8" castShadow />
-        <pointLight position={[-5, 5, -3]} intensity={12} distance={18} color="#8b45c7" />
-        <pointLight position={[5, 4, 4]} intensity={8} distance={16} color="#b56bd4" />
+        <ambientLight intensity={0.72} />
+        <directionalLight position={[5, 10, 6]} intensity={1.8} color="#e9d5ff" castShadow />
+        <pointLight position={[-5, 5, -3]} intensity={28} distance={18} color="#a855f7" />
+        <pointLight position={[5, 4, 4]} intensity={22} distance={16} color="#f0abfc" />
         <GitHubCity grid={grid} />
       </Canvas>
     </div>
