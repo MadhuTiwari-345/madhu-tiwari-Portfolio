@@ -9,40 +9,41 @@
    ============================================ */
 :root,
 [data-theme='sunset'] {
-  --background: oklch(0.18 0.04 295);
-  --background-elevated: oklch(0.22 0.05 290);
-  --foreground: oklch(0.96 0.02 80);
-  --muted-foreground: oklch(0.72 0.04 60);
+  /* NEON ORCHARD: midnight ink, electric lime, ultraviolet and ice blue */
+  --background: oklch(0.155 0.025 258);
+  --background-elevated: oklch(0.205 0.035 258);
+  --foreground: oklch(0.96 0.018 100);
+  --muted-foreground: oklch(0.70 0.035 245);
 
-  --card: oklch(0.22 0.06 295);
-  --card-foreground: oklch(0.96 0.02 80);
-  --popover: oklch(0.22 0.06 295);
-  --popover-foreground: oklch(0.96 0.02 80);
+  --card: oklch(0.205 0.035 258);
+  --card-foreground: oklch(0.96 0.018 100);
+  --popover: oklch(0.22 0.04 258);
+  --popover-foreground: oklch(0.96 0.018 100);
 
-  --primary: oklch(0.72 0.19 35);
-  --primary-foreground: oklch(0.15 0.04 295);
-  --secondary: oklch(0.82 0.16 75);
-  --secondary-foreground: oklch(0.15 0.04 295);
-  --accent: oklch(0.74 0.22 10);
-  --accent-foreground: oklch(0.96 0.02 80);
+  --primary: oklch(0.86 0.22 135);
+  --primary-foreground: oklch(0.18 0.035 258);
+  --secondary: oklch(0.72 0.19 292);
+  --secondary-foreground: oklch(0.98 0.01 292);
+  --accent: oklch(0.78 0.15 210);
+  --accent-foreground: oklch(0.16 0.03 258);
 
-  --muted: oklch(0.28 0.05 295);
-  --destructive: oklch(0.6 0.24 25);
-  --destructive-foreground: oklch(0.96 0.02 80);
+  --muted: oklch(0.26 0.035 258);
+  --destructive: oklch(0.64 0.22 25);
+  --destructive-foreground: oklch(0.98 0.01 100);
 
-  --border: oklch(0.32 0.06 295 / 0.6);
-  --input: oklch(0.28 0.05 295);
-  --ring: oklch(0.72 0.19 35);
+  --border: oklch(0.36 0.04 258 / 0.68);
+  --input: oklch(0.25 0.035 258);
+  --ring: oklch(0.86 0.22 135);
 
-  --grid-color: oklch(0.72 0.19 35 / 0.08);
-  --glow: oklch(0.74 0.22 10);
+  --grid-color: oklch(0.78 0.15 210 / 0.075);
+  --glow: oklch(0.86 0.22 135);
 
-  --chart-1: oklch(0.72 0.19 35);
-  --chart-2: oklch(0.82 0.16 75);
-  --chart-3: oklch(0.74 0.22 10);
-  --chart-4: oklch(0.65 0.14 320);
-  --chart-5: oklch(0.7 0.12 260);
-  --radius: 0.75rem;
+  --chart-1: oklch(0.86 0.22 135);
+  --chart-2: oklch(0.72 0.19 292);
+  --chart-3: oklch(0.78 0.15 210);
+  --chart-4: oklch(0.78 0.16 35);
+  --chart-5: oklch(0.72 0.14 255);
+  --radius: 1rem;
 }
 
 /* ============================================
@@ -451,4 +452,61 @@ html { scroll-behavior: smooth; }
 [id] { scroll-margin-top: 8.5rem; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+}
+
+
+/* Neon Orchard art direction: restrained glow, crisp edges, tactile hover states. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  opacity: .72;
+  background:
+    radial-gradient(ellipse 38rem 30rem at 8% 14%, color-mix(in oklch, var(--secondary) 12%, transparent), transparent 72%),
+    radial-gradient(ellipse 34rem 28rem at 92% 58%, color-mix(in oklch, var(--accent) 10%, transparent), transparent 72%);
+}
+.hero-orbit-scene {
+  opacity: .72;
+  mask-image: radial-gradient(ellipse at center, black 24%, transparent 76%);
+}
+.hero-orbit {
+  border-color: color-mix(in oklch, var(--accent) 34%, transparent) !important;
+  box-shadow: 0 0 55px -32px var(--accent);
+}
+.hero-orbit-core {
+  background: radial-gradient(circle, color-mix(in oklch, var(--primary) 26%, transparent), transparent 70%) !important;
+  filter: blur(8px);
+}
+.glass-panel {
+  background: color-mix(in oklch, var(--background) 82%, transparent) !important;
+  border-color: color-mix(in oklch, var(--accent) 20%, var(--border)) !important;
+  box-shadow: 0 18px 60px -38px color-mix(in oklch, var(--accent) 45%, transparent);
+}
+section[id] {
+  isolation: isolate;
+}
+section[id] > * {
+  position: relative;
+}
+section[id] article,
+section[id] aside,
+section[id] .glass-pill {
+  transition: border-color .25s ease, box-shadow .25s ease, background-color .25s ease;
+}
+section[id] article:hover {
+  border-color: color-mix(in oklch, var(--primary) 52%, var(--border));
+  box-shadow: 0 18px 55px -38px color-mix(in oklch, var(--primary) 55%, transparent);
+}
+::selection {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+@media (prefers-reduced-motion: reduce) {
+  section[id] article,
+  section[id] aside,
+  section[id] .glass-pill {
+    transition: none;
+  }
 }
