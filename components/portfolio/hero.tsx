@@ -103,35 +103,6 @@ export function Hero() {
           </span>
         </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, delay: 0.34 }}
-          className="mt-5 max-w-xl px-2 text-pretty text-sm leading-7 text-muted-foreground sm:px-0 sm:text-base sm:leading-8"
-        >
-          Computer & Data Science student building full-stack products and practical AI systems.
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.42 }}
-          className="mt-7 flex flex-wrap items-center justify-center gap-2 sm:mt-8 sm:gap-3"
-        >
-          {["AI & ML", "Full Stack", "Backend Engineering"].map((item, index) => (
-            <motion.span
-              key={item}
-              initial={{ opacity: 0, y: 8, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 0.52 + index * 0.1, duration: 0.4 }}
-              whileHover={{ y: -3, scale: 1.04 }}
-              className="rounded-full border border-[var(--primary)]/25 bg-[var(--primary)]/[0.06] px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.1em] text-muted-foreground sm:text-[10px]"
-            >
-              {item}
-            </motion.span>
-          ))}
-        </motion.div>
-
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
@@ -165,16 +136,6 @@ export function Hero() {
         </motion.div>
       </div>
 
-      <div aria-hidden className="absolute bottom-6 left-6 hidden font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground/70 md:block">
-        <div>lat 28.6139</div>
-        <div>lon 77.2090</div>
-      </div>
-      <div aria-hidden className="absolute right-6 bottom-6 hidden font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground/70 md:block">
-        <div>sys online</div>
-        <div className="flex items-center justify-end gap-1.5">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--primary)]" />
-          v 2026.04
-        </div>
       </div>
     </section>
   )
