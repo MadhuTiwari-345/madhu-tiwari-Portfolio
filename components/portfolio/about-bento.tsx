@@ -12,33 +12,33 @@ const stats = [
 
 export function AboutBento() {
   return (
-    <section id="about" className="relative mx-auto w-full max-w-7xl px-4 py-24 md:px-8">
+    <section id="about" className="relative mx-auto w-full max-w-7xl px-4 py-16 md:px-8 lg:py-20">
       <SectionHeader label="ABOUT" title="The human behind the code." />
 
-      <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-12">
+      <div className="grid min-w-0 grid-cols-1 items-stretch gap-4 lg:grid-cols-12 lg:gap-5">
         {/* Bio */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 md:col-span-8 md:row-span-2"
+          className="relative min-w-0 overflow-hidden rounded-2xl border border-border/80 bg-card p-5 sm:p-7 lg:col-span-7 lg:row-span-2"
         >
           <div
             aria-hidden
-            className="absolute -top-20 -right-20 h-60 w-60 rounded-full opacity-30 blur-3xl"
+            className="absolute -top-24 -right-24 h-52 w-52 rounded-full opacity-15 blur-3xl"
             style={{ background: "var(--primary)" }}
           />
           <div className="relative">
             <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
               about.txt
             </div>
-            <h3 className="mt-3 text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
+            <h3 className="mt-3 max-w-[24ch] text-balance text-2xl font-semibold leading-tight tracking-tight sm:text-3xl">
               I build <span className="text-[var(--primary)]">full-stack products</span> with practical AI.
             </h3>
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">Computer &amp; Data Science (AI &amp; ML) student at MUIT Noida. Into backend systems, thoughtful interfaces and open source.</p>
+            <p className="mt-4 max-w-[58ch] text-sm leading-7 text-muted-foreground sm:text-[15px]">Computer &amp; Data Science (AI &amp; ML) student at MUIT Noida. Into backend systems, thoughtful interfaces and open source.</p>
 
-            <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div className="mt-7 grid grid-cols-2 gap-2.5 sm:gap-3">
               {stats.map((s, i) => (
                 <motion.div
                   key={s.label}
@@ -46,11 +46,11 @@ export function AboutBento() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.15 + i * 0.08 }}
-                  className="rounded-xl border border-border bg-[var(--background-elevated)] p-3"
+                  className="flex min-h-[104px] min-w-0 flex-col rounded-xl border border-border/70 bg-[var(--background-elevated)] p-3.5 sm:p-4"
                 >
                   <s.icon className="h-4 w-4 text-[var(--primary)]" />
-                  <div className="mt-2 text-sm font-semibold">{s.value}</div>
-                  <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                  <div className="mt-2 break-words text-sm font-semibold leading-snug">{s.value}</div>
+                  <div className="mt-1 font-mono text-[9px] uppercase leading-relaxed tracking-[0.12em] text-muted-foreground">
                     {s.label}
                   </div>
                 </motion.div>
@@ -65,7 +65,7 @@ export function AboutBento() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative overflow-hidden rounded-2xl border border-border bg-card p-5 md:col-span-4"
+          className="relative min-w-0 rounded-2xl border border-border/80 bg-card p-5 sm:p-6 lg:col-span-5"
         >
           <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
             currently
@@ -93,13 +93,13 @@ export function AboutBento() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border p-5 md:col-span-4"
+          className="relative flex min-w-0 flex-col justify-between overflow-hidden rounded-2xl border border-border/80 p-5 sm:p-6 lg:col-span-5"
           style={{
             background:
               "linear-gradient(135deg, color-mix(in oklch, var(--primary) 18%, var(--card)) 0%, var(--card) 100%)",
           }}
         >
-          <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+          <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
             <GitPullRequest className="h-3 w-3" /> open-source.impact
           </div>
           <div className="mt-4">
@@ -111,11 +111,11 @@ export function AboutBento() {
               Across 89 public repositories.
             </div>
           </div>
-          <div className="mt-4 flex flex-wrap gap-1.5">
+          <div className="mt-4 flex flex-wrap gap-2">
             {["GSSoC '25", "SWOC '26", "ECWOC '26", "OSCG '26", "Aperture 3.0"].map((program) => (
               <span
                 key={program}
-                className="rounded-full border border-border bg-[var(--background-elevated)] px-2 py-1 font-mono text-[9px] text-muted-foreground"
+                className="rounded-md bg-[var(--background-elevated)] px-2.5 py-1.5 font-mono text-[9px] text-muted-foreground"
               >
                 {program}
               </span>
