@@ -41,7 +41,7 @@ export function NavBar() {
       const readingLine = window.scrollY + headerHeight + 72
       let current = ""
       for (const section of sections) {
-        if (section.offsetTop <= readingLine) current = section.id
+        if (section.getBoundingClientRect().top + window.scrollY <= readingLine) current = section.id
         else break
       }
       setActiveSection(current)
