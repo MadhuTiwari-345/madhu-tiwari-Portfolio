@@ -115,8 +115,8 @@ const quickTargets: Record<string, string> = {
   projects: "projects",
   stack: "skills",
   journey: "experience",
-  map: "engineering",
-  "case-study": "projects",
+  map: "system-map",
+  "case-study": "case-studies",
   contact: "contact",
 }
 
