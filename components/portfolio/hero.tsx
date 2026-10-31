@@ -14,11 +14,24 @@ const stack = [
 ]
 
 const process = [
-  { number: "01", title: "Understand", detail: "Start with the real problem." },
-  { number: "02", title: "Design", detail: "Shape a clear, maintainable system." },
-  { number: "03", title: "Build", detail: "Implement, test and refine." },
-  { number: "04", title: "Ship", detail: "Deploy, learn and improve." },
+  { number: "01", title: "Understand", detail: "Start with the real problem.", target: "about" },
+  { number: "02", title: "Design", detail: "Shape a clear, maintainable system.", target: "engineering" },
+  { number: "03", title: "Build", detail: "Implement, test and refine.", target: "projects" },
+  { number: "04", title: "Ship", detail: "Deploy, learn and improve.", target: "experience" },
 ]
+
+function jumpTo(id: string) {
+  const target = document.getElementById(id)
+  if (!target) return
+  const header = document.querySelector("header")?.getBoundingClientRect().height ?? 72
+  const heading = (target.firstElementChild as HTMLElement | null) ?? target
+  const top = heading.getBoundingClientRect().top + window.scrollY - header - 18
+  window.history.pushState(null, "", `#${id}`)
+  window.scrollTo({
+    top: Math.max(0, top),
+    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+  })
+}
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -170,12 +183,15 @@ export function Hero() {
                       {stack.map((item, index) => {
                         const Icon = item.icon
                         return (
-                          <motion.div
+                          <motion.button
+                            type="button"
+                            onClick={() => jumpTo("skills")}
                             key={item.label}
                             initial={{ opacity: 0, x: 12 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.055, duration: 0.28 }}
-                            className="group/row flex items-center gap-3 rounded-xl border border-border/75 bg-background/65 px-3.5 py-3.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/40 hover:bg-card"
+                            className="group/row flex w-full items-center gap-3 rounded-xl border border-border/75 bg-background/65 px-3.5 py-3.5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/40 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]"
+                            aria-label={`Explore ${item.label} skills`}
                           >
                             <span className="rounded-lg bg-[var(--primary)]/8 p-2 text-[var(--primary)]"><Icon className="h-4 w-4" /></span>
                             <span className="min-w-0 flex-1">
@@ -183,21 +199,21 @@ export function Hero() {
                               <span className="mt-1 block text-[11px] leading-relaxed text-muted-foreground">{item.value}</span>
                             </span>
                             <span className="font-mono text-[9px] text-muted-foreground/70">0{index + 1}</span>
-                          </motion.div>
+                          </motion.button>
                         )
                       })}
                     </motion.div>
                   ) : (
                     <motion.div key="process" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.22 }} className="space-y-1">
                       {process.map((item, index) => (
-                        <motion.div key={item.number} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.045, duration: 0.25 }} className="flex items-center gap-3 rounded-lg px-3 py-3 transition-colors hover:bg-[var(--muted)]/70">
+                        <motion.button type="button" onClick={() => jumpTo(item.target)} key={item.number} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.045, duration: 0.25 }} className="group/process flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left transition-colors hover:bg-[var(--muted)]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]">
                           <span className="font-mono text-[10px] font-semibold text-[var(--secondary)]">{item.number}</span>
                           <span className="min-w-0 flex-1">
                             <span className="block text-[13px] font-semibold">{item.title}</span>
                             <span className="mt-0.5 block text-[11px] text-muted-foreground">{item.detail}</span>
                           </span>
-                          <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground/60" />
-                        </motion.div>
+                          <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground/60 transition-transform group-hover/process:-translate-y-0.5 group-hover/process:translate-x-0.5" />
+                        </motion.button>
                       ))}
                     </motion.div>
                   )}
