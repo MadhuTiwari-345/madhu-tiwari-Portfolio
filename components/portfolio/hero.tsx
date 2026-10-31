@@ -26,12 +26,12 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative flex min-h-[100svh] w-full items-center overflow-hidden px-4 pb-16 pt-44 sm:px-6 sm:pt-48 lg:px-8"
+      className="relative flex min-h-[92svh] w-full items-center overflow-hidden px-4 pb-14 pt-28 sm:px-6 sm:pt-32 lg:px-8"
     >
       <div aria-hidden className="hero-paper-grid pointer-events-none absolute inset-0" />
       <div aria-hidden className="hero-color-wash pointer-events-none absolute inset-0" />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[1.08fr_.92fr] lg:gap-16">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-9 lg:grid-cols-[1.08fr_.92fr] lg:gap-12">
         <div className="max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -62,7 +62,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.12 }}
-            className="max-w-3xl text-balance font-display text-[clamp(3.2rem,7.4vw,6.4rem)] font-bold leading-[0.98] tracking-[-0.065em]"
+            className="max-w-none text-balance font-display text-[clamp(3rem,5.7vw,5.35rem)] font-bold leading-[1.02] tracking-[-0.06em]"
           >
             Thoughtful code.
             <br />
@@ -107,7 +107,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.75 }}
-            className="mt-12 inline-flex items-center gap-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+            className="mt-8 inline-flex items-center gap-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             A little more about me <ArrowDownRight className="h-3.5 w-3.5" />
           </motion.a>
