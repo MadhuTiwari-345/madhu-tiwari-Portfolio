@@ -2,150 +2,111 @@
 
 import { motion } from "framer-motion"
 import { SectionHeader } from "./about-bento"
+import { Braces, Cloud, Code2, Database, Layers3, Workflow } from "lucide-react"
 
-const skillGroups: {
-  title: string
-  icon: string
-  items: { name: string; level: number }[]
-  span?: string
-}[] = [
+const skillGroups = [
   {
     title: "Languages",
-    icon: "<>",
-    span: "md:col-span-2",
-    items: [
-      { name: "Java", level: 85 },
-      { name: "Python", level: 82 },
-      { name: "JavaScript", level: 88 },
-      { name: "SQL", level: 78 },
-      { name: "TypeScript", level: 80 },
-    ],
+    note: "The tools I reach for to solve problems",
+    icon: Code2,
+    items: ["Java", "Python", "JavaScript", "TypeScript", "SQL"],
   },
   {
-    title: "Frameworks",
-    icon: "{ }",
-    items: [
-      { name: "Spring Boot", level: 82 },
-      { name: "Node.js", level: 85 },
-      { name: "React", level: 90 },
-      { name: "Next.js", level: 86 },
-    ],
+    title: "Application development",
+    note: "Interfaces, services and APIs",
+    icon: Braces,
+    items: ["React", "Next.js", "Node.js", "Spring Boot", "REST APIs", "Tailwind CSS"],
   },
   {
-    title: "Databases",
-    icon: "db",
-    items: [
-      { name: "PostgreSQL", level: 80 },
-      { name: "MongoDB", level: 82 },
-      { name: "Firebase", level: 76 },
-    ],
+    title: "Data & infrastructure",
+    note: "Persistence, deployment and integrations",
+    icon: Database,
+    items: ["PostgreSQL", "MongoDB", "Firebase", "Docker", "Google Cloud Run", "Vercel"],
   },
   {
-    title: "Tools & Cloud",
-    icon: "ops",
-    span: "md:col-span-2",
-    items: [
-      { name: "Git / GitHub", level: 92 },
-      { name: "Docker", level: 68 },
-      { name: "Vercel", level: 88 },
-      { name: "Google Cloud Run", level: 64 },
-      { name: "IPFS / Web3", level: 60 },
-    ],
+    title: "Engineering practice",
+    note: "How I approach building and maintaining software",
+    icon: Workflow,
+    items: ["Git & GitHub", "API design", "Testing", "System design", "AI agents", "Applied ML"],
   },
+]
+
+const concepts = [
+  "Data structures & algorithms",
+  "Object-oriented programming",
+  "Operating systems",
+  "Database systems",
+  "Software engineering",
+  "Artificial intelligence",
+  "Probability & statistics",
+  "Linear algebra",
+  "Access control",
 ]
 
 export function SkillsBento() {
   return (
     <section id="skills" className="relative mx-auto w-full max-w-7xl px-4 py-24 md:px-8">
-      <SectionHeader label="SKILLS" title="My toolkit." />
+      <SectionHeader label="TOOLKIT" title="Tools are useful. How you use them matters." />
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-        {skillGroups.map((group, gi) => (
-          <motion.div
-            key={group.title}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, delay: gi * 0.08 }}
-            className={`relative overflow-hidden rounded-2xl border border-border bg-card p-5 ${
-              group.title === "Tools & Cloud" ? "md:col-span-4" : group.span ?? ""
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                {group.title}
+      <div className="grid gap-3 md:grid-cols-2">
+        {skillGroups.map((group, index) => {
+          const Icon = group.icon
+          return (
+            <motion.article
+              key={group.title}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-70px" }}
+              transition={{ duration: 0.45, delay: index * 0.06 }}
+              className="rounded-2xl border border-border bg-card p-5 transition-colors duration-200 hover:border-[var(--primary)]/40 sm:p-6"
+            >
+              <div className="flex items-start gap-3">
+                <span className="rounded-xl bg-[var(--primary)]/8 p-2.5 text-[var(--primary)]">
+                  <Icon className="h-4 w-4" />
+                </span>
+                <div>
+                  <h3 className="text-sm font-semibold">{group.title}</h3>
+                  <p className="mt-1 text-xs text-muted-foreground">{group.note}</p>
+                </div>
               </div>
-              <div
-                className="rounded-md border border-border px-2 py-0.5 font-mono text-[10px] text-muted-foreground"
-              >
-                {group.icon}
+              <div className="mt-5 flex flex-wrap gap-2">
+                {group.items.map((item, itemIndex) => (
+                  <motion.span
+                    key={item}
+                    initial={{ opacity: 0, y: 6 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.25, delay: index * 0.06 + itemIndex * 0.025 }}
+                    className="rounded-lg border border-border/80 bg-background px-3 py-2 text-xs text-foreground/80 transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/45 hover:bg-[var(--primary)]/5 hover:text-foreground"
+                  >
+                    {item}
+                  </motion.span>
+                ))}
               </div>
-            </div>
-
-            <ul className="mt-5 space-y-3">
-              {group.items.map((item, i) => (
-                <li key={item.name} className="space-y-1.5">
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="font-medium">{item.name}</span>
-                    <span className="font-mono text-[10px] text-muted-foreground">{item.level}</span>
-                  </div>
-                  <div className="h-1.5 overflow-hidden rounded-full bg-[var(--background-elevated)]">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${item.level}%` }}
-                      viewport={{ once: true, margin: "-40px" }}
-                      transition={{ duration: 1, delay: 0.2 + i * 0.06, ease: "easeOut" }}
-                      className="h-full rounded-full"
-                      style={{
-                        background:
-                          "linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%)",
-                      }}
-                    />
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        ))}
-
-        {/* Concepts card */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5, delay: 0.32 }}
-          className="relative overflow-hidden rounded-2xl border border-border bg-card p-5 md:col-span-4"
-        >
-          <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-            core concepts
-          </div>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {[
-              "Data Structures",
-              "Algorithms",
-              "Object Oriented Programming",
-              "Operating Systems",
-              "Database Systems",
-              "Software Engineering",
-              "Artificial Intelligence",
-              "Probability & Statistics",
-              "Linear Algebra",
-              "REST APIs",
-              "Role Based Access",
-              "Smart Contracts",
-              "Prompt Engineering",
-              "System Design",
-            ].map((c) => (
-              <span
-                key={c}
-                className="glass-pill rounded-full px-3 py-1 text-xs text-muted-foreground"
-              >
-                {c}
-              </span>
-            ))}
-          </div>
-        </motion.div>
+            </motion.article>
+          )
+        })}
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.4 }}
+        className="mt-3 rounded-2xl border border-border/80 bg-[var(--background-elevated)] p-5 sm:p-6"
+      >
+        <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">
+          <Layers3 className="h-3.5 w-3.5 text-[var(--primary)]" />
+          Foundations
+        </div>
+        <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3">
+          {concepts.map((concept) => (
+            <span key={concept} className="text-xs text-muted-foreground transition-colors hover:text-foreground">
+              {concept}
+            </span>
+          ))}
+        </div>
+      </motion.div>
     </section>
   )
 }
