@@ -212,10 +212,10 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-48px" }}
       transition={{ duration: 0.42, delay: Math.min(index * 0.035, 0.14), ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex h-full flex-col"
+      className="group relative flex h-full min-w-0 flex-col"
     >
       <div className="relative overflow-hidden rounded-[1.35rem] border-2 border-border bg-[var(--background-elevated)] p-1.5 shadow-[0_4px_18px_-14px_var(--foreground)] transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[var(--primary)]/70 group-hover:shadow-[0_22px_55px_-30px_var(--primary)]">
-        <div className={`relative w-full overflow-hidden rounded-[1rem] ${index % 4 === 1 ? "aspect-[5/4]" : "aspect-[16/10]"}`}>
+        <div className={`relative w-full overflow-hidden rounded-[1rem] $aspect-[16/10]`}>
           <AnimatePresence initial={false} mode="wait">
             {xray ? (
               <motion.div key="xray" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }} className="absolute inset-0">
