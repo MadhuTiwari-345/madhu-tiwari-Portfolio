@@ -145,7 +145,7 @@ export function CommandDeck() {
 
   return (
     <section id="console" className="relative mx-auto w-full max-w-7xl px-4 py-20 md:px-8">
-      <SectionHeader label="interactive interface" title="A little command line, a lot about how I build." />
+      <SectionHeader label="console" title="Explore by command." />
 
       <div className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
         <motion.div
@@ -168,7 +168,7 @@ export function CommandDeck() {
           <div className="flex min-h-[340px] flex-col p-4 sm:p-5">
             <div className="mb-4 flex items-center gap-2 font-mono text-[10px] text-white/45">
               <Terminal className="h-3.5 w-3.5" />
-              <span>type a command or choose a shortcut</span>
+              <span>try a command</span>
             </div>
 
             <div aria-live="polite" aria-relevant="additions text" className="min-h-[205px] space-y-4 font-mono text-[11px] leading-6 sm:text-xs">
@@ -236,10 +236,7 @@ export function CommandDeck() {
               <Command className="h-3.5 w-3.5 text-[var(--primary)]" />
               quick access
             </div>
-            <h3 className="relative mt-3 text-2xl font-semibold tracking-tight">Explore the system.</h3>
-            <p className="relative mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              A tiny, local portfolio assistant. No pretend AI answers, just direct routes to real work, tools and experience.
-            </p>
+            <h3 className="relative mt-3 text-2xl font-semibold tracking-tight">Quick jump.</h3>
             <div className="relative mt-5 grid grid-cols-2 gap-2">
               {suggestions.map((command) => (
                 <button
