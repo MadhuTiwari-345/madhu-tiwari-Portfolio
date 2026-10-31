@@ -502,3 +502,32 @@ section[id] article:hover {
   #top h1 { font-size: clamp(2.7rem, 12vw, 4.2rem); letter-spacing: -.055em; }
   #top h1 span { white-space: normal; }
 }
+
+
+/* Navigation and rhythm: one predictable anchor offset and tighter section cadence. */
+html {
+  scroll-padding-top: 6.5rem;
+}
+[id] {
+  scroll-margin-top: 6.5rem;
+}
+section[id]:not(#top) {
+  padding-block: clamp(3.25rem, 5vw, 4.75rem);
+}
+section[id] .mb-10 {
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+@media (max-width: 1023px) {
+  html { scroll-padding-top: 7.25rem; }
+  [id] { scroll-margin-top: 7.25rem; }
+  section[id]:not(#top) {
+    padding-block: 3.25rem;
+  }
+}
+@media (max-width: 640px) {
+  html { scroll-padding-top: 7.75rem; }
+  [id] { scroll-margin-top: 7.75rem; }
+  section[id]:not(#top) {
+    padding-block: 2.75rem;
+  }
+}
