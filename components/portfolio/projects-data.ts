@@ -42,7 +42,7 @@ export const projects: Project[] = [
     description:
       "A farmer-first dashboard for weather, crop advice, mandi prices, and government schemes with regional-language support.",
     buildNote: "Brings weather, mandi information and crop guidance into one farmer-first interface.",
-    tags: ["React", "Node.js", "Tailwind", "Firebase", "REST"],
+    tags: ["Next.js", "TypeScript", "Node.js", "FastAPI", "PostgreSQL", "Redis"],
     repo: "https://github.com/MadhuTiwari-345/Kisan-OS",
     live: "https://kisanosprojectcheck.vercel.app/",
     year: "2025",
