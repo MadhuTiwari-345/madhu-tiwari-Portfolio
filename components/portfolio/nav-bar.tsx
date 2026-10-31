@@ -8,7 +8,7 @@ import { BriefcaseBusiness, X } from "lucide-react"
 
 const profileImage = "https://avatars.githubusercontent.com/u/194702672?v=4"
 const links = [
-  { href: "#console", label: "Play" },
+  { href: "#console", label: "Console" },
   { href: "#about", label: "About" },
   { href: "#projects", label: "Work" },
   { href: "#engineering", label: "Build" },
