@@ -20,10 +20,7 @@ export function ProjectsSection() {
     <section id="projects" className="relative mx-auto w-full max-w-7xl px-4 py-24 md:px-8">
       <div className="mb-8 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
         <div>
-          <SectionHeader label="SELECTED WORK" title="Built to solve real problems." />
-          <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
-            A few things from the lab. Pick a lane to explore.
-          </p>
+          <SectionHeader label="WORK / 01—09" title="Selected builds." />
         </div>
         <div className="flex items-center gap-2 self-start rounded-full border border-border bg-card/70 px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-muted-foreground sm:self-auto">
           <Layers3 className="h-3.5 w-3.5 text-[var(--primary)]" />
