@@ -142,11 +142,10 @@ export function Hero() {
               </div>
             </div>
 
-            <div className="mt-6 grid grid-cols-2 rounded-xl bg-[var(--muted)]/70 p-1" role="tablist" aria-label="Explore my approach">
+            <div className="mt-6 grid grid-cols-2 rounded-xl bg-[var(--muted)]/70 p-1" role="group" aria-label="Explore my approach">
               <button
                 type="button"
-                role="tab"
-                aria-selected={panel === "stack"}
+                aria-pressed={panel === "stack"}
                 onClick={() => setPanel("stack")}
                 className={`rounded-lg px-3 py-2.5 text-xs font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] ${panel === "stack" ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
               >
@@ -154,8 +153,7 @@ export function Hero() {
               </button>
               <button
                 type="button"
-                role="tab"
-                aria-selected={panel === "process"}
+                aria-pressed={panel === "process"}
                 onClick={() => setPanel("process")}
                 className={`rounded-lg px-3 py-2.5 text-xs font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] ${panel === "process" ? "bg-card text-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
               >
