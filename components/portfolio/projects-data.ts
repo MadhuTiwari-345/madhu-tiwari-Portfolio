@@ -7,6 +7,7 @@ export const projects: Project[] = [
     tagline: "AI Phishing Detection + Training",
     description:
       "Scans suspicious URLs with threat intelligence APIs and reinforces security awareness through a phishing simulator.",
+    buildNote: "Connects URL risk checks with threat-intelligence sources and a phishing-awareness workflow.",
     tags: ["Next.js", "Node.js", "Python", "VirusTotal", "Shodan", "MongoDB"],
     repo: "https://github.com/javadominic/BuildathonxLorn",
     live: "https://buildathonxlorn.vercel.app/",
@@ -39,6 +40,7 @@ export const projects: Project[] = [
     tagline: "Operating Layer for Farmers",
     description:
       "A farmer-first dashboard for weather, crop advice, mandi prices, and government schemes with regional-language support.",
+    buildNote: "Brings weather, mandi information and crop guidance into one farmer-first interface.",
     tags: ["React", "Node.js", "Tailwind", "Firebase", "REST"],
     repo: "https://github.com/MadhuTiwari-345/Kisan-OS",
     live: "https://kisanosprojectcheck.vercel.app/",
@@ -70,6 +72,7 @@ export const projects: Project[] = [
     tagline: "Decentralized Agri Supply Chain",
     description:
       "Tracks agricultural products from farm to buyer using smart contracts, IPFS, and traceability dashboards.",
+    buildNote: "Uses wallet interactions, smart contracts and IPFS to represent product traceability.",
     tags: ["Solidity", "IPFS", "Next.js", "Hardhat", "Ethers"],
     live: "https://farm-chain-blue.vercel.app/",
     repo: "https://github.com/MadhuTiwari-345",
@@ -99,6 +102,7 @@ export const projects: Project[] = [
     tagline: "AI Fraud Defender for Women",
     description:
       "Detects scam patterns in voice and text, then guides users toward safer responses.",
+    buildNote: "Routes voice and text signals through a FastAPI service for AI-assisted scam-risk analysis.",
     tags: ["Python", "FastAPI", "Gemini", "Cloud Run", "React"],
     repo: "https://github.com/MadhuTiwari-345/FemtoGuard",
     live: "https://femtoguard.vercel.app/",
@@ -131,6 +135,7 @@ export const projects: Project[] = [
     tagline: "AI Legal Intelligence Platform",
     description:
       "LegalTech SaaS for contract drafting, clause risk analysis, case-law research, and matter management.",
+    buildNote: "Combines authenticated workflows, PostgreSQL-backed data and LLM-assisted legal research tools.",
     tags: ["TypeScript", "React 19", "Node.js", "PostgreSQL", "Drizzle ORM", "Clerk", "OpenAI", "Anthropic"],
     repo: "https://github.com/MadhuTiwari-345/Lex-Intelligence",
     live: "https://lex-intelligence-beta.vercel.app/",
@@ -160,6 +165,7 @@ export const projects: Project[] = [
     tagline: "Job Discovery & Recruitment Platform",
     description:
       "Connects job seekers with opportunities and gives employers a streamlined recruitment workflow.",
+    buildNote: "Models two user journeys: candidate discovery and employer-side recruitment workflows.",
     tags: ["Web App", "Job Search", "Recruitment", "Career Platform"],
     live: "https://hireplane.vercel.app/",
     year: "2026",
@@ -188,6 +194,7 @@ export const projects: Project[] = [
     tagline: "AI-Powered Menstrual Health Platform",
     description:
       "Cycle tracking with predictions, PCOD risk screening, an AI assistant, and doctor-ready reports.",
+    buildNote: "Connects cycle records, prediction workflows and an AI assistant in one health-focused product.",
     tags: ["React", "TypeScript", "FastAPI", "Firebase", "LSTM", "AI"],
     repo: "https://github.com/MadhuTiwari-345/StormCycle",
     live: "https://stormcycle.vercel.app/",
@@ -217,6 +224,7 @@ export const projects: Project[] = [
     tagline: "Hyper-Local Climate Intelligence",
     description:
       "Hyper-local forecasts, anomaly detection, risk scores, and an interactive 3D Earth.",
+    buildNote: "Pairs geospatial context with forecast and anomaly services for local climate insights.",
     tags: ["React", "Vite", "FastAPI", "Three.js", "Forecasting", "Anomaly Detection"],
     repo: "https://github.com/MadhuTiwari-345/MicroClimate",
     live: "https://microclimate-ten.vercel.app/",
@@ -248,6 +256,7 @@ export const projects: Project[] = [
     tagline: "Zero-Setup ISA Analysis, Validation & Graph Visualization",
     description:
       "Offline RISC-V workbench for 245+ instructions, ISA cross-references, overlap detection, graph exploration, and 38 browser tests.",
+    buildNote: "Makes instruction relationships inspectable with cross-references, overlap checks and browser tests.",
     tags: ["Python", "JavaScript", "HTML", "RISC-V ISA", "Data Visualization", "Unit Testing"],
     repo: "https://github.com/MadhuTiwari-345/RISC-V-instruction-explorer",
     live: "https://risc-v-instruction-explorer.vercel.app/",
