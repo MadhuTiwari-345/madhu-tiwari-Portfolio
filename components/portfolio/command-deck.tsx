@@ -111,6 +111,28 @@ const commandMap: Record<string, CommandResult> = {
 
 const suggestions = ["projects", "stack", "journey", "map", "case-study", "contact"]
 
+const quickTargets: Record<string, string> = {
+  projects: "projects",
+  stack: "skills",
+  journey: "experience",
+  map: "engineering",
+  "case-study": "projects",
+  contact: "contact",
+}
+
+function jumpToSection(command: string) {
+  const targetId = quickTargets[command]
+  const target = targetId ? document.getElementById(targetId) : null
+  if (!target) return
+  const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 72
+  const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 14
+  window.history.pushState(null, "", `#${targetId}`)
+  window.scrollTo({
+    top: Math.max(0, top),
+    behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+  })
+}
+
 export function CommandDeck() {
   const [value, setValue] = useState("")
   const [history, setHistory] = useState<CommandResult[]>([commandMap.help])
@@ -242,7 +264,7 @@ export function CommandDeck() {
                 <button
                   key={command}
                   type="button"
-                  onClick={() => runCommand(command)}
+                  onClick={() => jumpToSection(command)}
                   className="group flex min-h-11 items-center justify-between rounded-xl border border-border bg-background/70 px-3 text-left font-mono text-[10px] uppercase tracking-wider transition-all hover:-translate-y-0.5 hover:border-[var(--primary)] hover:bg-[var(--primary)]/5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)]"
                 >
                   <span>{command}</span>
