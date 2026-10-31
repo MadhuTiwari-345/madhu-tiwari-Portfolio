@@ -64,36 +64,6 @@ export const projects: Project[
         ],
       },
   {
-      title: "FarmChain",
-      category: "Web3",
-      tagline: "Decentralized Agri Supply Chain",
-      description:
-        "A farmer and buyer marketplace prototype with separate dashboards, crop-market views, order flows and Hindi-friendly voice interactions.",
-      buildNote: "The inspected implementation is a Next.js 14 app with route handlers and mock data. Login, orders, market prices and bargaining responses are simulated; no smart-contract or IPFS integration was found in the checked source.",
-      tags: ["Next.js 14", "React", "JavaScript", "Route Handlers", "Mock Data"],
-      live: "https://farm-chain-blue.vercel.app/",
-      repo: "https://github.com/MadhuTiwari-345/FarmChain",
-      year: "2025",
-      gradient: ["#f2a65a", "#ff6b5b"],
-      previewLabel: "farmchain / trace",
-      image: "/projects/farmchain.svg",
-      architectureBasis: "Verified against MadhuTiwari-345/FarmChain: package.json confirms Next.js 14 and React; app/api/[[...path]]/route.js returns hard-coded mock responses, and lib/mockData.js supplies simulated dashboard data. Farmer and buyer dashboards consume mock data. MongoDB appears as a package dependency and local environment setting, but no database integration was found in the inspected implementation. No smart-contract, wallet or IPFS code was found in the repository tree.",
-      architecture: {
-        nodes: [
-          { id: "roles", label: "Farmer / Buyer UI", type: "client", x: 14, y: 50 },
-          { id: "next", label: "Next.js 14 App", type: "client", x: 40, y: 28 },
-          { id: "routes", label: "API Route Handler", type: "server", x: 68, y: 28 },
-          { id: "mock", label: "Mock API Responses", type: "db", x: 88, y: 50 },
-          { id: "local", label: "Client Mock Data", type: "db", x: 68, y: 78 },
-        ],
-        edges: [
-          { from: "roles", to: "next" },
-          { from: "next", to: "routes" },
-          { from: "routes", to: "mock" },
-          { from: "next", to: "local" },
-        ],
-      },
-  {
       title: "FemtoGuard",
       category: "AI & Security",
       tagline: "AI Fraud Defender for Women",
@@ -244,6 +214,36 @@ export const projects: Project[
         ],
       },
     },
+  {
+      title: "FarmChain",
+      category: "Web3",
+      tagline: "Decentralized Agri Supply Chain",
+      description:
+        "A farmer and buyer marketplace prototype with separate dashboards, crop-market views, order flows and Hindi-friendly voice interactions.",
+      buildNote: "The inspected implementation is a Next.js 14 app with route handlers and mock data. Login, orders, market prices and bargaining responses are simulated; no smart-contract or IPFS integration was found in the checked source.",
+      tags: ["Next.js 14", "React", "JavaScript", "Route Handlers", "Mock Data"],
+      live: "https://farm-chain-blue.vercel.app/",
+      repo: "https://github.com/MadhuTiwari-345/FarmChain",
+      year: "2025",
+      gradient: ["#f2a65a", "#ff6b5b"],
+      previewLabel: "farmchain / trace",
+      image: "/projects/farmchain.svg",
+      architectureBasis: "Verified against MadhuTiwari-345/FarmChain: package.json confirms Next.js 14 and React; app/api/[[...path]]/route.js returns hard-coded mock responses, and lib/mockData.js supplies simulated dashboard data. Farmer and buyer dashboards consume mock data. MongoDB appears as a package dependency and local environment setting, but no database integration was found in the inspected implementation. No smart-contract, wallet or IPFS code was found in the repository tree.",
+      architecture: {
+        nodes: [
+          { id: "roles", label: "Farmer / Buyer UI", type: "client", x: 14, y: 50 },
+          { id: "next", label: "Next.js 14 App", type: "client", x: 40, y: 28 },
+          { id: "routes", label: "API Route Handler", type: "server", x: 68, y: 28 },
+          { id: "mock", label: "Mock API Responses", type: "db", x: 88, y: 50 },
+          { id: "local", label: "Client Mock Data", type: "db", x: 68, y: 78 },
+        ],
+        edges: [
+          { from: "roles", to: "next" },
+          { from: "next", to: "routes" },
+          { from: "routes", to: "mock" },
+          { from: "next", to: "local" },
+        ],
+      },
   {
       title: "PhishBuster",
       category: "AI & Security",
