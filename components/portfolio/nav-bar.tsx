@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, type MouseEvent } from "react"
 import { motion, useScroll, useSpring } from "framer-motion"
 import { LetsTalkButton } from "./lets-talk"
 import Link from "next/link"
@@ -20,7 +20,7 @@ const links = [
 export function NavBar() {
   const [scrolled, setScrolled] = useState(false)
   const [logoExpanded, setLogoExpanded] = useState(false)
-  const [activeSection, setActiveSection] = useState("top")
+  const [activeSection, setActiveSection] = useState("")
   const { scrollYProgress } = useScroll()
   const progress = useSpring(scrollYProgress, { stiffness: 110, damping: 28, restDelta: 0.001 })
 
@@ -32,15 +32,40 @@ export function NavBar() {
   }, [])
 
   useEffect(() => {
-    const sections = links.map((link) => document.getElementById(link.href.slice(1))).filter((section): section is HTMLElement => Boolean(section))
-    if (!sections.length) return
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-      if (visible) setActiveSection(visible.target.id)
-    }, { rootMargin: "-22% 0px -65% 0px", threshold: [0, 0.15, 0.35, 0.6] })
-    sections.forEach((section) => observer.observe(section))
-    return () => observer.disconnect()
+    const sections = links
+      .map((link) => document.getElementById(link.href.slice(1)))
+      .filter((section): section is HTMLElement => Boolean(section))
+
+    const updateActiveSection = () => {
+      const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 72
+      const readingLine = window.scrollY + headerHeight + 72
+      let current = ""
+      for (const section of sections) {
+        if (section.offsetTop <= readingLine) current = section.id
+        else break
+      }
+      setActiveSection(current)
+    }
+
+    updateActiveSection()
+    window.addEventListener("scroll", updateActiveSection, { passive: true })
+    window.addEventListener("resize", updateActiveSection)
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection)
+      window.removeEventListener("resize", updateActiveSection)
+    }
   }, [])
+
+  const navigateToSection = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    event.preventDefault()
+    const target = document.getElementById(href.slice(1))
+    if (!target) return
+    const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 72
+    const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 22
+    setActiveSection(target.id)
+    window.history.pushState(null, "", href)
+    window.scrollTo({ top: Math.max(0, top), behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })
+  }
 
   useEffect(() => {
     if (!logoExpanded) return
@@ -61,12 +86,12 @@ export function NavBar() {
               <button type="button" onClick={() => setLogoExpanded(true)} className="h-8 w-8 shrink-0 overflow-hidden rounded-full border border-border bg-card shadow-sm transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]" aria-label="Expand profile picture">
                 <img src={profileImage} alt="Madhu Tiwari" className="h-full w-full object-cover object-center" />
               </button>
-              <a href="#top" className="whitespace-nowrap px-1 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-foreground">madhu.tiwari</a>
+              <a href="#top" onClick={(event) => navigateToSection(event, "#top")} className="whitespace-nowrap px-1 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-foreground">madhu.tiwari</a>
             </div>
 
-            <nav aria-label="Main navigation" className="hidden min-w-0 items-center justify-center gap-0.5 xl:flex">
+            <nav aria-label="Main navigation" className="hidden min-w-0 items-center justify-center gap-0.5 lg:flex">
               {links.map((link) => (
-                <a key={link.href} href={link.href} aria-current={activeSection === link.href.slice(1) ? "location" : undefined} className={"whitespace-nowrap rounded-full px-3 py-2 font-mono text-[9px] font-medium uppercase tracking-[0.11em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] " + (activeSection === link.href.slice(1) ? "bg-[var(--primary)]/10 text-[var(--primary)]" : "text-muted-foreground hover:bg-black/[0.035] hover:text-foreground")}>
+                <a key={link.href} href={link.href} onClick={(event) => navigateToSection(event, link.href)} aria-current={activeSection === link.href.slice(1) ? "location" : undefined} className={"whitespace-nowrap rounded-full px-3 py-2 font-mono text-[9px] font-medium uppercase tracking-[0.11em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] " + (activeSection === link.href.slice(1) ? "bg-[var(--primary)]/10 text-[var(--primary)]" : "text-muted-foreground hover:bg-black/[0.035] hover:text-foreground")}>
                   {link.label}
                 </a>
               ))}
@@ -81,9 +106,9 @@ export function NavBar() {
             </div>
           </div>
 
-          <nav aria-label="Mobile navigation" className="mt-2 flex items-center gap-1 overflow-x-auto border-t border-border/70 pt-2 xl:hidden">
+          <nav aria-label="Mobile navigation" className="mt-2 flex items-center gap-1 overflow-x-auto border-t border-border/70 pt-2 lg:hidden">
             {links.map((link) => (
-              <a key={link.href} href={link.href} aria-current={activeSection === link.href.slice(1) ? "location" : undefined} className={"shrink-0 rounded-full px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.1em] transition-colors " + (activeSection === link.href.slice(1) ? "bg-[var(--primary)]/10 text-[var(--primary)]" : "text-muted-foreground hover:text-foreground")}>
+              <a key={link.href} href={link.href} onClick={(event) => navigateToSection(event, link.href)} aria-current={activeSection === link.href.slice(1) ? "location" : undefined} className={"shrink-0 rounded-full px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.1em] transition-colors " + (activeSection === link.href.slice(1) ? "bg-[var(--primary)]/10 text-[var(--primary)]" : "text-muted-foreground hover:text-foreground")}>
                 {link.label}
               </a>
             ))}
