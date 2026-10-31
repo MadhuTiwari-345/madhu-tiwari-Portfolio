@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { ThemeSwitcher } from "./theme-switcher"
 import { LetsTalkButton } from "./lets-talk"
 import Link from "next/link"
 import { BriefcaseBusiness, X } from "lucide-react"
@@ -92,7 +91,6 @@ export function NavBar() {
               </nav>
               <div className="flex items-center justify-between gap-3 sm:justify-end">
                 <div className="sm:hidden"><LetsTalkButton compact align="left" /></div>
-                <ThemeSwitcher />
               </div>
             </div>
           </div>
