@@ -480,3 +480,25 @@ section[id] article:hover {
   .hero-workbench { transition: none; }
   .hero-workbench:hover { transform: none; }
 }
+
+
+/* Layout corrections: keep the fixed navigation compact and section headings clear. */
+@layer base {
+  html { scroll-padding-top: 7.25rem; }
+  [id] { scroll-margin-top: 7.25rem; }
+  @media (max-width: 1279px) {
+    [id] { scroll-margin-top: 8.5rem; }
+  }
+}
+@media (min-width: 1280px) {
+  .hero-workbench { max-width: 490px; }
+}
+@media (max-width: 1023px) {
+  #top { min-height: auto; padding-top: 10.5rem; padding-bottom: 4rem; }
+  #top h1 { font-size: clamp(3rem, 8vw, 5rem); }
+}
+@media (max-width: 640px) {
+  #top { padding-top: 10rem; }
+  #top h1 { font-size: clamp(2.7rem, 12vw, 4.2rem); letter-spacing: -.055em; }
+  #top h1 span { white-space: normal; }
+}
