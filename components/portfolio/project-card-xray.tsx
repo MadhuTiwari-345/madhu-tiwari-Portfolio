@@ -8,7 +8,7 @@ import { ScanningButton } from "./scanning-button"
 export type ArchNode = {
   id: string
   label: string
-  type: "client" | "server" | "db" | "ai" | "external"
+  type: "client" | "server" | "db" | "ai" | "external" | "tool"
   x: number // 0..100
   y: number // 0..100
 }
@@ -44,6 +44,7 @@ const nodeStyles: Record<ArchNode["type"], { label: string; glow: string }> = {
   db: { label: "DB", glow: "var(--accent)" },
   ai: { label: "AI", glow: "var(--primary)" },
   external: { label: "API", glow: "var(--secondary)" },
+  tool: { label: "TOOL", glow: "var(--accent)" },
 }
 
 function ArchitectureView({ arch }: { arch: Project["architecture"] }) {
