@@ -125,7 +125,8 @@ function jumpToSection(command: string) {
   const target = targetId ? document.getElementById(targetId) : null
   if (!target) return
   const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 72
-  const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 14
+  const anchor = (target.firstElementChild as HTMLElement | null) ?? target
+  const top = anchor.getBoundingClientRect().top + window.scrollY - headerHeight - 18
   window.history.pushState(null, "", `#${targetId}`)
   window.scrollTo({
     top: Math.max(0, top),
