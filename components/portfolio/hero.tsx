@@ -46,21 +46,21 @@ export function Hero() {
       <div aria-hidden className="hero-paper-grid pointer-events-none absolute inset-0" />
       <div aria-hidden className="hero-color-wash pointer-events-none absolute inset-0" />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-[1240px] items-center gap-12 lg:grid-cols-[1.08fr_.82fr] lg:gap-16 xl:gap-24">
+      <div className="relative z-10 mx-auto grid w-full max-w-[1240px] items-center gap-9 lg:grid-cols-[1.08fr_.82fr] lg:gap-12 xl:gap-16">
         <div className="max-w-[690px]">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, ease }}
-            className="mb-8 inline-flex items-center gap-2.5 rounded-full border border-border/80 bg-card/80 px-4 py-2.5 font-mono text-[10px] font-semibold uppercase tracking-[0.13em] text-muted-foreground shadow-sm backdrop-blur"
+            className="mb-6 inline-flex items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.12em] text-muted-foreground"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[var(--accent)] opacity-35" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-[var(--accent)]" />
             </span>
-            <MapPin className="h-3 w-3" />
+            <MapPin className="h-3 w-3 text-[var(--primary)]" />
             New Delhi, India
-            <span className="mx-0.5 text-border">/</span>
+            <span className="mx-0.5 text-border">·</span>
             Open to opportunities
           </motion.div>
 
@@ -77,7 +77,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.12, ease }}
-            className="max-w-[720px] text-balance font-display text-[clamp(3.35rem,6.1vw,5.65rem)] font-bold leading-[.99] tracking-[-0.065em]"
+            className="max-w-[720px] text-balance font-display text-[clamp(3.2rem,5.7vw,5.2rem)] font-bold leading-[.99] tracking-[-0.065em]"
           >
             Thoughtful code.
             <br />
@@ -93,7 +93,7 @@ export function Hero() {
             <p className="text-[15px] leading-[1.8] text-muted-foreground sm:text-[17px]">
               I’m Madhu Tiwari, a Computer Science student building full-stack experiences, reliable backend systems and practical AI applications.
             </p>
-            <div className="mt-5 flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.16em] text-foreground/75">
+            <div className="mt-4 flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.13em] text-foreground/75">
               <span className="h-px w-8 bg-[var(--secondary)]" />
               <BlurReveal />
             </div>
@@ -122,7 +122,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8, duration: 0.5 }}
-            className="mt-7 inline-flex items-center gap-2 text-xs font-medium text-muted-foreground transition-colors hover:text-[var(--primary)]"
+            className="mt-5 inline-flex items-center gap-2 text-xs font-medium text-muted-foreground transition-colors hover:text-[var(--primary)]"
           >
             A little more about me <ArrowDownRight className="h-3.5 w-3.5" />
           </motion.a>
@@ -135,26 +135,26 @@ export function Hero() {
           className="hero-workbench relative mx-auto w-full max-w-[460px] lg:ml-auto"
           aria-label="Interactive overview of my toolkit and workflow"
         >
-          <div className="mb-4 flex items-center justify-between px-1">
+          <div className="mb-3 flex items-center justify-between px-1">
             <div className="flex items-center gap-2 text-[var(--primary)]">
-              <Sparkles className="h-4 w-4" />
-              <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.17em]">A practical approach</span>
+              <Sparkles className="h-3.5 w-3.5" />
+              <span className="font-mono text-[9px] font-semibold uppercase tracking-[0.14em]">Toolkit & workflow</span>
             </div>
-            <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">01 / 02</span>
+            
           </div>
 
-          <div className="overflow-hidden rounded-[1.4rem] border border-border bg-card/95 shadow-[0_24px_70px_-42px_rgba(24,36,68,.28)] backdrop-blur-sm">
-            <div className="flex items-center justify-between border-b border-border/80 px-5 py-4 sm:px-6">
+          <div className="overflow-hidden rounded-2xl border border-border/80 bg-card/90 shadow-[0_18px_50px_-38px_rgba(24,36,68,.22)]">
+            <div className="flex items-center justify-between border-b border-border/80 px-4 py-3.5 sm:px-5">
               <div>
-                <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground">Madhu Tiwari</p>
-                <h2 className="mt-1 text-lg font-semibold tracking-tight">How ideas become products</h2>
+                
+                <h2 className="text-base font-semibold tracking-tight">How I build</h2>
               </div>
-              <div className="rounded-xl bg-[var(--primary)]/8 p-2.5 text-[var(--primary)]">
-                <Code2 className="h-5 w-5" />
+              <div className="rounded-lg bg-[var(--primary)]/8 p-2 text-[var(--primary)]">
+                <Code2 className="h-4 w-4" />
               </div>
             </div>
 
-            <div className="p-4 sm:p-5">
+            <div className="p-3.5 sm:p-4">
               <div className="grid grid-cols-2 gap-1 rounded-xl bg-[var(--muted)]/80 p-1" role="group" aria-label="Choose toolkit or process">
                 <button
                   type="button"
@@ -176,7 +176,7 @@ export function Hero() {
                 </button>
               </div>
 
-              <div className="mt-4 min-h-[218px]">
+              <div className="mt-3 min-h-[196px]">
                 <AnimatePresence mode="wait" initial={false}>
                   {panel === "stack" ? (
                     <motion.div key="stack" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.22 }} className="space-y-2.5">
@@ -190,13 +190,13 @@ export function Hero() {
                             initial={{ opacity: 0, x: 12 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.055, duration: 0.28 }}
-                            className="group/row flex w-full items-center gap-3 rounded-xl border border-border/75 bg-background/65 px-3.5 py-3.5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/40 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]"
+                            className="group/row flex w-full items-center gap-3 rounded-lg border border-border/65 bg-background/45 px-3 py-2.5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/40 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]"
                             aria-label={`Explore ${item.label} skills`}
                           >
                             <span className="rounded-lg bg-[var(--primary)]/8 p-2 text-[var(--primary)]"><Icon className="h-4 w-4" /></span>
                             <span className="min-w-0 flex-1">
                               <span className="block text-[13px] font-semibold">{item.label}</span>
-                              <span className="mt-1 block text-[11px] leading-relaxed text-muted-foreground">{item.value}</span>
+                              <span className="mt-0.5 block text-[11px] leading-relaxed text-muted-foreground">{item.value}</span>
                             </span>
                             <span className="font-mono text-[9px] text-muted-foreground/70">0{index + 1}</span>
                           </motion.button>
