@@ -274,7 +274,7 @@ export const projects: Project[] = [
         { id: "browser", label: "Offline Browser UI", type: "client", x: 18, y: 50 },
         { id: "parse", label: "JS Instruction Parser", type: "client", x: 48, y: 28 },
         { id: "graph", label: "Extension Graph", type: "client", x: 78, y: 50 },
-        { id: "cli", label: "Optional Python CLI", type: "server", x: 48, y: 78 },
+        { id: "cli", label: "Optional Python CLI", type: "tool", x: 48, y: 78 },
         { id: "sources", label: "Remote JSON + ISA Manual", type: "external", x: 82, y: 82 },
       ],
       edges: [
