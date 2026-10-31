@@ -94,9 +94,9 @@ export function NavBar() {
               <a href="#top" onClick={(event) => navigateToSection(event, "#top")} className="whitespace-nowrap px-1 py-1 font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-foreground">madhu.tiwari</a>
             </div>
 
-            <nav aria-label="Main navigation" className="hidden min-w-0 items-center justify-center gap-0.5 lg:flex">
+            <nav aria-label="Main navigation" className="hidden min-w-0 items-center justify-center gap-1 lg:flex">
               {links.map((link) => (
-                <a key={link.href} href={link.href} onClick={(event) => navigateToSection(event, link.href)} aria-current={activeSection === link.href.slice(1) ? "location" : undefined} className={"whitespace-nowrap rounded-full px-3 py-2 font-mono text-[9px] font-medium uppercase tracking-[0.11em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] " + (activeSection === link.href.slice(1) ? "bg-[var(--primary)]/10 text-[var(--primary)]" : "text-muted-foreground hover:bg-black/[0.035] hover:text-foreground")}>
+                <a key={link.href} href={link.href} onClick={(event) => navigateToSection(event, link.href)} aria-current={activeSection === link.href.slice(1) ? "location" : undefined} className={"whitespace-nowrap rounded-full px-2.5 py-2 font-mono text-[9px] font-medium uppercase tracking-[0.09em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] " + (activeSection === link.href.slice(1) ? "bg-[var(--primary)]/10 text-[var(--primary)]" : "text-muted-foreground hover:bg-black/[0.035] hover:text-foreground")}>
                   {link.label}
                 </a>
               ))}
