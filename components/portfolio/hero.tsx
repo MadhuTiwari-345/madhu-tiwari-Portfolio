@@ -7,10 +7,6 @@ import { BlurReveal } from "./blur-reveal"
 import { LetsTalkButton } from "./lets-talk"
 import { Github, Linkedin, MapPin, Sparkles } from "lucide-react"
 
-const ParticleHero = dynamic(() => import("./particle-hero").then((m) => m.ParticleHero), {
-  ssr: false,
-})
-
 export function Hero() {
   return (
     <section
@@ -26,40 +22,6 @@ export function Hero() {
         }}
       />
       <div aria-hidden className="bg-grid pointer-events-none absolute inset-0 -z-10 opacity-50" />
-      <div aria-hidden className="hero-orbit-scene pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-        <div className="hero-orbit hero-orbit-one" />
-        <div className="hero-orbit hero-orbit-two" />
-        <div className="hero-orbit-core" />
-      </div>
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <ParticleHero />
-      </div>
-
-      <motion.div
-        aria-hidden
-        className="hero-float-chip hero-chip-left hidden xl:flex"
-        initial={{ opacity: 0, x: -18, rotateY: 12 }}
-        animate={{ opacity: 1, x: 0, rotateY: 7 }}
-        transition={{ duration: 0.9, delay: 0.55 }}
-      >
-        <span className="hero-chip-top"><span className="hero-chip-dot" /> CAPABILITY</span>
-        <span className="hero-chip-title">AI / ML</span>
-        <span className="hero-chip-sub">Learning systems</span>
-        <span className="hero-chip-line"><span /></span>
-      </motion.div>
-      <motion.div
-        aria-hidden
-        className="hero-float-chip hero-chip-right hidden xl:flex"
-        initial={{ opacity: 0, x: 18, rotateY: -12 }}
-        animate={{ opacity: 1, x: 0, rotateY: -7 }}
-        transition={{ duration: 0.9, delay: 0.75 }}
-      >
-        <span className="hero-chip-top"><span className="hero-chip-dot" /> IN PRACTICE</span>
-        <span className="hero-chip-title">FULL STACK</span>
-        <span className="hero-chip-sub">From idea to ship</span>
-        <span className="hero-chip-line"><span /></span>
-      </motion.div>
-
       <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center px-5 pt-2 text-center sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
