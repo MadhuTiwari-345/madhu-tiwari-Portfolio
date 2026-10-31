@@ -22,7 +22,7 @@ export function AboutBento() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 md:col-span-8"
+          className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 md:col-span-8 md:row-span-2"
         >
           <div
             aria-hidden
@@ -93,7 +93,7 @@ export function AboutBento() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border p-5 md:col-span-2"
+          className="relative flex flex-col justify-between overflow-hidden rounded-2xl border border-border p-5 md:col-span-4"
           style={{
             background:
               "linear-gradient(135deg, color-mix(in oklch, var(--primary) 18%, var(--card)) 0%, var(--card) 100%)",
