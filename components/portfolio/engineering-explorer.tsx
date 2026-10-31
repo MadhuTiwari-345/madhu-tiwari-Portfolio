@@ -68,25 +68,25 @@ export function EngineeringExplorer() {
   }
 
   return (
-    <section id="engineering" className="relative mx-auto w-full max-w-7xl px-4 py-20 md:px-8">
+    <section id="engineering" className="relative mx-auto w-full max-w-7xl px-4 py-16 md:px-8 lg:py-20">
       <SectionHeader label="engineering" title="Inside the build." />
 
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(280px,.8fr)]">
-        <div className="min-w-0 space-y-3">
-          <div className="flex flex-wrap gap-2">
-            {projects.map((item, index) => <button key={item.title} type="button" onClick={() => changeProject(item.title)} aria-pressed={project.title === item.title} className={`min-h-10 rounded-full border px-3 py-2 text-left text-xs transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] ${project.title === item.title ? "border-[var(--primary)] bg-[var(--primary)]/10 text-foreground" : "border-border bg-card text-muted-foreground hover:text-foreground"}`}><span className="mr-2 font-mono text-[9px] opacity-50">{String(index + 1).padStart(2,"0")}</span>{item.title}</button>)}
+      <div className="grid min-w-0 items-start gap-5 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,.85fr)] lg:gap-6">
+        <div className="min-w-0 space-y-4">
+          <div className="flex min-w-0 gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {projects.map((item, index) => <button key={item.title} type="button" onClick={() => changeProject(item.title)} aria-pressed={project.title === item.title} className={`min-h-10 shrink-0 rounded-full border px-3 py-2 text-left text-xs transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--primary)] ${project.title === item.title ? "border-[var(--primary)] bg-[var(--primary)]/10 text-foreground" : "border-border bg-card text-muted-foreground hover:text-foreground"}`}><span className="mr-2 font-mono text-[9px] opacity-50">{String(index + 1).padStart(2,"0")}</span>{item.title}</button>)}
           </div>
           <ArchitectureMap project={project} selected={node?.id ?? ""} onSelect={setSelectedNode} />
         </div>
 
-        <motion.aside key={project.title+"-"+tab+"-"+node?.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex min-w-0 flex-col rounded-2xl border border-border bg-card p-5 sm:p-6">
+        <motion.aside key={project.title+"-"+tab+"-"+node?.id} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex min-w-0 flex-col rounded-2xl border border-border bg-card p-4 sm:p-6">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div><div className="font-mono text-[9px] uppercase tracking-[.25em] text-muted-foreground">selected build / {project.year}</div><h3 className="mt-2 text-2xl font-semibold tracking-tight">{project.title}</h3><p className="mt-1 text-sm text-[var(--primary)]">{project.tagline}</p></div>
             <span className="rounded-xl border border-border bg-background p-2"><GitBranch className="h-5 w-5 text-[var(--primary)]" /></span>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{project.description}</p>
-          <div className="mt-5 grid grid-cols-3 gap-2">
-            {[{ label:"Components", value:project.architecture.nodes.length },{ label:"Connections", value:project.architecture.edges.length },{ label:"Technologies", value:project.tags.length }].map((stat)=><div key={stat.label} className="rounded-xl border border-border bg-background p-3"><div className="text-xl font-semibold tabular-nums">{stat.value}</div><div className="mt-1 font-mono text-[8px] uppercase tracking-wider text-muted-foreground">{stat.label}</div></div>)}
+          <div className="mt-5 grid grid-cols-3 gap-2 sm:gap-3">
+            {[{ label:"Components", value:project.architecture.nodes.length },{ label:"Connections", value:project.architecture.edges.length },{ label:"Technologies", value:project.tags.length }].map((stat)=><div key={stat.label} className="min-w-0 rounded-xl border border-border bg-background p-2.5 sm:p-3"><div className="text-xl font-semibold tabular-nums">{stat.value}</div><div className="mt-1 font-mono text-[8px] uppercase tracking-wider text-muted-foreground">{stat.label}</div></div>)}
           </div>
           <div className="mt-5 grid grid-cols-3 rounded-xl border border-border bg-background p-1">
             {(["map","stack","flow"] as const).map((item)=><button key={item} type="button" onClick={()=>setTab(item)} className={`min-h-9 rounded-lg font-mono text-[9px] uppercase tracking-widest transition-colors ${tab===item ? "bg-[var(--primary)]/15 text-foreground" : "text-muted-foreground hover:text-foreground"}`} aria-pressed={tab===item}>{item}</button>)}
