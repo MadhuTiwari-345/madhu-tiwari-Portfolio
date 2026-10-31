@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Github, ExternalLink, Scan } from "lucide-react"
+import { Github, ExternalLink, Scan, ChevronDown, Boxes } from "lucide-react"
 import { ScanningButton } from "./scanning-button"
 
 export type ArchNode = {
@@ -201,6 +201,7 @@ function MockPreview({ project }: { project: Project }) {
 
 export function ProjectCardXRay({ project, index = 0 }: { project: Project; index?: number }) {
   const [xray, setXray] = useState(false)
+  const [expanded, setExpanded] = useState(false)
 
   return (
     <motion.article
@@ -286,6 +287,27 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
           ))}
         </div>
 
+        <div className="mt-5 border-t border-border/80 pt-3">
+          <button type="button" onClick={() => setExpanded((value) => !value)} aria-expanded={expanded} className="flex w-full items-center justify-between gap-3 rounded-lg py-2 text-left text-xs font-medium text-foreground/85 transition-colors hover:text-[var(--primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]">
+            <span className="flex items-center gap-2"><Boxes className="h-3.5 w-3.5 text-[var(--primary)]" />Explore the build</span>
+            <ChevronDown className={expanded ? "h-4 w-4 rotate-180 transition-transform" : "h-4 w-4 transition-transform"} />
+          </button>
+          <AnimatePresence initial={false}>
+            {expanded && (
+              <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.24 }} className="overflow-hidden">
+                <div className="grid gap-4 pb-3 pt-2 sm:grid-cols-2">
+                  <div><p className="mb-2 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">System components</p><ul className="space-y-1.5">
+                    {project.architecture.nodes.map((node) => <li key={node.id} className="flex items-center gap-2 text-xs text-foreground/80"><span className="h-1.5 w-1.5 rounded-full bg-[var(--primary)]" />{node.label}</li>)}
+                  </ul></div>
+                  <div><p className="mb-2 font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground">How pieces connect</p><ol className="space-y-1.5">
+                    {project.architecture.edges.map((edge, edgeIndex) => { const from = project.architecture.nodes.find((node) => node.id === edge.from); const to = project.architecture.nodes.find((node) => node.id === edge.to); if (!from || !to) return null; return <li key={edgeIndex} className="text-xs leading-relaxed text-foreground/75"><span className="text-[var(--primary)]">{from.label}</span><span className="px-1.5 text-muted-foreground">→</span>{to.label}</li> })}
+                  </ol></div>
+                </div>
+                <p className="border-t border-border/70 pt-2 text-[11px] leading-relaxed text-muted-foreground">The X-ray view above gives you a visual map of this architecture.</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
         <div className="mt-5 flex flex-wrap gap-2">
           {project.repo && (
             <ScanningButton
@@ -298,7 +320,7 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
               data-cursor-label="source"
               aria-label={`View ${project.title} source on GitHub`}
             >
-              Source
+              View source
             </ScanningButton>
           )}
           {project.live && (
@@ -312,7 +334,7 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
               data-cursor-label="live demo"
               aria-label={`Open ${project.title} live deployment`}
             >
-              Live
+              Open live demo
             </ScanningButton>
           )}
         </div>
