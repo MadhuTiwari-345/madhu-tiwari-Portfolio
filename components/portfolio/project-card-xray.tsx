@@ -20,6 +20,7 @@ export type Project = {
   category: string
   tagline: string
   description: string
+  buildNote?: string
   tags: string[]
   repo?: string
   live?: string
@@ -160,27 +161,9 @@ function MockPreview({ project }: { project: Project }) {
           }}
         />
 
-        {/* top-left window chrome + label */}
-        <div className="absolute top-3 left-3 flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-full bg-white/50" />
-          <span className="h-2 w-2 rounded-full bg-white/50" />
-          <span className="h-2 w-2 rounded-full bg-white/50" />
-          <span className="ml-2 font-mono text-[10px] tracking-widest text-white/85 uppercase">
-            {project.previewLabel ?? project.title.toLowerCase()}
-          </span>
+        <div className="absolute bottom-3 left-3 rounded-full border border-white/25 bg-black/45 px-3 py-1 font-mono text-[9px] uppercase tracking-[0.14em] text-white/90 backdrop-blur-sm">
+          {project.previewLabel ?? project.title.toLowerCase()}
         </div>
-
-        {/* scanning shimmer */}
-        <motion.div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 h-24"
-          style={{
-            background:
-              "linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.14) 50%, transparent 100%)",
-          }}
-          animate={{ y: ["-30%", "120%"] }}
-          transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-        />
       </div>
     )
   }
@@ -211,17 +194,7 @@ function MockPreview({ project }: { project: Project }) {
         </div>
         <div className="mt-3 h-16 rounded-lg bg-white/10 backdrop-blur-sm" />
       </div>
-      {/* scanning shimmer */}
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 h-24"
-        style={{
-          background:
-            "linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.18) 50%, transparent 100%)",
-        }}
-        animate={{ y: ["-30%", "120%"] }}
-        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-      />
+
     </div>
   )
 }
@@ -231,32 +204,24 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.6, delay: index * 0.08, ease: [0.2, 0.8, 0.2, 1] }}
+      viewport={{ once: true, margin: "-64px" }}
+      transition={{ duration: 0.38, delay: Math.min(index * 0.035, 0.14), ease: [0.22, 1, 0.36, 1] }}
       className={`group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-5 transition-colors ${
         project.span ?? ""
       }`}
-      style={{}}
-      onMouseMove={(event) => {
-        const rect = event.currentTarget.getBoundingClientRect()
-        event.currentTarget.style.setProperty("--spotlight-x", `${event.clientX - rect.left}px`)
-        event.currentTarget.style.setProperty("--spotlight-y", `${event.clientY - rect.top}px`)
-      }}
-      data-magnetic
     >
-      <div aria-hidden className="pointer-events-none absolute inset-0 z-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ background: "radial-gradient(420px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%), color-mix(in oklch, var(--primary) 14%, transparent), transparent 72%)" }} />
       {/* visual area with peel/flip */}
-      <div className="relative z-10 aspect-[16/10] w-full overflow-hidden rounded-xl">
+      <div className="relative z-10 aspect-[16/9] w-full overflow-hidden rounded-xl">
         <AnimatePresence initial={false} mode="wait">
           {xray ? (
             <motion.div
               key="xray"
-              initial={{ clipPath: "circle(0% at 85% 15%)" }}
-              animate={{ clipPath: "circle(140% at 85% 15%)" }}
-              exit={{ clipPath: "circle(0% at 85% 15%)" }}
-              transition={{ duration: 0.55, ease: [0.2, 0.8, 0.2, 1] }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.24 }}
               className="absolute inset-0"
             >
               <ArchitectureView arch={project.architecture} />
@@ -300,9 +265,15 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
           <span className="shrink-0 rounded-full border border-[var(--primary)]/25 bg-[var(--primary)]/8 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-[var(--primary)]">{project.category}</span>
         </div>
         <p className="mt-1 text-sm font-medium text-[var(--primary)]">{project.tagline}</p>
-        <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           {project.description}
         </p>
+        {project.buildNote ? (
+          <div className="mt-3 border-l-2 border-[var(--primary)]/45 pl-3">
+            <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">Engineering note</p>
+            <p className="mt-1 text-xs leading-relaxed text-foreground/80">{project.buildNote}</p>
+          </div>
+        ) : null}
 
         <div className="mt-4 flex flex-wrap gap-1.5">
           {project.tags.map((t) => (
