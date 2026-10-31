@@ -1,4 +1,8 @@
 import { NavBar } from "@/components/portfolio/nav-bar"
+import { CommandDeck } from "@/components/portfolio/command-deck"
+import { AboutBento } from "@/components/portfolio/about-bento"
+import { EngineeringExplorer } from "@/components/portfolio/engineering-explorer"
+import { SkillsBento } from "@/components/portfolio/skills-bento"
 import { Hero } from "@/components/portfolio/hero"
 import { TechMarquee } from "@/components/portfolio/tech-marquee"
 import { ProjectsSection } from "@/components/portfolio/projects-section"
@@ -21,7 +25,11 @@ export default function Page() {
       <NavBar />
       <Hero />
       <TechMarquee />
+      <CommandDeck />
+      <AboutBento />
       <ProjectsSection />
+      <EngineeringExplorer />
+      <SkillsBento />
       <ExperienceTimeline />
       <GitHubActivityPanel />
       <TerrainSection />
