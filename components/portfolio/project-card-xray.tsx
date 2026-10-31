@@ -214,7 +214,7 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
       transition={{ duration: 0.42, delay: Math.min(index * 0.035, 0.14), ease: [0.22, 1, 0.36, 1] }}
       className="group relative flex h-full flex-col"
     >
-      <div className="relative overflow-hidden rounded-[1.35rem] border border-border/80 bg-[var(--background-elevated)] p-1.5 transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[var(--primary)]/45 group-hover:shadow-[0_22px_55px_-38px_var(--primary)]">
+      <div className="relative overflow-hidden rounded-[1.35rem] border-2 border-border bg-[var(--background-elevated)] p-1.5 shadow-[0_4px_18px_-14px_var(--foreground)] transition-all duration-300 group-hover:-translate-y-1 group-hover:border-[var(--primary)]/70 group-hover:shadow-[0_22px_55px_-30px_var(--primary)]">
         <div className={`relative w-full overflow-hidden rounded-[1rem] ${index % 4 === 1 ? "aspect-[5/4]" : "aspect-[16/10]"}`}>
           <AnimatePresence initial={false} mode="wait">
             {xray ? (
@@ -227,8 +227,17 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
               </motion.div>
             )}
           </AnimatePresence>
-          <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/[0.06]" />
-          <div className="absolute left-3 top-3 flex items-center gap-2">
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`Open ${project.title} live project in a new tab`}
+              className="absolute inset-0 z-[2] rounded-[1rem] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-white"
+            />
+          )}
+          <div className="pointer-events-none absolute inset-0 z-[1] ring-1 ring-inset ring-black/[0.08]" />
+          <div className="pointer-events-none absolute left-3 top-3 z-[3] flex items-center gap-2">
             <span className="rounded-full border border-white/25 bg-black/45 px-2.5 py-1 font-mono text-[9px] tracking-[0.16em] text-white backdrop-blur-md">{number} / 09</span>
             <span className="rounded-full border border-white/25 bg-black/35 px-2.5 py-1 font-mono text-[9px] tracking-[0.12em] text-white/90 backdrop-blur-md">{project.year}</span>
           </div>
@@ -237,7 +246,7 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
             onClick={() => setXray((value) => !value)}
             aria-pressed={xray}
             aria-label={xray ? "View project preview" : "View project architecture"}
-            className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full border border-white/25 bg-black/45 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.13em] text-white backdrop-blur-md transition-colors hover:bg-black/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            className="absolute right-3 top-3 z-[4] flex items-center gap-1.5 rounded-full border border-white/25 bg-black/45 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.13em] text-white backdrop-blur-md transition-colors hover:bg-black/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             <Scan className="h-3 w-3" /> {xray ? "Preview" : "X-ray"}
           </button>
