@@ -22,12 +22,25 @@ const links = [
 export function NavBar() {
   const [scrolled, setScrolled] = useState(false)
   const [logoExpanded, setLogoExpanded] = useState(false)
+  const [activeSection, setActiveSection] = useState("top")
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
     onScroll()
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
+  useEffect(() => {
+    const sectionIds = links.map((link) => link.href.slice(1))
+    const sections = sectionIds.map((id) => document.getElementById(id)).filter((section): section is HTMLElement => Boolean(section))
+    if (!sections.length) return
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
+      if (visible) setActiveSection(visible.target.id)
+    }, { rootMargin: "-18% 0px -68% 0px", threshold: [0, 0.15, 0.35, 0.6] })
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
   }, [])
 
   useEffect(() => {
@@ -72,7 +85,7 @@ export function NavBar() {
             <div className="mt-3 flex flex-col gap-2 border-t border-border/60 pt-3 lg:flex-row lg:items-center lg:justify-between lg:gap-4">
               <nav aria-label="Main navigation" className="flex min-w-0 items-center gap-1 overflow-x-auto pb-1 lg:pb-0">
                 {links.map((link) => (
-                  <a key={link.href} href={link.href} data-cursor-label={link.label.toLowerCase()} className="shrink-0 rounded-full px-3 py-2 font-mono text-[9px] font-medium uppercase tracking-[0.12em] text-muted-foreground transition-colors hover:bg-[color-mix(in_oklch,var(--primary)_12%,transparent)] hover:text-foreground sm:text-[10px]">
+                  <a key={link.href} href={link.href} aria-current={activeSection === link.href.slice(1) ? "location" : undefined} data-cursor-label={link.label.toLowerCase()} className={`shrink-0 rounded-full px-3 py-2 font-mono text-[9px] font-medium uppercase tracking-[0.12em] transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)] sm:text-[10px] ${activeSection === link.href.slice(1) ? "bg-[color-mix(in_oklch,var(--primary)_16%,transparent)] text-foreground shadow-[inset_0_0_0_1px_color-mix(in_oklch,var(--primary)_28%,transparent)]" : "text-muted-foreground hover:bg-[color-mix(in_oklch,var(--primary)_12%,transparent)] hover:text-foreground"}`}`>
                     {link.label}
                   </a>
                 ))}
