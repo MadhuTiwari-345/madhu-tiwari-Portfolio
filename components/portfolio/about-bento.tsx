@@ -34,25 +34,9 @@ export function AboutBento() {
               about.txt
             </div>
             <h3 className="mt-3 text-balance text-2xl font-semibold tracking-tight sm:text-3xl">
-              I am a <span className="text-[var(--primary)]">full stack</span> builder who is slowly
-              falling in love with applied AI.
+              I build <span className="text-[var(--primary)]">full-stack products</span> with practical AI.
             </h3>
-            <div className="mt-4 space-y-3 text-pretty text-sm leading-relaxed text-muted-foreground sm:text-base">
-              <p>
-                I study Computer &amp; Data Science (AI &amp; ML) at Maharishi University of
-                Information Technology, Noida. Current CGPA 7.88 through Semester IV, which I keep nudging up between
-                open source pull requests and hackathon nights.
-              </p>
-              <p>
-                I love the unglamorous part of software: sketching system diagrams, arguing about
-                database indexes, and making an API feel obvious. On the weekends I contribute to
-                open source through{" "}
-                <span className="font-medium text-foreground">GSSoC</span>,{" "}
-                <span className="font-medium text-foreground">SWOC</span>, and{" "}
-                <span className="font-medium text-foreground">ECWOC</span>, and play way too much
-                basketball.
-              </p>
-            </div>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">Computer &amp; Data Science (AI &amp; ML) student at MUIT Noida. Into backend systems, thoughtful interfaces and open source.</p>
 
             <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4">
               {stats.map((s, i) => (
@@ -93,18 +77,12 @@ export function AboutBento() {
             />
             <div>
               <div className="text-sm font-semibold">Contributing across open-source programs</div>
-              <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
-                Contributing to GSSoC, SWOC, ECWOC, OSCG, and Aperture. Reviewing PRs, improving docs, and shipping meaningful features to community-driven repositories.
-              </p>
             </div>
           </div>
           <div className="mt-4 flex items-start gap-3">
             <Sparkles className="mt-0.5 h-4 w-4 text-[var(--accent)]" />
             <div>
               <div className="text-sm font-semibold">Portfolio shipped · Building practical AI</div>
-              <p className="mt-1 text-xs text-muted-foreground leading-relaxed">
-                Portfolio website completed. After the Google × Kaggle AI Agent Intensive, I’m focused on building useful AI agents, retrieval workflows, and full-stack products.
-              </p>
             </div>
           </div>
         </motion.div>
@@ -130,7 +108,7 @@ export function AboutBento() {
               <span className="text-sm text-muted-foreground"> programs</span>
             </div>
             <div className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Contributing across 89 public repositories with 20+ collaborators.
+              Across 89 public repositories.
             </div>
           </div>
           <div className="mt-4 flex flex-wrap gap-1.5">
