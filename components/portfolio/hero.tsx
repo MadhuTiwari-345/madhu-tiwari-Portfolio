@@ -89,7 +89,7 @@ export function Hero() {
             className="mt-7 max-w-[570px]"
           >
             <p className="text-[15px] leading-[1.8] text-muted-foreground sm:text-[17px]">
-              Computer Science student in New Delhi, building at the intersection of full-stack development and AI. I enjoy taking ideas from a rough sketch to working software, whether that means building an end-to-end product, figuring out a tricky backend problem, or experimenting with what AI can make possible. I’m usually learning something new, building something useful, or doing a bit of both.
+              Computer Science student in New Delhi, building full-stack products and exploring practical AI. I enjoy turning ideas into useful software and solving problems along the way.
             </p>
             <div className="mt-4 flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.13em] text-foreground/75">
               <span className="h-px w-8 bg-[var(--secondary)]" />
