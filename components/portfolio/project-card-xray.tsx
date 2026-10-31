@@ -32,6 +32,7 @@ export type Project = {
     nodes: ArchNode[]
     edges: ArchEdge[]
   }
+  architectureBasis?: string
   previewLabel?: string
   /** optional screenshot rendered in the preview face of the card */
   image?: string
@@ -62,7 +63,7 @@ function ArchitectureView({ arch }: { arch: Project["architecture"] }) {
       {/* blueprint title */}
       <div className="absolute top-3 left-3 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
         <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--primary)]" />
-        system.architecture
+        system.map
       </div>
       <div className="absolute top-3 right-3 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
         v1.0
@@ -303,7 +304,7 @@ export function ProjectCardXRay({ project, index = 0 }: { project: Project; inde
                     {project.architecture.edges.map((edge, edgeIndex) => { const from = project.architecture.nodes.find((node) => node.id === edge.from); const to = project.architecture.nodes.find((node) => node.id === edge.to); if (!from || !to) return null; return <li key={edgeIndex} className="text-xs leading-relaxed text-foreground/75"><span className="text-[var(--primary)]">{from.label}</span><span className="px-1.5 text-muted-foreground">→</span>{to.label}</li> })}
                   </ol></div>
                 </div>
-                <p className="border-t border-border/70 pt-2 text-[11px] leading-relaxed text-muted-foreground">The X-ray view above gives you a visual map of this architecture.</p>
+                <div className="border-t border-border/70 pt-2"><p className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">Evidence & scope</p><p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">{project.architectureBasis ?? "Architecture notes are based on the available project description."}</p></div>
               </motion.div>
             )}
           </AnimatePresence>
