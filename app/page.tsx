@@ -25,13 +25,13 @@ export default function Page() {
       <NavBar />
       <Hero />
       <TechMarquee />
-      <CommandDeck />
       <AboutBento />
       <ProjectsSection />
       <EngineeringExplorer />
       <SkillsBento />
       <ExperienceTimeline />
       <GitHubActivityPanel />
+      <CommandDeck />
       <TerrainSection />
     </main>
   )
