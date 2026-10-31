@@ -220,7 +220,6 @@ export const projects: Project[] = [
         ],
       },
     },
-    },
   {
       title: "FarmChain",
       category: "Web3",
