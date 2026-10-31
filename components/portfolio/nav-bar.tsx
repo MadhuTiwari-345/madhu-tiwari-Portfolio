@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import { motion, useScroll, useSpring } from "framer-motion"
 import { LetsTalkButton } from "./lets-talk"
 import Link from "next/link"
 import { BriefcaseBusiness, X } from "lucide-react"
@@ -8,13 +9,12 @@ import { BriefcaseBusiness, X } from "lucide-react"
 const profileImage = "https://avatars.githubusercontent.com/u/194702672?v=4"
 
 const links = [
-  { href: "#console", label: "Console" },
+  { href: "#console", label: "Play" },
   { href: "#about", label: "About" },
   { href: "#projects", label: "Work" },
-  { href: "#engineering", label: "Engineering" },
+  { href: "#engineering", label: "Build" },
   { href: "#skills", label: "Stack" },
   { href: "#experience", label: "Journey" },
-  { href: "#github-activity", label: "GitHub" },
   { href: "#contact", label: "Contact" },
 ]
 
@@ -22,6 +22,8 @@ export function NavBar() {
   const [scrolled, setScrolled] = useState(false)
   const [logoExpanded, setLogoExpanded] = useState(false)
   const [activeSection, setActiveSection] = useState("top")
+  const { scrollYProgress } = useScroll()
+  const progress = useSpring(scrollYProgress, { stiffness: 110, damping: 28, restDelta: 0.001 })
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -53,6 +55,7 @@ export function NavBar() {
 
   return (
     <>
+      <motion.div aria-hidden="true" className="fixed inset-x-0 top-0 z-[60] h-[2px] origin-left bg-gradient-to-r from-[var(--primary)] via-[var(--secondary)] to-[var(--accent)]" style={{ scaleX: progress }} />
       <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "py-2" : "py-3"}`}>
         <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <div className="glass-panel rounded-2xl border border-border/70 bg-background/85 px-3 py-3 shadow-lg shadow-black/5 backdrop-blur-xl sm:px-4">
