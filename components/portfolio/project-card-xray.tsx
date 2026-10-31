@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Github, ExternalLink, Scan, ChevronDown, Boxes } from "lucide-react"
+import { Github, ExternalLink, Scan, ChevronDown, ArrowUpRight } from "lucide-react"
 import { ScanningButton } from "./scanning-button"
 
 export type ArchNode = {
