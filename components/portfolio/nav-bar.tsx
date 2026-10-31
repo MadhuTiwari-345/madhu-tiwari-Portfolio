@@ -35,14 +35,14 @@ export function NavBar() {
     const sections = links
       .map((link) => document.getElementById(link.href.slice(1)))
       .filter((section): section is HTMLElement => Boolean(section))
+      .sort((a, b) => a.offsetTop - b.offsetTop)
 
     const updateActiveSection = () => {
       const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 72
-      const readingLine = window.scrollY + headerHeight + 72
+      const readingLine = headerHeight + 44
       let current = ""
       for (const section of sections) {
-        if (section.getBoundingClientRect().top + window.scrollY <= readingLine) current = section.id
-        else break
+        if (section.getBoundingClientRect().top <= readingLine) current = section.id
       }
       setActiveSection(current)
     }
@@ -61,10 +61,13 @@ export function NavBar() {
     const target = document.getElementById(href.slice(1))
     if (!target) return
     const headerHeight = document.querySelector("header")?.getBoundingClientRect().height ?? 72
-    const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 22
+    const top = target.getBoundingClientRect().top + window.scrollY - headerHeight - 14
     setActiveSection(target.id)
     window.history.pushState(null, "", href)
-    window.scrollTo({ top: Math.max(0, top), behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" })
+    window.scrollTo({
+      top: Math.max(0, top),
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+    })
   }
 
   useEffect(() => {
