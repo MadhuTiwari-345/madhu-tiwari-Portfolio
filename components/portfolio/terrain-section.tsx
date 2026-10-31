@@ -24,28 +24,30 @@ export function TerrainSection() {
           transition={{ duration: 0.6 }}
           className="relative isolate h-[340px] min-w-0 overflow-hidden rounded-2xl border border-border bg-card sm:h-[390px] lg:col-span-7 lg:h-full lg:min-h-[500px]"
         >
-          <div className="absolute top-4 left-4 z-10 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+          <div className="absolute top-4 left-4 z-20 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
             github.activity · cityscape
           </div>
-          <div className="absolute top-4 right-4 z-10 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+          <div className="absolute top-4 right-4 z-20 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--primary)]" />
             live github data
           </div>
           <CommitTerrain />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0"
+            className="pointer-events-none absolute inset-0 z-10"
             style={{
               background:
-                "radial-gradient(ellipse at 50% 110%, transparent 40%, var(--card) 80%)",
+                "linear-gradient(to top, var(--card) 0%, color-mix(in oklch, var(--card) 82%, transparent) 17%, transparent 48%), radial-gradient(ellipse at 50% 110%, transparent 35%, var(--card) 90%)",
             }}
           />
-          <div className="absolute right-4 bottom-4 left-4 flex flex-wrap items-end justify-between gap-3">
-            <div>
+          <div className="absolute right-4 bottom-4 left-4 z-20 flex flex-wrap items-end justify-between gap-3 rounded-xl border border-white/10 bg-[color-mix(in_oklch,var(--card)_88%,transparent)] p-3 backdrop-blur-md sm:right-5 sm:bottom-5 sm:left-5 sm:p-4">
+            <div className="min-w-0">
               <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                 contribution city
               </div>
-              <div className="text-lg font-semibold">A city built from my GitHub activity.</div>
+              <div className="mt-1 text-base font-semibold leading-snug text-foreground sm:text-lg">
+                A city built from my GitHub activity.
+              </div>
             </div>
             <ScanningButton
               asLink
