@@ -15,14 +15,14 @@ export function TerrainSection() {
     <section id="contact" className="relative mx-auto w-full max-w-7xl px-4 pt-24 pb-16 md:px-8">
       <SectionHeader label="commit terrain" title="The shape of a year of building." />
 
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-5">
+      <div className="grid min-w-0 grid-cols-1 items-stretch gap-5 lg:grid-cols-12 lg:gap-6">
         {/* Terrain */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6 }}
-          className="relative h-[420px] overflow-hidden rounded-2xl border border-border bg-card lg:col-span-3"
+          className="relative isolate h-[340px] min-w-0 overflow-hidden rounded-2xl border border-border bg-card sm:h-[390px] lg:col-span-7 lg:h-full lg:min-h-[500px]"
         >
           <div className="absolute top-4 left-4 z-10 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
             github.activity · cityscape
@@ -67,7 +67,7 @@ export function TerrainSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative flex flex-col overflow-hidden rounded-2xl border border-border p-6 lg:col-span-2"
+          className="relative flex min-w-0 flex-col overflow-hidden rounded-2xl border border-border p-5 sm:p-7 lg:col-span-5 lg:p-8"
           style={{
             background:
               "linear-gradient(150deg, color-mix(in oklch, var(--primary) 22%, var(--card)) 0%, var(--card) 70%)",
@@ -76,27 +76,27 @@ export function TerrainSection() {
           <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
             let&apos;s build
           </div>
-          <h3 className="mt-3 text-balance text-3xl font-bold tracking-tight">
+          <h3 className="mt-3 max-w-[16ch] text-balance text-2xl font-bold leading-[1.12] tracking-tight sm:text-3xl">
             Got a problem worth shipping? Let me know.
           </h3>
-          <p className="mt-3 text-pretty text-sm leading-relaxed text-muted-foreground">
+          <p className="mt-3 max-w-prose text-pretty text-sm leading-relaxed text-muted-foreground">
             I am open to internships, freelance work on AI or full stack projects, and the kind of
             late night hackathon team that actually reads the rules.
           </p>
 
-          <div className="mt-6 flex flex-col gap-2">
+          <div className="mt-6 flex min-w-0 flex-col gap-2.5">
             <a
               href="mailto:mt1499961@gmail.com"
               data-cursor-label="email"
-              className="group flex items-center justify-between rounded-xl border border-border bg-[var(--background-elevated)] px-4 py-3 transition-colors hover:border-[var(--primary)]"
+              className="group flex min-w-0 items-center justify-between gap-3 rounded-xl border border-border bg-[var(--background-elevated)] px-3.5 py-3 transition-colors hover:border-[var(--primary)] sm:px-4"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex min-w-0 items-center gap-3">
                 <Mail className="h-4 w-4 text-[var(--primary)]" />
                 <div>
                   <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                     email
                   </div>
-                  <div className="text-sm font-medium">mt1499961@gmail.com</div>
+                  <div className="break-all text-sm font-medium">mt1499961@gmail.com</div>
                 </div>
               </div>
               <span className="font-mono text-xs text-muted-foreground transition-transform group-hover:translate-x-0.5">
@@ -134,7 +134,7 @@ export function TerrainSection() {
                   <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                     github
                   </div>
-                  <div className="text-sm font-medium">MadhuTiwari-345</div>
+                  <div className="truncate text-sm font-medium">MadhuTiwari-345</div>
                 </div>
               </div>
               <span className="font-mono text-xs text-muted-foreground transition-transform group-hover:translate-x-0.5">
@@ -154,7 +154,7 @@ export function TerrainSection() {
                   <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                     linkedin
                   </div>
-                  <div className="text-sm font-medium">madhu tiwari</div>
+                  <div className="truncate text-sm font-medium">madhu tiwari</div>
                 </div>
               </div>
               <span className="font-mono text-xs text-muted-foreground transition-transform group-hover:translate-x-0.5">
@@ -163,7 +163,7 @@ export function TerrainSection() {
             </a>
           </div>
 
-          <div className="mt-6 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-border/70 pt-4 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground sm:text-[10px]">
             <span>new delhi, india</span>
             <span className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--primary)]" />
@@ -173,7 +173,7 @@ export function TerrainSection() {
         </motion.div>
       </div>
 
-      <footer className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground sm:flex-row">
+      <footer className="mt-8 flex flex-col items-center justify-between gap-3 border-t border-border pt-6 text-center font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground sm:flex-row sm:text-left sm:text-[10px] sm:tracking-[0.25em]">
         <span>© 2026 Madhu Tiwari · built with next.js, r3f, framer motion</span>
         <span className="flex items-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full bg-[var(--primary)]" />
