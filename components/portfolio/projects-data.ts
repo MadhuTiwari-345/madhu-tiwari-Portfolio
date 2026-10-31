@@ -1,6 +1,6 @@
 import type { Project } from "./project-card-xray"
 
-export const projects: Project[
+export const projects: Project[] = [
   {
       title: "Lex AI",
       category: "AI & SaaS",
@@ -31,6 +31,7 @@ export const projects: Project[
           { from: "api", to: "db" },
         ],
       },
+    },
   {
       title: "Kisan OS",
       category: "Full Stack",
@@ -63,6 +64,7 @@ export const projects: Project[
           { from: "gateway", to: "storage" },
         ],
       },
+    },
   {
       title: "FemtoGuard",
       category: "AI & Security",
@@ -92,6 +94,7 @@ export const projects: Project[
           { from: "genai", to: "result" },
         ],
       },
+    },
   {
       title: "HirePlane",
       category: "Full Stack",
@@ -121,6 +124,7 @@ export const projects: Project[
           { from: "app", to: "hiring" },
         ],
       },
+    },
   {
       title: "StormCycle",
       category: "AI & Health",
@@ -151,6 +155,7 @@ export const projects: Project[
           { from: "api", to: "db" },
         ],
       },
+    },
   {
       title: "MicroClimate",
       category: "AI & Data",
@@ -183,6 +188,7 @@ export const projects: Project[
           { from: "api", to: "weather" },
         ],
       },
+    },
   {
       title: "RISC-V Instruction Set Explorer",
       category: "Developer Tools",
@@ -214,6 +220,7 @@ export const projects: Project[
         ],
       },
     },
+    },
   {
       title: "FarmChain",
       category: "Web3",
@@ -244,6 +251,7 @@ export const projects: Project[
           { from: "next", to: "local" },
         ],
       },
+    },
   {
       title: "PhishBuster",
       category: "AI & Security",
@@ -278,4 +286,5 @@ export const projects: Project[
         ],
       }
 
+    },
 ]
