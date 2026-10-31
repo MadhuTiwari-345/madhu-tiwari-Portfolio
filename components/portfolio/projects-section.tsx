@@ -18,8 +18,8 @@ export function ProjectsSection() {
   )
 
   return (
-    <section id="projects" className="relative mx-auto w-full max-w-7xl px-4 py-20 md:px-8">
-      <div className="mb-9 grid gap-6 border-b border-border/80 pb-7 md:grid-cols-[1fr_auto] md:items-end">
+    <section id="projects" className="relative mx-auto w-full max-w-7xl px-4 py-16 md:px-8 lg:py-20">
+      <div className="mb-8 grid gap-5 border-b border-border/80 pb-6 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
         <div>
           <div className="mb-3 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--primary)]" />
@@ -37,12 +37,12 @@ export function ProjectsSection() {
         </div>
       </div>
 
-      <div className="mb-8 flex flex-col gap-3">
+      <div className="mb-7 flex min-w-0 flex-col gap-3">
         <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.18em] text-muted-foreground">
           <SlidersHorizontal className="h-3.5 w-3.5" />
           Filter the archive
         </div>
-        <div className="flex gap-2 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" role="group" aria-label="Filter projects">
+        <div className="flex min-w-0 gap-2 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" role="group" aria-label="Filter projects">
           {filters.map((filter) => {
             const selected = activeFilter === filter
             return (
@@ -60,7 +60,7 @@ export function ProjectsSection() {
         </div>
       </div>
 
-      <motion.div layout className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-5">
+      <motion.div layout className="grid grid-cols-1 items-stretch gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-12 lg:gap-x-5 lg:gap-y-10">
         <AnimatePresence mode="popLayout">
           {visibleProjects.map((project, index) => (
             <motion.div
