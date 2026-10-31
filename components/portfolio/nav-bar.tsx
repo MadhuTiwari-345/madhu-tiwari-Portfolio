@@ -8,12 +8,13 @@ import { BriefcaseBusiness, X } from "lucide-react"
 
 const profileImage = "https://avatars.githubusercontent.com/u/194702672?v=4"
 const links = [
-  { href: "#console", label: "Console" },
+  { href: "#top", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#projects", label: "Work" },
   { href: "#engineering", label: "Build" },
   { href: "#skills", label: "Stack" },
   { href: "#experience", label: "Journey" },
+  { href: "#console", label: "Console" },
   { href: "#contact", label: "Contact" },
 ]
 
