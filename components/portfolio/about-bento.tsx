@@ -15,14 +15,14 @@ export function AboutBento() {
     <section id="about" className="relative mx-auto w-full max-w-7xl px-4 py-24 md:px-8">
       <SectionHeader label="ABOUT" title="The human behind the code." />
 
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-6 md:grid-rows-2">
+      <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-12">
         {/* Bio */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 md:col-span-4 md:row-span-2"
+          className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 md:col-span-8"
         >
           <div
             aria-hidden
@@ -65,7 +65,7 @@ export function AboutBento() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="relative overflow-hidden rounded-2xl border border-border bg-card p-5 md:col-span-2"
+          className="relative overflow-hidden rounded-2xl border border-border bg-card p-5 md:col-span-4"
         >
           <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
             currently
