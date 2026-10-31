@@ -79,9 +79,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.12, ease }}
             className="max-w-[720px] text-balance font-display text-[clamp(3.2rem,5.7vw,5.2rem)] font-bold leading-[.99] tracking-[-0.065em]"
           >
-            Thoughtful code.
-            <br />
-            <span className="hero-title-accent">Useful products.</span>
+            hi, I’m Madhu.
           </motion.h1>
 
           <motion.div
@@ -91,7 +89,7 @@ export function Hero() {
             className="mt-7 max-w-[570px]"
           >
             <p className="text-[15px] leading-[1.8] text-muted-foreground sm:text-[17px]">
-              I’m Madhu Tiwari, a Computer Science student building full-stack experiences, reliable backend systems and practical AI applications.
+              Computer Science student in New Delhi, building at the intersection of full-stack development and AI. I enjoy taking ideas from a rough sketch to working software, whether that means building an end-to-end product, figuring out a tricky backend problem, or experimenting with what AI can make possible. I’m usually learning something new, building something useful, or doing a bit of both.
             </p>
             <div className="mt-4 flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.13em] text-foreground/75">
               <span className="h-px w-8 bg-[var(--secondary)]" />
