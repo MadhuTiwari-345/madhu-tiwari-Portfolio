@@ -70,7 +70,7 @@ export function Hero() {
             transition={{ duration: 0.65, delay: 0.06, ease }}
             className="mb-4 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--primary)] sm:text-xs"
           >
-            Building software that solves real problems
+            Computer Science · AI & ML student
           </motion.p>
 
           <motion.h1
@@ -174,7 +174,7 @@ export function Hero() {
                 </button>
               </div>
 
-              <div className="mt-3 h-[260px] overflow-hidden">
+              <div className="mt-3 h-[252px] overflow-hidden">
                 <AnimatePresence mode="wait" initial={false}>
                   {panel === "stack" ? (
                     <motion.div key="stack" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.22 }} className="space-y-2.5">
@@ -220,7 +220,7 @@ export function Hero() {
             </div>
 
             <div className="flex items-center justify-between border-t border-border/80 px-5 py-3.5 sm:px-6">
-              <span className="text-[11px] text-muted-foreground">Curiosity, turned into working software.</span>
+              <span className="text-[11px] text-muted-foreground">Learning through building, testing, and improving.</span>
               <span className="h-1.5 w-10 overflow-hidden rounded-full bg-[var(--muted)]">
                 <motion.span className="block h-full rounded-full bg-[var(--accent)]" animate={{ width: panel === "stack" ? "72%" : "100%" }} transition={{ duration: 0.35 }} />
               </span>
