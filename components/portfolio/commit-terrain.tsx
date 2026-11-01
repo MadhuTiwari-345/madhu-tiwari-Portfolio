@@ -19,7 +19,6 @@ function buildContributionGrid(events: GitHubEvent[], cols = 22, rows = 15) {
   const today = new Date()
   today.setUTCHours(0, 0, 0, 0)
   const raw: number[][] = []
-  let max = 1
   for (let x = 0; x < cols; x++) {
     const column: number[] = []
     for (let z = 0; z < rows; z++) {
@@ -27,7 +26,6 @@ function buildContributionGrid(events: GitHubEvent[], cols = 22, rows = 15) {
       date.setUTCDate(today.getUTCDate() - (cols * rows - 1 - (x * rows + z)))
       const value = counts.get(date.toISOString().slice(0, 10)) ?? 0
       column.push(value)
-      max = Math.max(max, value)
     }
     raw.push(column)
   }
