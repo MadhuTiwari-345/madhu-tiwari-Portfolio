@@ -32,15 +32,7 @@ export function TerrainSection() {
             refreshes every 5 min
           </div>
           <CommitTerrain />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 z-10"
-            style={{
-              background:
-                "linear-gradient(to top, var(--card) 0%, color-mix(in oklch, var(--card) 72%, transparent) 12%, transparent 34%)",
-            }}
-          />
-          <div className="absolute right-4 bottom-4 left-4 z-20 flex flex-wrap items-end justify-between gap-3 rounded-xl border border-white/10 bg-[color-mix(in_oklch,var(--card)_88%,transparent)] p-3 backdrop-blur-md sm:right-5 sm:bottom-5 sm:left-5 sm:p-4">
+          <div className="absolute right-4 bottom-4 left-4 z-20 flex flex-wrap items-end justify-between gap-3 rounded-xl border border-white/10 bg-[color-mix(in_oklch,var(--card)_94%,transparent)] p-3 backdrop-blur-md sm:right-5 sm:bottom-5 sm:left-5 sm:p-4">
             <div className="min-w-0">
               <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                 recent public activity
