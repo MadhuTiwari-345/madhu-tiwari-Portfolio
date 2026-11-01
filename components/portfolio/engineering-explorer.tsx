@@ -13,6 +13,7 @@ const typeMeta: Record<ArchNode["type"], { label: string; icon: typeof Code2; de
   db: { label: "Data", icon: Database, detail: "Data store or persistence component represented in this project's architecture." },
   ai: { label: "Intelligence", icon: Sparkles, detail: "AI, model, analysis, or visualization component represented in this project's architecture." },
   external: { label: "Integration", icon: Workflow, detail: "External API, integration, or supporting tool represented in this project's architecture." },
+  tool: { label: "Developer Tool", icon: Boxes, detail: "Optional local command-line utility or developer-side tool used to prepare or inspect project data." },
 }
 
 function ArchitectureMap({ project, selected, onSelect }: { project: Project; selected: string; onSelect: (id: string) => void }) {
