@@ -41,19 +41,27 @@ function GitHubCity({ grid }: { grid: number[][] }) {
     // A compact, square-ish city reads like a miniature skyline instead of a stretched heatmap.
     const cols = 22
     const rows = 15
-    const buildings: { x: number; z: number; h: number; activity: number; seed: number }[] = []
+    const buildings: { x: number; z: number; h: number; activity: number; seed: number; width: number; occupied: boolean }[] = []
     for (let x = 0; x < cols; x++) {
       for (let z = 0; z < rows; z++) {
         const activity = grid[x]?.[z] ?? 0
         const seed = (x * 37 + z * 19 + x * z * 3) % 23
-        // Only days with public events become buildings; quiet days remain open space.
-        const h = activity === 0 ? 0 : 0.24 + Math.min(activity, 4) * 0.22
+        // Build a complete miniature skyline. GitHub activity subtly raises and lights buildings,
+        // while deterministic variation keeps the city visible even when the API has few events.
+        const centerDistance = Math.hypot(x - (cols - 1) / 2, z - (rows - 1) / 2)
+        const cluster = Math.max(0, 1 - centerDistance / 13)
+        const variation = ((seed * 7 + x * 11 + z * 5) % 17) / 16
+        const h = 0.34 + variation * 1.05 + cluster * 0.85 + Math.min(activity, 5) * 0.12
+        const occupied = seed % 11 > 1 && !(x % 6 === 0 && z % 5 === 0)
+        const width = 0.22 + (seed % 4) * 0.018
         buildings.push({
           x: x - (cols - 1) / 2,
           z: z - (rows - 1) / 2,
           h,
           activity,
           seed,
+          width,
+          occupied,
         })
       }
     }
@@ -102,11 +110,11 @@ function GitHubCity({ grid }: { grid: number[][] }) {
         <primitive object={baseMaterial} attach="material" />
       </mesh>
       {buildings.map((b, i) => {
-        if (b.activity === 0) return null
-        const palette = ["#8b5cf6", "#a78bfa", "#c084fc", "#7c3aed", "#e879f9", "#b4a0ff"]
+        if (!b.occupied) return null
+        const palette = ["#a78bfa", "#c084fc", "#8b5cf6", "#d8b4fe", "#e879f9", "#b4a0ff", "#7dd3fc"]
         const color = palette[b.seed % palette.length]
-        const w = 0.27
-        const d = 0.27
+        const w = b.width
+        const d = b.width
         return (
           <group
             key={i}
@@ -124,12 +132,24 @@ function GitHubCity({ grid }: { grid: number[][] }) {
           >
             <mesh position={[0, b.h / 2, 0]} castShadow receiveShadow>
               <boxGeometry args={[w, b.h, d]} />
-              <meshStandardMaterial color={color} roughness={0.48} metalness={0.2} emissive={color} emissiveIntensity={hovered === i ? 0.24 : 0.055} />
+              <meshStandardMaterial color={color} roughness={0.38} metalness={0.24} emissive={color} emissiveIntensity={hovered === i ? 0.42 : b.activity > 0 ? 0.2 : 0.12} />
             </mesh>
-            {b.h > 0.58 && (
-              <mesh position={[0, b.h * 0.62, d / 2 + 0.006]}>
-                <boxGeometry args={[w * 0.34, 0.045, 0.012]} />
-                <primitive object={windowMaterial} attach="material" />
+            {b.h > 0.72 && (
+              <>
+                <mesh position={[0, b.h * 0.42, d / 2 + 0.006]}>
+                  <boxGeometry args={[w * 0.42, 0.045, 0.012]} />
+                  <primitive object={windowMaterial} attach="material" />
+                </mesh>
+                <mesh position={[0, b.h * 0.72, d / 2 + 0.006]}>
+                  <boxGeometry args={[w * 0.42, 0.045, 0.012]} />
+                  <primitive object={windowMaterial} attach="material" />
+                </mesh>
+              </>
+            )}
+            {b.h > 1.45 && (
+              <mesh position={[0, b.h + 0.07, 0]} castShadow>
+                <boxGeometry args={[w * 0.28, 0.14, d * 0.28]} />
+                <meshBasicMaterial color="#f5d0fe" />
               </mesh>
             )}
           </group>
@@ -167,10 +187,11 @@ export function CommitTerrain() {
       <Canvas camera={{ position: [9, 10, 12], fov: 34 }} dpr={[1, 1.5]} shadows>
         <color attach="background" args={["#110d20"]} />
         
-        <ambientLight intensity={0.42} />
-        <directionalLight position={[5, 10, 6]} intensity={1.25} color="#e9d5ff" castShadow />
-        <pointLight position={[-5, 5, -3]} intensity={4.5} distance={18} color="#a855f7" />
-        <pointLight position={[5, 4, 4]} intensity={3.5} distance={16} color="#f0abfc" />
+        <ambientLight intensity={0.68} />
+        <directionalLight position={[5, 12, 6]} intensity={1.9} color="#f3e8ff" castShadow />
+        <pointLight position={[-5, 5, -3]} intensity={7} distance={20} color="#a855f7" />
+        <pointLight position={[5, 4, 4]} intensity={6} distance={18} color="#f0abfc" />
+        <pointLight position={[0, 3, 0]} intensity={3.5} distance={13} color="#c084fc" />
         <GitHubCity grid={grid} />
       </Canvas>
     </div>
