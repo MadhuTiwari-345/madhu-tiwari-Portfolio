@@ -79,7 +79,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.12, ease }}
             className="max-w-[720px] text-balance font-display text-[clamp(3.2rem,5.7vw,5.2rem)] font-bold leading-[.99] tracking-[-0.065em]"
           >
-            hi, I’m Madhu.
+            Hi, I’m Madhu.
           </motion.h1>
 
           <motion.div
@@ -202,13 +202,13 @@ export function Hero() {
                       })}
                     </motion.div>
                   ) : (
-                    <motion.div key="process" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.22 }} className="space-y-2">
+                    <motion.div key="process" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.22 }} className="space-y-1.5">
                       {process.map((item, index) => (
                         <motion.button type="button" onClick={() => jumpTo(item.target)} key={item.number} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.045, duration: 0.25 }} className="group/process flex min-h-[56px] w-full items-center gap-3 rounded-lg border border-border/65 bg-background/45 px-3 py-2 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/40 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]">
                           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--primary)]/8 font-mono text-[10px] font-semibold text-[var(--primary)]">{item.number}</span>
                           <span className="min-w-0 flex-1">
-                            <span className="block text-[13px] font-semibold">{item.title}</span>
-                            <span className="mt-0.5 block text-[11px] text-muted-foreground">{item.detail}</span>
+                            <span className="block text-[13px] font-semibold leading-4">{item.title}</span>
+                            <span className="block text-[11px] leading-4 text-muted-foreground">{item.detail}</span>
                           </span>
                           <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground/60 transition-transform group-hover/process:-translate-y-0.5 group-hover/process:translate-x-0.5" />
                         </motion.button>
