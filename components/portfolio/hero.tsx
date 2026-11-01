@@ -70,7 +70,7 @@ export function Hero() {
             transition={{ duration: 0.65, delay: 0.06, ease }}
             className="mb-4 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--primary)] sm:text-xs"
           >
-            Full-stack apps <span className="px-1.5 text-[var(--secondary)]">·</span> practical AI tools
+            Building software that solves real problems
           </motion.p>
 
           <motion.h1
@@ -174,7 +174,7 @@ export function Hero() {
                 </button>
               </div>
 
-              <div className="mt-3 h-[220px] overflow-hidden">
+              <div className="mt-3 h-[260px] overflow-hidden">
                 <AnimatePresence mode="wait" initial={false}>
                   {panel === "stack" ? (
                     <motion.div key="stack" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.22 }} className="space-y-2.5">
@@ -188,7 +188,7 @@ export function Hero() {
                             initial={{ opacity: 0, x: 12 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.055, duration: 0.28 }}
-                            className="group/row flex w-full items-center gap-3 rounded-lg border border-border/65 bg-background/45 px-3 py-2.5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/40 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]"
+                            className="group/row flex min-h-[72px] w-full items-center gap-3 rounded-lg border border-border/65 bg-background/45 px-3 py-2.5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/40 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]"
                             aria-label={`Explore ${item.label} skills`}
                           >
                             <span className="rounded-lg bg-[var(--primary)]/8 p-2 text-[var(--primary)]"><Icon className="h-4 w-4" /></span>
@@ -204,7 +204,7 @@ export function Hero() {
                   ) : (
                     <motion.div key="process" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.22 }} className="space-y-2">
                       {process.map((item, index) => (
-                        <motion.button type="button" onClick={() => jumpTo(item.target)} key={item.number} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.045, duration: 0.25 }} className="group/process flex min-h-[48px] w-full items-center gap-3 rounded-lg border border-border/65 bg-background/45 px-3 py-2 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/40 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]">
+                        <motion.button type="button" onClick={() => jumpTo(item.target)} key={item.number} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.045, duration: 0.25 }} className="group/process flex min-h-[56px] w-full items-center gap-3 rounded-lg border border-border/65 bg-background/45 px-3 py-2 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/40 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]">
                           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--primary)]/8 font-mono text-[10px] font-semibold text-[var(--primary)]">{item.number}</span>
                           <span className="min-w-0 flex-1">
                             <span className="block text-[13px] font-semibold">{item.title}</span>
