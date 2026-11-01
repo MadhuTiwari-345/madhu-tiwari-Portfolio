@@ -31,7 +31,9 @@ function buildContributionGrid(events: GitHubEvent[], cols = 22, rows = 15) {
     }
     raw.push(column)
   }
-  return raw.map(column => column.map(value => value === 0 ? 0 : 0.18 + 0.82 * value / max))
+  // Log scaling keeps occasional event spikes from producing a single oversized tower.
+  const scale = Math.log1p(max)
+  return raw.map(column => column.map(value => value === 0 ? 0 : 0.12 + 0.88 * Math.log1p(value) / scale))
 }
 
 function GitHubCity({ grid }: { grid: number[][] }) {
@@ -42,21 +44,20 @@ function GitHubCity({ grid }: { grid: number[][] }) {
     // A compact, square-ish city reads like a miniature skyline instead of a stretched heatmap.
     const cols = 22
     const rows = 15
-    const buildings: { x: number; z: number; h: number; activity: number; seed: number; tower: boolean }[] = []
+    const buildings: { x: number; z: number; h: number; activity: number; seed: number }[] = []
     for (let x = 0; x < cols; x++) {
       for (let z = 0; z < rows; z++) {
         const activity = grid[x]?.[z] ?? 0
         const seed = (x * 37 + z * 19 + x * z * 3) % 23
-        // Keep inactive days low; event activity determines the visible skyline.
-        const base = 0.12 + (seed / 23) * 0.12
-        const h = base + activity * 1.8
+        // Keep quiet days low and cap active buildings for a balanced skyline.
+        const base = 0.10 + (seed / 23) * 0.08
+        const h = Math.min(1.02, base + activity * 0.78)
         buildings.push({
           x: x - (cols - 1) / 2,
           z: z - (rows - 1) / 2,
           h,
           activity,
           seed,
-          tower: seed === 2 || seed === 7 || seed === 15 || (x % 6 === 2 && z % 5 === 1),
         })
       }
     }
@@ -107,8 +108,8 @@ function GitHubCity({ grid }: { grid: number[][] }) {
       {buildings.map((b, i) => {
         const palette = ["#8b5cf6", "#a78bfa", "#c084fc", "#7c3aed", "#e879f9", "#b4a0ff"]
         const color = palette[b.seed % palette.length]
-        const w = b.tower ? 0.25 : 0.31
-        const d = b.tower ? 0.25 : 0.31
+        const w = 0.31
+        const d = 0.31
         return (
           <group
             key={i}
@@ -128,19 +129,11 @@ function GitHubCity({ grid }: { grid: number[][] }) {
               <boxGeometry args={[w, b.h, d]} />
               <meshStandardMaterial color={color} roughness={0.48} metalness={0.2} emissive={color} emissiveIntensity={hovered === i ? 0.3 : b.activity > 0 ? 0.1 : 0.015} />
             </mesh>
-            {b.h > 0.65 && (
-              <>
-                <mesh position={[0, b.h * 0.62, d / 2 + 0.006]}>
-                  <boxGeometry args={[w * 0.34, 0.055, 0.012]} />
-                  <primitive object={windowMaterial} attach="material" />
-                </mesh>
-                {b.h > 1.25 && (
-                  <mesh position={[0, b.h + 0.08, 0]} castShadow>
-                    <boxGeometry args={[0.045, 0.16, 0.045]} />
-                    <meshBasicMaterial color="#f5d0fe" />
-                  </mesh>
-                )}
-              </>
+            {b.h > 0.58 && (
+              <mesh position={[0, b.h * 0.62, d / 2 + 0.006]}>
+                <boxGeometry args={[w * 0.34, 0.045, 0.012]} />
+                <primitive object={windowMaterial} attach="material" />
+              </mesh>
             )}
           </group>
         )
