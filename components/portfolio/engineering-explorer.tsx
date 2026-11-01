@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { AnimatePresence, motion } from "framer-motion"
-import { ArrowUpRight, Boxes, Code2, Database, ExternalLink, GitBranch, Github, Network, Server, Sparkles, Workflow } from "lucide-react"
+import { ArrowUpRight, Boxes, Code2, Database, ExternalLink, GitBranch, Github, MousePointer2, Network, Server, Sparkles, Workflow } from "lucide-react"
 import { projects } from "./projects-data"
 import type { ArchNode, Project } from "./project-card-xray"
 import { SectionHeader } from "./about-bento"
@@ -22,7 +22,7 @@ function ArchitectureMap({ project, selected, onSelect }: { project: Project; se
       <div aria-hidden className="absolute inset-0 opacity-40" style={{ backgroundImage: "linear-gradient(rgba(192,168,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(192,168,255,.12) 1px, transparent 1px)", backgroundSize: "22px 22px" }} />
       <div className="relative flex items-center justify-between gap-2 font-mono text-[9px] uppercase tracking-[.2em] text-white/50">
         <span className="flex items-center gap-2"><Network className="h-3.5 w-3.5 text-fuchsia-300" /> system topology</span>
-        <span>{project.architecture.nodes.length} nodes · {project.architecture.edges.length} links</span>
+        <span className="flex items-center gap-2 text-fuchsia-200/80"><MousePointer2 className="h-3 w-3" /> click a node to explore</span>
       </div>
       <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden>
         <defs><marker id="explorer-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="3" markerHeight="3" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#d8a8ff" /></marker></defs>
@@ -38,12 +38,12 @@ function ArchitectureMap({ project, selected, onSelect }: { project: Project; se
       </svg>
       {project.architecture.nodes.map((node) => {
         const active = selected === node.id
-        return <button key={node.id} type="button" onClick={() => onSelect(node.id)} aria-pressed={active} className={`absolute z-10 -translate-x-1/2 -translate-y-1/2 rounded-lg border px-2 py-1.5 text-left font-mono shadow-lg transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fuchsia-300 sm:px-3 ${active ? "border-fuchsia-300 bg-fuchsia-300/20 text-white shadow-fuchsia-500/20" : "border-white/20 bg-[#21172e]/95 text-white/80 hover:border-fuchsia-200/70"}`} style={{ left: node.x+"%", top: node.y+"%", maxWidth: "31%" }}>
+        return <button key={node.id} type="button" onClick={() => onSelect(node.id)} aria-pressed={active} title={`Click to inspect ${node.label}`} className={`absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-lg border px-2 py-1.5 text-left font-mono shadow-lg transition-all duration-200 hover:z-20 hover:scale-105 hover:border-fuchsia-200 hover:bg-fuchsia-300/15 hover:text-white focus-visible:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fuchsia-300 active:scale-95 sm:px-3 ${active ? "border-fuchsia-300 bg-fuchsia-300/20 text-white shadow-[0_0_22px_rgba(217,70,239,.22)]" : "border-white/25 bg-[#21172e]/95 text-white/85"}`} style={{ left: node.x+"%", top: node.y+"%", maxWidth: "31%" }}>
           <span className="block text-[7px] uppercase tracking-widest text-fuchsia-200/75 sm:text-[8px]">{typeMeta[node.type].label}</span>
           <span className="block break-words text-[8px] leading-tight sm:text-[10px]">{node.label}</span>
         </button>
       })}
-      <div className="absolute bottom-3 left-3 font-mono text-[8px] uppercase tracking-widest text-white/35">select a node to inspect</div>
+      <div className="absolute bottom-3 left-3 inline-flex items-center gap-2 rounded-full border border-fuchsia-300/30 bg-[#21172e]/95 px-3 py-1.5 font-mono text-[8px] uppercase tracking-[.16em] text-fuchsia-100 shadow-lg"><MousePointer2 className="h-3 w-3" /> Click any node to inspect its role</div>
     </div>
   )
 }
