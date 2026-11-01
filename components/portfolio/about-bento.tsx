@@ -70,19 +70,24 @@ export function AboutBento() {
           <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
             currently
           </div>
-          <div className="mt-3 flex items-start gap-3">
-            <div
-              className="mt-1 h-2 w-2 animate-pulse rounded-full"
-              style={{ background: "var(--primary)" }}
-            />
-            <div>
-              <div className="text-sm font-semibold">Contributing across open-source programs</div>
+          <div className="mt-4 grid gap-2.5">
+            <div className="flex items-start gap-3 rounded-xl border border-border/70 bg-[var(--background-elevated)] p-3.5">
+              <GitPullRequest className="mt-0.5 h-4 w-4 shrink-0 text-[var(--primary)]" />
+              <div className="min-w-0">
+                <div className="text-sm font-semibold">Open-source contributor</div>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Taking part in community-led programs and contributing to open projects.
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="mt-4 flex items-start gap-3">
-            <Sparkles className="mt-0.5 h-4 w-4 text-[var(--accent)]" />
-            <div>
-              <div className="text-sm font-semibold">Portfolio shipped · Building practical AI</div>
+            <div className="flex items-start gap-3 rounded-xl border border-border/70 bg-[var(--background-elevated)] p-3.5">
+              <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-[var(--accent)]" />
+              <div className="min-w-0">
+                <div className="text-sm font-semibold">Building with AI</div>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                  Creating full-stack projects with practical, useful AI features.
+                </p>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -108,11 +113,11 @@ export function AboutBento() {
               <span className="text-sm text-muted-foreground"> programs</span>
             </div>
             <div className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Across 89 public repositories.
+              Contributions across five open-source communities.
             </div>
           </div>
           <div className="mt-4 flex flex-wrap gap-2">
-            {["GSSoC '25", "SWOC '26", "ECWOC '26", "OSCG '26", "Aperture 3.0"].map((program) => (
+            {["GSSoC '25", "SWOC '26", "ECWOC '26", "OSCG '26", "Apertre 3.0"].map((program) => (
               <span
                 key={program}
                 className="rounded-md bg-[var(--background-elevated)] px-2.5 py-1.5 font-mono text-[9px] text-muted-foreground"
