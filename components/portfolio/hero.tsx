@@ -70,7 +70,7 @@ export function Hero() {
             transition={{ duration: 0.65, delay: 0.06, ease }}
             className="mb-4 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--primary)] sm:text-xs"
           >
-            Software engineering <span className="px-1.5 text-[var(--secondary)]">·</span> AI-powered products
+            Full-stack apps <span className="px-1.5 text-[var(--secondary)]">·</span> practical AI tools
           </motion.p>
 
           <motion.h1
@@ -174,7 +174,7 @@ export function Hero() {
                 </button>
               </div>
 
-              <div className="mt-3 min-h-[196px]">
+              <div className="mt-3 h-[220px] overflow-hidden">
                 <AnimatePresence mode="wait" initial={false}>
                   {panel === "stack" ? (
                     <motion.div key="stack" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.22 }} className="space-y-2.5">
@@ -202,10 +202,10 @@ export function Hero() {
                       })}
                     </motion.div>
                   ) : (
-                    <motion.div key="process" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.22 }} className="space-y-1">
+                    <motion.div key="process" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.22 }} className="space-y-2">
                       {process.map((item, index) => (
-                        <motion.button type="button" onClick={() => jumpTo(item.target)} key={item.number} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.045, duration: 0.25 }} className="group/process flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left transition-colors hover:bg-[var(--muted)]/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]">
-                          <span className="font-mono text-[10px] font-semibold text-[var(--secondary)]">{item.number}</span>
+                        <motion.button type="button" onClick={() => jumpTo(item.target)} key={item.number} initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: index * 0.045, duration: 0.25 }} className="group/process flex min-h-[48px] w-full items-center gap-3 rounded-lg border border-border/65 bg-background/45 px-3 py-2 text-left transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--primary)]/40 hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--primary)]">
+                          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--primary)]/8 font-mono text-[10px] font-semibold text-[var(--primary)]">{item.number}</span>
                           <span className="min-w-0 flex-1">
                             <span className="block text-[13px] font-semibold">{item.title}</span>
                             <span className="mt-0.5 block text-[11px] text-muted-foreground">{item.detail}</span>
