@@ -35,132 +35,122 @@ function buildContributionGrid(events: GitHubEvent[], cols = 22, rows = 15) {
 
 function GitHubCity({ grid }: { grid: number[][] }) {
   const group = useRef<THREE.Group>(null)
-  const buildingRefs = useRef<(THREE.Group | null)[]>([])
   const [hovered, setHovered] = useState<number | null>(null)
-  const { rows, cols, buildings } = useMemo(() => {
-    // A compact, square-ish city reads like a miniature skyline instead of a stretched heatmap.
-    const cols = 22
-    const rows = 15
-    const buildings: { x: number; z: number; h: number; activity: number; seed: number; width: number; occupied: boolean }[] = []
+
+  const { buildings, size } = useMemo(() => {
+    const cols = 17
+    const rows = 17
+    const buildings: { x: number; z: number; h: number; activity: number; seed: number; w: number; d: number; floors: number }[] = []
     for (let x = 0; x < cols; x++) {
       for (let z = 0; z < rows; z++) {
-        const activity = grid[x]?.[z] ?? 0
-        const seed = (x * 37 + z * 19 + x * z * 3) % 23
-        // Build a complete miniature skyline. GitHub activity subtly raises and lights buildings,
-        // while deterministic variation keeps the city visible even when the API has few events.
-        const centerDistance = Math.hypot(x - (cols - 1) / 2, z - (rows - 1) / 2)
-        const cluster = Math.max(0, 1 - centerDistance / 13)
-        const variation = ((seed * 7 + x * 11 + z * 5) % 17) / 16
-        const h = 0.34 + variation * 1.05 + cluster * 0.85 + Math.min(activity, 5) * 0.12
-        const occupied = seed % 11 > 1 && !(x % 6 === 0 && z % 5 === 0)
-        const width = 0.22 + (seed % 4) * 0.018
+        const seed = (x * 37 + z * 19 + x * z * 3) % 101
+        const center = Math.hypot(x - 8, z - 8)
+        const district = Math.max(0, 1 - center / 11)
+        // A deliberate, stable skyline: GitHub activity changes the glow, never whether the city exists.
+        const occupied = seed < 43 || (center < 4.5 && seed < 72)
+        if (!occupied) continue
+        const activity = grid[Math.min(21, Math.floor(x * 22 / cols))]?.[Math.min(14, Math.floor(z * 15 / rows))] ?? 0
+        const variation = ((seed * 13 + x * 7 + z * 11) % 29) / 28
+        const h = 0.62 + variation * 1.45 + district * 1.05 + Math.min(activity, 4) * 0.1
+        const w = 0.34 + (seed % 4) * 0.045
+        const d = 0.34 + ((seed * 3) % 4) * 0.04
         buildings.push({
-          x: x - (cols - 1) / 2,
-          z: z - (rows - 1) / 2,
-          h,
-          activity,
-          seed,
-          width,
-          occupied,
+          x: (x - 8) * 0.72,
+          z: (z - 8) * 0.72,
+          h, activity, seed, w, d,
+          floors: Math.max(2, Math.floor(h / 0.25)),
         })
       }
     }
-    return { rows, cols, buildings }
+    return { buildings, size: 12.7 }
   }, [grid])
 
   const baseMaterial = useMemo(() => new THREE.MeshStandardMaterial({
-    color: "#211633", roughness: 0.82, metalness: 0.18
-  }), [])
-  const windowMaterial = useMemo(() => new THREE.MeshBasicMaterial({
-    color: "#ffc8ff", toneMapped: false
+    color: "#111b43", roughness: 0.28, metalness: 0.72,
+    emissive: "#26145c", emissiveIntensity: 0.34,
   }), [])
 
-  useEffect(() => () => {
-    baseMaterial.dispose()
-    windowMaterial.dispose()
-  }, [baseMaterial, windowMaterial])
+  useEffect(() => () => baseMaterial.dispose(), [baseMaterial])
 
   useFrame((state, delta) => {
     const t = state.clock.getElapsedTime()
     if (group.current) {
-      group.current.rotation.y = Math.sin(t * 0.16) * 0.055 + state.pointer.x * 0.045
-      group.current.rotation.x = -state.pointer.y * 0.025
-      group.current.position.y = -0.48 + Math.sin(t * 0.7) * 0.035
+      group.current.rotation.y = Math.sin(t * 0.12) * 0.035 + state.pointer.x * 0.025
+      group.current.rotation.x = -state.pointer.y * 0.015
+      group.current.position.y = -0.5 + Math.sin(t * 0.55) * 0.025
     }
-
-    // Smoothly pop the building under the cursor and gently push the camera closer.
-    buildingRefs.current.forEach((building, index) => {
-      if (!building) return
-      const target = hovered === index ? 1.32 : 1
-      const lift = hovered === index ? 0.18 : 0
-      building.scale.x = THREE.MathUtils.damp(building.scale.x, target, 12, delta)
-      building.scale.z = THREE.MathUtils.damp(building.scale.z, target, 12, delta)
-      building.position.y = THREE.MathUtils.damp(building.position.y, lift, 12, delta)
-    })
     const camera = state.camera
-    const target = hovered === null ? new THREE.Vector3(9, 10, 12) : new THREE.Vector3(7.8, 8.8, 10.5)
-    camera.position.lerp(target, 1 - Math.exp(-delta * 2.8))
-    camera.lookAt(0, 0, 0)
+    const target = hovered === null ? new THREE.Vector3(10.5, 11.8, 13.5) : new THREE.Vector3(9, 10, 11.5)
+    camera.position.lerp(target, 1 - Math.exp(-delta * 2.2))
+    camera.lookAt(0, 0.35, 0)
   })
 
+  const palette = ["#c4a2ff", "#a78bfa", "#d8b4fe", "#8b7cff", "#e0a8ff", "#a5b4fc"]
   return (
-    <group ref={group} position={[0, -0.48, 0]}>
-      <mesh position={[0, -0.16, 0]} receiveShadow>
-        <boxGeometry args={[cols * 0.43 + 0.7, 0.2, rows * 0.43 + 0.7]} />
+    <group ref={group} position={[0, -0.5, 0]}>
+      <mesh position={[0, -0.2, 0]} receiveShadow>
+        <boxGeometry args={[size, 0.34, size]} />
         <primitive object={baseMaterial} attach="material" />
       </mesh>
-      <gridHelper args={[Math.max(cols * 0.43, rows * 0.43), 22, "#8b5cf6", "#4c3676"]} position={[0, -0.054, 0]} />
+      <mesh position={[0, -0.018, 0]}>
+        <boxGeometry args={[size + 0.015, 0.012, size + 0.015]} />
+        <meshBasicMaterial color="#8b5cf6" transparent opacity={0.55} />
+      </mesh>
+      {Array.from({ length: 9 }, (_, i) => {
+        const offset = -5.6 + i * 1.4
+        return (
+          <group key={i}>
+            <mesh position={[offset, -0.018, 0]}>
+              <boxGeometry args={[0.012, 0.009, size - 0.5]} />
+              <meshBasicMaterial color="#5541a6" transparent opacity={0.38} />
+            </mesh>
+            <mesh position={[0, -0.018, offset]}>
+              <boxGeometry args={[size - 0.5, 0.009, 0.012]} />
+              <meshBasicMaterial color="#5541a6" transparent opacity={0.38} />
+            </mesh>
+          </group>
+        )
+      })}
       {buildings.map((b, i) => {
-        if (!b.occupied) return null
-        const palette = ["#b78cff", "#d2a6ff", "#9360f5", "#e0c0ff", "#bd8cff", "#a98bff", "#c8b2ff"]
         const color = palette[b.seed % palette.length]
-        const w = b.width
-        const d = b.width
+        const activeGlow = b.activity > 0 ? 0.7 : 0.42
         return (
           <group
             key={i}
-            ref={(node) => { buildingRefs.current[i] = node }}
-            position={[b.x * 0.43, 0, b.z * 0.43]}
-            onPointerOver={(event) => {
-              event.stopPropagation()
-              setHovered(i)
-              document.body.style.cursor = "pointer"
-            }}
-            onPointerOut={() => {
-              setHovered((current) => current === i ? null : current)
-              document.body.style.cursor = "default"
-            }}
+            position={[b.x, 0, b.z]}
+            onPointerOver={(event) => { event.stopPropagation(); setHovered(i); document.body.style.cursor = "pointer" }}
+            onPointerOut={() => { setHovered((v) => v === i ? null : v); document.body.style.cursor = "default" }}
           >
-            <mesh position={[0, b.h / 2, 0]} castShadow receiveShadow>
-              <boxGeometry args={[w, b.h, d]} />
-              <meshStandardMaterial color={color} roughness={0.2} metalness={0.42} transparent opacity={0.68} emissive={color} emissiveIntensity={hovered === i ? 0.58 : b.activity > 0 ? 0.32 : 0.22} />
+            <mesh position={[0, b.h / 2, 0]} castShadow>
+              <boxGeometry args={[b.w, b.h, b.d]} />
+              <meshStandardMaterial color={color} transparent opacity={0.34} roughness={0.22} metalness={0.62} emissive={color} emissiveIntensity={hovered === i ? 1.1 : activeGlow} />
             </mesh>
             <lineSegments position={[0, b.h / 2, 0]}>
-              <edgesGeometry args={[new THREE.BoxGeometry(w + 0.008, b.h + 0.008, d + 0.008)]} />
-              <lineBasicMaterial color="#e9c8ff" transparent opacity={0.82} />
+              <edgesGeometry args={[new THREE.BoxGeometry(b.w, b.h, b.d)]} />
+              <lineBasicMaterial color={hovered === i ? "#fff0ff" : color} transparent opacity={0.95} />
             </lineSegments>
-            {b.seed % 5 === 0 && b.h > 1.1 && (
-              <mesh position={[0, b.h + 0.13, 0]}>
-                <cylinderGeometry args={[0.009, 0.018, 0.26, 5]} />
-                <meshBasicMaterial color="#f3d8ff" />
+            {Array.from({ length: Math.max(1, Math.floor(b.h / 0.38)) }, (_, floor) => (
+              <mesh key={floor} position={[0, 0.22 + floor * 0.38, b.d / 2 + 0.006]}>
+                <boxGeometry args={[b.w * 0.42, 0.035, 0.012]} />
+                <meshBasicMaterial color="#f2d7ff" toneMapped={false} />
               </mesh>
-            )}
-            {b.h > 0.72 && (
+            ))}
+            {b.h > 1.65 && (
               <>
-                <mesh position={[0, b.h * 0.42, d / 2 + 0.006]}>
-                  <boxGeometry args={[w * 0.48, 0.055, 0.014]} />
-                  <primitive object={windowMaterial} attach="material" />
+                <mesh position={[0, b.h + 0.09, 0]}>
+                  <boxGeometry args={[b.w * 0.16, 0.18, b.d * 0.16]} />
+                  <meshBasicMaterial color="#e9d5ff" toneMapped={false} />
                 </mesh>
-                <mesh position={[0, b.h * 0.72, d / 2 + 0.006]}>
-                  <boxGeometry args={[w * 0.42, 0.045, 0.012]} />
-                  <primitive object={windowMaterial} attach="material" />
-                </mesh>
+                <lineSegments position={[0, b.h + 0.09, 0]}>
+                  <edgesGeometry args={[new THREE.BoxGeometry(b.w * 0.16, 0.18, b.d * 0.16)]} />
+                  <lineBasicMaterial color="#f5d0fe" />
+                </lineSegments>
               </>
             )}
-            {b.h > 1.45 && (
-              <mesh position={[0, b.h + 0.07, 0]} castShadow>
-                <boxGeometry args={[w * 0.28, 0.14, d * 0.28]} />
-                <meshBasicMaterial color="#f5d0fe" />
+            {hovered === i && (
+              <mesh position={[0, b.h + 0.24, 0]}>
+                <sphereGeometry args={[0.055, 8, 8]} />
+                <meshBasicMaterial color="#ffffff" toneMapped={false} />
               </mesh>
             )}
           </group>
@@ -195,14 +185,14 @@ export function CommitTerrain() {
 
   return (
     <div className="absolute inset-0">
-      <Canvas camera={{ position: [9, 10, 12], fov: 34 }} dpr={[1, 1.5]} shadows>
+      <Canvas camera={{ position: [10.5, 11.8, 13.5], fov: 31 }} dpr={[1, 1.5]} shadows>
         <color attach="background" args={["#080f2a"]} />
         
         <ambientLight intensity={0.52} />
         <directionalLight position={[5, 12, 6]} intensity={1.5} color="#e9d5ff" castShadow />
         <pointLight position={[-5, 5, -3]} intensity={8} distance={20} color="#a855f7" />
-        <pointLight position={[5, 4, 4]} intensity={6} distance={18} color="#f0abfc" />
-        <pointLight position={[0, 3, 0]} intensity={3.5} distance={13} color="#c084fc" />
+        <pointLight position={[5, 4, 4]} intensity={7} distance={20} color="#d8a4ff" />
+        <pointLight position={[0, 3, 0]} intensity={4.5} distance={15} color="#a78bfa" />
         <GitHubCity grid={grid} />
       </Canvas>
     </div>
