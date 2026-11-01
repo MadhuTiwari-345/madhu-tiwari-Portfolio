@@ -6,7 +6,7 @@ import * as THREE from "three"
 
 type GitHubEvent = { created_at: string; type: string }
 
-function buildContributionGrid(events: GitHubEvent[], weeks = 53, days = 7) {
+function buildContributionGrid(events: GitHubEvent[], cols = 22, rows = 15) {
   const counts = new Map<string, number>()
   for (const event of events) {
     const date = new Date(event.created_at)
@@ -14,25 +14,24 @@ function buildContributionGrid(events: GitHubEvent[], weeks = 53, days = 7) {
     const key = date.toISOString().slice(0, 10)
     counts.set(key, (counts.get(key) ?? 0) + 1)
   }
+
+  // One building represents one day in the most recent 330-day window.
   const today = new Date()
   today.setUTCHours(0, 0, 0, 0)
-  const start = new Date(today)
-  start.setUTCDate(today.getUTCDate() - (weeks * days - 1))
-  start.setUTCDate(start.getUTCDate() - start.getUTCDay())
   const raw: number[][] = []
   let max = 1
-  for (let w = 0; w < weeks; w++) {
-    const row: number[] = []
-    for (let d = 0; d < days; d++) {
-      const date = new Date(start)
-      date.setUTCDate(start.getUTCDate() + w * 7 + d)
+  for (let x = 0; x < cols; x++) {
+    const column: number[] = []
+    for (let z = 0; z < rows; z++) {
+      const date = new Date(today)
+      date.setUTCDate(today.getUTCDate() - (cols * rows - 1 - (x * rows + z)))
       const value = counts.get(date.toISOString().slice(0, 10)) ?? 0
-      row.push(value)
+      column.push(value)
       max = Math.max(max, value)
     }
-    raw.push(row)
+    raw.push(column)
   }
-  return raw.map(row => row.map(value => value === 0 ? 0 : 0.18 + 0.82 * value / max))
+  return raw.map(column => column.map(value => value === 0 ? 0 : 0.18 + 0.82 * value / max))
 }
 
 function GitHubCity({ grid }: { grid: number[][] }) {
@@ -46,15 +45,11 @@ function GitHubCity({ grid }: { grid: number[][] }) {
     const buildings: { x: number; z: number; h: number; activity: number; seed: number; tower: boolean }[] = []
     for (let x = 0; x < cols; x++) {
       for (let z = 0; z < rows; z++) {
-        const week = Math.min(52, Math.floor((x / (cols - 1)) * 52))
-        const day = Math.min(6, Math.floor((z / (rows - 1)) * 7))
-        const activity = grid[week]?.[day] ?? 0
+        const activity = grid[x]?.[z] ?? 0
         const seed = (x * 37 + z * 19 + x * z * 3) % 23
-        // Give the city a designed skyline even when GitHub's public event feed is quiet.
-        // Real activity adds height to buildings in the corresponding contribution region.
-        const neighborhood = Math.max(0, 1 - Math.abs(x - 10.5) / 13) * 0.2
-        const base = 0.24 + (seed / 23) * 0.95 + neighborhood
-        const h = base + activity * 1.55
+        // Keep inactive days low; event activity determines the visible skyline.
+        const base = 0.12 + (seed / 23) * 0.12
+        const h = base + activity * 1.8
         buildings.push({
           x: x - (cols - 1) / 2,
           z: z - (rows - 1) / 2,
@@ -131,7 +126,7 @@ function GitHubCity({ grid }: { grid: number[][] }) {
           >
             <mesh position={[0, b.h / 2, 0]} castShadow receiveShadow>
               <boxGeometry args={[w, b.h, d]} />
-              <meshStandardMaterial color={color} roughness={0.48} metalness={0.2} emissive={color} emissiveIntensity={hovered === i ? 0.62 : b.activity > 0 ? 0.22 : 0.08} />
+              <meshStandardMaterial color={color} roughness={0.48} metalness={0.2} emissive={color} emissiveIntensity={hovered === i ? 0.3 : b.activity > 0 ? 0.1 : 0.015} />
             </mesh>
             {b.h > 0.65 && (
               <>
@@ -181,11 +176,11 @@ export function CommitTerrain() {
     <div className="absolute inset-0">
       <Canvas camera={{ position: [9, 10, 12], fov: 34 }} dpr={[1, 1.5]} shadows>
         <color attach="background" args={["#110d20"]} />
-        <fog attach="fog" args={["#110d20", 13, 24]} />
-        <ambientLight intensity={0.72} />
-        <directionalLight position={[5, 10, 6]} intensity={1.8} color="#e9d5ff" castShadow />
-        <pointLight position={[-5, 5, -3]} intensity={28} distance={18} color="#a855f7" />
-        <pointLight position={[5, 4, 4]} intensity={22} distance={16} color="#f0abfc" />
+        
+        <ambientLight intensity={0.42} />
+        <directionalLight position={[5, 10, 6]} intensity={1.25} color="#e9d5ff" castShadow />
+        <pointLight position={[-5, 5, -3]} intensity={4.5} distance={18} color="#a855f7" />
+        <pointLight position={[5, 4, 4]} intensity={3.5} distance={16} color="#f0abfc" />
         <GitHubCity grid={grid} />
       </Canvas>
     </div>
