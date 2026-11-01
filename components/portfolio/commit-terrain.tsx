@@ -31,9 +31,8 @@ function buildContributionGrid(events: GitHubEvent[], cols = 22, rows = 15) {
     }
     raw.push(column)
   }
-  // Log scaling keeps occasional event spikes from producing a single oversized tower.
-  const scale = Math.log1p(max)
-  return raw.map(column => column.map(value => value === 0 ? 0 : 0.12 + 0.88 * Math.log1p(value) / scale))
+  // Keep actual daily counts. The scene uses sparse buildings rather than a tile for every day.
+  return raw
 }
 
 function GitHubCity({ grid }: { grid: number[][] }) {
@@ -49,9 +48,8 @@ function GitHubCity({ grid }: { grid: number[][] }) {
       for (let z = 0; z < rows; z++) {
         const activity = grid[x]?.[z] ?? 0
         const seed = (x * 37 + z * 19 + x * z * 3) % 23
-        // Keep quiet days low and cap active buildings for a balanced skyline.
-        const base = 0.10 + (seed / 23) * 0.08
-        const h = Math.min(1.02, base + activity * 0.78)
+        // Only days with public events become buildings; quiet days remain open space.
+        const h = activity === 0 ? 0 : 0.24 + Math.min(activity, 4) * 0.22
         buildings.push({
           x: x - (cols - 1) / 2,
           z: z - (rows - 1) / 2,
@@ -106,10 +104,11 @@ function GitHubCity({ grid }: { grid: number[][] }) {
         <primitive object={baseMaterial} attach="material" />
       </mesh>
       {buildings.map((b, i) => {
+        if (b.activity === 0) return null
         const palette = ["#8b5cf6", "#a78bfa", "#c084fc", "#7c3aed", "#e879f9", "#b4a0ff"]
         const color = palette[b.seed % palette.length]
-        const w = 0.31
-        const d = 0.31
+        const w = 0.27
+        const d = 0.27
         return (
           <group
             key={i}
@@ -127,7 +126,7 @@ function GitHubCity({ grid }: { grid: number[][] }) {
           >
             <mesh position={[0, b.h / 2, 0]} castShadow receiveShadow>
               <boxGeometry args={[w, b.h, d]} />
-              <meshStandardMaterial color={color} roughness={0.48} metalness={0.2} emissive={color} emissiveIntensity={hovered === i ? 0.3 : b.activity > 0 ? 0.1 : 0.015} />
+              <meshStandardMaterial color={color} roughness={0.48} metalness={0.2} emissive={color} emissiveIntensity={hovered === i ? 0.24 : 0.055} />
             </mesh>
             {b.h > 0.58 && (
               <mesh position={[0, b.h * 0.62, d / 2 + 0.006]}>
