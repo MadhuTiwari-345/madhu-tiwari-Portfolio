@@ -109,9 +109,10 @@ function GitHubCity({ grid }: { grid: number[][] }) {
         <boxGeometry args={[cols * 0.43 + 0.7, 0.2, rows * 0.43 + 0.7]} />
         <primitive object={baseMaterial} attach="material" />
       </mesh>
+      <gridHelper args={[Math.max(cols * 0.43, rows * 0.43), 22, "#8b5cf6", "#4c3676"]} position={[0, -0.054, 0]} />
       {buildings.map((b, i) => {
         if (!b.occupied) return null
-        const palette = ["#a78bfa", "#c084fc", "#8b5cf6", "#d8b4fe", "#e879f9", "#b4a0ff", "#7dd3fc"]
+        const palette = ["#b78cff", "#d2a6ff", "#9360f5", "#e0c0ff", "#bd8cff", "#a98bff", "#c8b2ff"]
         const color = palette[b.seed % palette.length]
         const w = b.width
         const d = b.width
@@ -132,12 +133,22 @@ function GitHubCity({ grid }: { grid: number[][] }) {
           >
             <mesh position={[0, b.h / 2, 0]} castShadow receiveShadow>
               <boxGeometry args={[w, b.h, d]} />
-              <meshStandardMaterial color={color} roughness={0.38} metalness={0.24} emissive={color} emissiveIntensity={hovered === i ? 0.42 : b.activity > 0 ? 0.2 : 0.12} />
+              <meshStandardMaterial color={color} roughness={0.2} metalness={0.42} transparent opacity={0.68} emissive={color} emissiveIntensity={hovered === i ? 0.58 : b.activity > 0 ? 0.32 : 0.22} />
             </mesh>
+            <lineSegments position={[0, b.h / 2, 0]}>
+              <edgesGeometry args={[new THREE.BoxGeometry(w + 0.008, b.h + 0.008, d + 0.008)]} />
+              <lineBasicMaterial color="#e9c8ff" transparent opacity={0.82} />
+            </lineSegments>
+            {b.seed % 5 === 0 && b.h > 1.1 && (
+              <mesh position={[0, b.h + 0.13, 0]}>
+                <cylinderGeometry args={[0.009, 0.018, 0.26, 5]} />
+                <meshBasicMaterial color="#f3d8ff" />
+              </mesh>
+            )}
             {b.h > 0.72 && (
               <>
                 <mesh position={[0, b.h * 0.42, d / 2 + 0.006]}>
-                  <boxGeometry args={[w * 0.42, 0.045, 0.012]} />
+                  <boxGeometry args={[w * 0.48, 0.055, 0.014]} />
                   <primitive object={windowMaterial} attach="material" />
                 </mesh>
                 <mesh position={[0, b.h * 0.72, d / 2 + 0.006]}>
@@ -185,11 +196,11 @@ export function CommitTerrain() {
   return (
     <div className="absolute inset-0">
       <Canvas camera={{ position: [9, 10, 12], fov: 34 }} dpr={[1, 1.5]} shadows>
-        <color attach="background" args={["#110d20"]} />
+        <color attach="background" args={["#080f2a"]} />
         
-        <ambientLight intensity={0.68} />
-        <directionalLight position={[5, 12, 6]} intensity={1.9} color="#f3e8ff" castShadow />
-        <pointLight position={[-5, 5, -3]} intensity={7} distance={20} color="#a855f7" />
+        <ambientLight intensity={0.52} />
+        <directionalLight position={[5, 12, 6]} intensity={1.5} color="#e9d5ff" castShadow />
+        <pointLight position={[-5, 5, -3]} intensity={8} distance={20} color="#a855f7" />
         <pointLight position={[5, 4, 4]} intensity={6} distance={18} color="#f0abfc" />
         <pointLight position={[0, 3, 0]} intensity={3.5} distance={13} color="#c084fc" />
         <GitHubCity grid={grid} />
