@@ -70,7 +70,7 @@ export function Hero() {
             transition={{ duration: 0.65, delay: 0.06, ease }}
             className="mb-4 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--primary)] sm:text-xs"
           >
-            Full-stack development <span className="px-1.5 text-[var(--secondary)]">·</span> Applied AI
+            Software engineering <span className="px-1.5 text-[var(--secondary)]">·</span> AI-powered products
           </motion.p>
 
           <motion.h1
