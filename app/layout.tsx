@@ -16,10 +16,11 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 })
 
+const siteUrl = "https://madhutiwari.arviqdigitalsolution.live"
 const previewImage = "https://avatars.githubusercontent.com/u/194702672?v=4"
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://madhu-tiwari-portfolio.vercel.app"),
+  metadataBase: new URL(siteUrl),
   alternates: { canonical: "/" },
   title: "Madhu Tiwari | Full Stack & AI Developer",
   description:
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     title: "Madhu Tiwari | Full Stack & AI Developer",
     description:
       "Explore Madhu Tiwari’s work across full-stack development, backend engineering, and practical AI.",
-    url: "https://madhu-tiwari-portfolio.vercel.app",
+    url: siteUrl,
     siteName: "Madhu Tiwari",
     type: "website",
     images: [
@@ -94,7 +95,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Madhu Tiwari",
-              url: "https://madhu-tiwari-portfolio.vercel.app",
+              url: siteUrl,
               image: previewImage,
               jobTitle: "Full Stack & AI Developer",
               description:
