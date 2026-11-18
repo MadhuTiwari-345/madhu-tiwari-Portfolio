@@ -9,7 +9,7 @@
 <h3 align="center">🚀 AI & Full-Stack Developer | Crafting Scalable Digital Experiences</h3>
 
 <p align="center">
-  <a href="https://madhu-tiwari-portfolio.vercel.app/">
+  <a href="https://madhutiwari.arviqdigitalsolution.live/">
     <img src="https://img.shields.io/badge/🌐 Live Portfolio-Explore Now-8A2BE2?style=for-the-badge&logo=vercel&logoColor=white"/>
   </a>
 </p>
